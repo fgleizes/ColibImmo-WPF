@@ -7,13 +7,13 @@
         mc:Ignorable="d"
         Title="colibImmoMainWindow" Height="800" Width="1440" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip">
     <Grid Background="#f8f8f8">
-        <Grid x:Name="panelHeader" VerticalAlignment="Top" Height="50" Background="#4f4f4f" MouseDown="PanelHeader_MouseDown">
+        <Grid x:Name="panelHeader" VerticalAlignment="Top" Height="60" Background="#4f4f4f" MouseDown="PanelHeader_MouseDown">
             <TextBlock FontWeight="medium" FontSize="20" FontFamily="century gothic"  VerticalAlignment="center" HorizontalAlignment="center" Foreground="white" Text="COLIB IMMO"></TextBlock>
         </Grid>
         <Grid x:Name="sidePanel" HorizontalAlignment="Left" Width="280" Background="#4f4f4f">
             <StackPanel>
                 <Grid Height="150">
-                    <Button Click="Button_Click" Margin="0 0 20 0" HorizontalAlignment="Right" Width="50" Height="50" VerticalAlignment="Top" BorderBrush="Transparent" Background="Transparent">
+                    <Button Click="Button_Click" Margin="0 10 20 0" HorizontalAlignment="Right" Width="50" Height="50" VerticalAlignment="Top" BorderBrush="Transparent" Background="Transparent">
                         <Image Source="icons/icons8_menu_squared_50px.png">
                             
                         </Image>
@@ -22,18 +22,22 @@
                 <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="white" FontWeight="bold" FontSize="18" FontFamily="century gothic" BorderBrush="Transparent" Background="Transparent">
                     <ListViewItem Margin="0 10 0 10" Height="50">
                         <StackPanel Orientation="Horizontal">
-                            <Image VerticalAlignment="Center" Margin="10 0 0 0" Source="icons/icons8_home_50px_2.png"  Height="50">
-                                
-                            </Image>
+                            <Button Height="50" Click="btnPageHome" BorderBrush="Transparent" Background="Transparent">
+                                <Image VerticalAlignment="Center" Margin="10 0 0 0" Source="icons/icons8_home_50px_2.png"  Height="50">
+
+                                </Image>
+                            </Button>
                             <TextBlock VerticalAlignment="center" Margin="40 0 0 0" Text="Home"></TextBlock>
                         </StackPanel>
                         
                     </ListViewItem>
                     <ListViewItem Margin="0 10 0 10" Height="50">
                         <StackPanel Orientation="Horizontal">
-                            <Image VerticalAlignment="Center" Margin="10 0 0 0" Source="icons/icons8_customer_50px_1.png"  Height="50">
+                            <Button Height="50" Click="btnListClientPage" BorderBrush="Transparent" Background="Transparent">
+                                <Image VerticalAlignment="Center" Margin="10 0 0 0" Source="icons/icons8_customer_50px_1.png"  Height="50">
 
-                            </Image>
+                                </Image>
+                            </Button>
                             <TextBlock VerticalAlignment="center" Margin="40 0 0 0" Text="List clients"></TextBlock>
                         </StackPanel>
 
@@ -83,6 +87,6 @@
         <Grid HorizontalAlignment="Right" Width="5" Background="#4f4f4f">
             
         </Grid>
-       
+        <Frame x:Name="Main"/>
     </Grid>
 </Window>

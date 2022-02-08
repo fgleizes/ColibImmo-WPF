@@ -70,5 +70,15 @@ namespace ColibImmo_WPF
                 DragMove();
             }
         }
+
+        private void btnPageHome(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new HomePage();
+        }
+
+        private void btnListClientPage(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new ListClientPage();
+        }
     }
 }
