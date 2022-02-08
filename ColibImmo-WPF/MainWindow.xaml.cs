@@ -29,41 +29,43 @@ namespace ColibImmo_WPF
         {
             InitializeComponent();
             timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 0, 0, 10);
+            timer.Interval = new TimeSpan(0, 0, 0, 0,0);
             timer.Tick += Timer_Tick;
             panelWidth = sidePanel.Width;
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if(hidden)
+            if (hidden)
             {
-                sidePanel.Width += +1;
-                if (sidePanel.Width <= panelWidth)
+                sidePanel.Width += 1;
+                if (sidePanel.Width >= panelWidth)
                 {
                     timer.Stop();
                     hidden = false;
                 }
-                else
+            }
+            else
+            {
+                sidePanel.Width -= 1;
+                if (sidePanel.Width <= 90)
                 {
-                    sidePanel.Width -= 1;
-                    if(sidePanel.Width <= 60)
-                    {
-                        timer.Stop();
-                        hidden= true;
-                    }
+                    timer.Stop();
+                    hidden = true;
                 }
             }
         }
 
-        private void Button_Click (object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
+         
             timer.Start();
+
         }
 
         private void PanelHeader_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if(e.LeftButton == MouseButtonState.Pressed)
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
                 DragMove();
             }

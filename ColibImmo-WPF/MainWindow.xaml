@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ColibImmo_WPF"
         mc:Ignorable="d"
-        Title="colibImmoWPF" Height="800" Width="1440" WindowStartupLocation="CenterScreen">
+        Title="colibImmoMainWindow" Height="800" Width="1440" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip">
     <Grid Background="#f8f8f8">
         <Grid x:Name="panelHeader" VerticalAlignment="Top" Height="50" Background="#4f4f4f" MouseDown="PanelHeader_MouseDown">
             <TextBlock FontWeight="medium" FontSize="20" FontFamily="century gothic"  VerticalAlignment="center" HorizontalAlignment="center" Foreground="white" Text="COLIB IMMO"></TextBlock>
@@ -13,13 +13,13 @@
         <Grid x:Name="sidePanel" HorizontalAlignment="Left" Width="280" Background="#4f4f4f">
             <StackPanel>
                 <Grid Height="150">
-                    <Button Click="Button_Click" HorizontalAlignment="Right" Width="50" Height="50" VerticalAlignment="Top" BorderBrush="Transparent" Background="Transparent">
+                    <Button Click="Button_Click" Margin="0 0 20 0" HorizontalAlignment="Right" Width="50" Height="50" VerticalAlignment="Top" BorderBrush="Transparent" Background="Transparent">
                         <Image Source="icons/icons8_menu_squared_50px.png">
                             
                         </Image>
                     </Button>
                 </Grid>
-                <ListView Foreground="white" FontWeight="bold" FontSize="18" FontFamily="century gothic" BorderBrush="Transparent" Background="Transparent">
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="white" FontWeight="bold" FontSize="18" FontFamily="century gothic" BorderBrush="Transparent" Background="Transparent">
                     <ListViewItem Margin="0 10 0 10" Height="50">
                         <StackPanel Orientation="Horizontal">
                             <Image VerticalAlignment="Center" Margin="10 0 0 0" Source="icons/icons8_home_50px_2.png"  Height="50">
