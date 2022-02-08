@@ -81,12 +81,15 @@
                 </ListView>
             </StackPanel>
         </Grid>
+        
+            <Frame Margin="90 0 0 0 " x:Name="Main"/>
+        
         <Grid VerticalAlignment="Bottom" Height="5" Background="#4f4f4f">
             
         </Grid>
         <Grid HorizontalAlignment="Right" Width="5" Background="#4f4f4f">
             
         </Grid>
-        <Frame x:Name="Main"/>
+        
     </Grid>
 </Window>
