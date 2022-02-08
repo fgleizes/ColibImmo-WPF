@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ColibImmo_WPF.API;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,19 @@ namespace ColibImmo_WPF
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void logoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            Client api = new Client();
+            api.Disconnect("user/logout");
+            Application.Current.Properties.Remove("apiToken");
+            MessageBoxResult result = MessageBox.Show(Application.Current.Properties["apiToken"] as string);
+            Hide();
+
+            var window = new LoginWindow();
+            window.Owner = this;
+            window.Show();
         }
     }
 }

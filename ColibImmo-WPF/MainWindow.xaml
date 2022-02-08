@@ -7,6 +7,72 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <Button>
+                <Grid Height="40" Width="200">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="pack://siteoforigin:,,,/Resources/dll.png"></Image>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">Home</TextBlock>
+                </Grid>
+            </Button>
+            <Button>
+                <Grid Height="40" Width="200">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="pack://siteoforigin:,,,/Resources/dll.png"></Image>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">Liste client</TextBlock>
+                </Grid>
+            </Button>
+            <Button>
+                <Grid Height="40" Width="200">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="pack://siteoforigin:,,,/Resources/dll.png"></Image>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">Liste bien</TextBlock>
+                </Grid>
+            </Button>
+            <Button>
+                <Grid Height="40" Width="200">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="pack://siteoforigin:,,,/Resources/dll.png"></Image>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">Liste projet</TextBlock>
+                </Grid>
+            </Button>
+            <Button>
+                <Grid Height="40" Width="200">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="pack://siteoforigin:,,,/Resources/dll.png"></Image>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">Agenda</TextBlock>
+                </Grid>
+            </Button>
+            <Button>
+                <Grid Height="40" Width="200">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="pack://siteoforigin:,,,/Resources/dll.png"></Image>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">Dashboard</TextBlock>
+                </Grid>
+            </Button>
+        </StackPanel>
+        <Button Grid.Column="1" VerticalAlignment="center" HorizontalAlignment="Center" Click="logoutButton_Click">Déconnexion</Button>
     </Grid>
 </Window>
