@@ -20,6 +20,7 @@ namespace ColibImmo_WPF
     /// </summary>
     public partial class HomePage : Page
     {
+        public System.Windows.CornerRadius CornerRadius { get; set; }
         public HomePage()
         {
             InitializeComponent();

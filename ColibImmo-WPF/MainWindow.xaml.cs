@@ -57,7 +57,7 @@ namespace ColibImmo_WPF
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonDrawer_Click(object sender, RoutedEventArgs e)
         {
          
             timer.Start();
