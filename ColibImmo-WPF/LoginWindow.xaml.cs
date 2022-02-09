@@ -121,13 +121,15 @@ namespace ColibImmo_WPF
             if(streamAPI != null)
             {
                 Auth? auth = JsonSerializer.DeserializeAsync<Auth>(streamAPI).Result;
-                Application.Current.Properties.Add("apiToken", auth.Token);
+                api.Token = auth?.Token;
+                Application.Current.Properties.Add("apiToken", auth?.Token);
                 errormessage3.Text = "";
                 Hide();
                 var window = new MainWindow();
                 window.Owner = this;
                 window.Show();
-                MessageBoxResult result = MessageBox.Show(Application.Current.Properties["apiToken"] as string);
+                //MessageBoxResult result = MessageBox.Show(Application.Current.Properties["apiToken"] as string);
+                MessageBoxResult result = MessageBox.Show(api.Token);
             }
             else
             {
