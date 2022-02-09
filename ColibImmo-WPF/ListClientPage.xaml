@@ -9,9 +9,9 @@
       Title="ListClientPage">
     <Border CornerRadius="10" Margin="110 60 20 20" Background="white">
         <Grid>
-            <ListBox BorderThickness="0" Margin="0 10 0 10" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <DataGrid x:Name="ListClientContainer"   BorderThickness="0" Margin="0 10 0 10">
                 
-            </ListBox>
+            </DataGrid>
         </Grid>
     </Border>
 </Page>

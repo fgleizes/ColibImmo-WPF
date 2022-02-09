@@ -39,8 +39,8 @@ namespace ColibImmo_WPF
         {
             if (hidden)
             {
-                sidePanel.Width += 1;
-                if (sidePanel.Width >= panelWidth)
+                sidePanel.Width -= 1;
+                if (sidePanel.Width <= panelWidth)
                 {
                     timer.Stop();
                     hidden = false;
@@ -48,8 +48,8 @@ namespace ColibImmo_WPF
             }
             else
             {
-                sidePanel.Width -= 1;
-                if (sidePanel.Width <= 90)
+                sidePanel.Width += 1;
+                if (sidePanel.Width >= 280)
                 {
                     timer.Stop();
                     hidden = true;
