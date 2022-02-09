@@ -21,9 +21,9 @@ namespace ColibImmo_WPF
     /// <summary>
     /// Logique d'interaction pour listProjet.xaml
     /// </summary>
-    public partial class listProject : Window
+    public partial class ListProject : Page
     {
-        public listProject()
+        public ListProject()
         {
             InitializeComponent();
             GetProjects();

@@ -15,19 +15,25 @@ namespace ColibImmo_WPF.API
 
         readonly string URL = "http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/";
 
+        public string? Token { get; set; }
+
         /**
          * Méthode pour faire la connection à l'API
          * 
          */
-        private void Connect()
+        private void Connect(bool isSecure = false)
         {
             clientApi.BaseAddress = new Uri(URL);
             clientApi.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            if (isSecure)
+            {
+                clientApi.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token); ;
+            }
         }
 
-        public async Task<Stream?> GetCallAsync(string URI, FormData[]? formDatas = null)
+        public async Task<Stream?> GetCallAsync(string URI, FormData[]? formDatas = null, bool isSecure = false)
         {
-            Connect();
+            Connect(isSecure);
             string getData = "";
             if (formDatas != null)
             {
