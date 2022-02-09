@@ -16,7 +16,7 @@
                 <Grid Height="150">
                     <Button Click="Button_Click" Margin="0 10 20 0" HorizontalAlignment="Right" Width="50" Height="50" VerticalAlignment="Top" BorderBrush="Transparent" Background="Transparent">
                         <Image Source="icons/icons8_menu_squared_50px.png">
-                            
+
                         </Image>
                     </Button>
                 </Grid>
@@ -30,7 +30,7 @@
                             </Button>
                             <TextBlock VerticalAlignment="center" Margin="40 0 0 0" Text="Home"></TextBlock>
                         </StackPanel>
-                        
+
                     </ListViewItem>
                     <ListViewItem Margin="0 10 0 10" Height="50">
                         <StackPanel Orientation="Horizontal">
@@ -82,19 +82,13 @@
                 </ListView>
             </StackPanel>
         </Grid>
-        
-            <Frame Margin="90 0 0 0 " x:Name="Main"/>
-        
+
         <Grid VerticalAlignment="Bottom" Height="5" Background="#4f4f4f">
             
         </Grid>
         <Grid HorizontalAlignment="Right" Width="5" Background="#4f4f4f">
-            
+
         </Grid>
-<<<<<<< HEAD
-        
-=======
-        <Frame x:Name="Main" Content="Z"/>
->>>>>>> 85f195a1f8efe1b2671e7cbad0edd00df57d7fa3
+        <Frame x:Name="Main" Panel.ZIndex="-1" Content="Z"/>
     </Grid>
 </Window>
