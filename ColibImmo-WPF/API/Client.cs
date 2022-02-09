@@ -25,7 +25,7 @@ namespace ColibImmo_WPF.API
             clientApi.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<Stream?> GetCallAsync(string URI, FormData[] formDatas)
+        public async Task<Stream?> GetCallAsync(string URI, FormData[]? formDatas = null)
         {
             Connect();
             string getData = "";
