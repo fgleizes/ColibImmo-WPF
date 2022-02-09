@@ -94,6 +94,6 @@
         <Grid HorizontalAlignment="Right" Width="5" Background="#4f4f4f">
 
         </Grid>
-        <Frame x:Name="Main" Panel.ZIndex="-1" Content="Z"/>
+        <Frame Margin="110 60 20 20" x:Name="Main" Panel.ZIndex="-1" Content="Z" NavigationUIVisibility="hidden"/>
     </Grid>
 </Window>
