@@ -94,5 +94,11 @@ namespace ColibImmo_WPF
             window.Owner = this;
             window.Show();
         }
+        private void listProjButton_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new listProject();
+            window.Owner = this;
+            window.Show();
+        }
     }
 }

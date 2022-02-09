@@ -10,6 +10,7 @@
         <Grid x:Name="panelHeader" VerticalAlignment="Top" Height="60" Background="#4f4f4f" MouseDown="PanelHeader_MouseDown">
             <TextBlock FontWeight="medium" FontSize="20" FontFamily="century gothic"  VerticalAlignment="center" HorizontalAlignment="center" Foreground="white" Text="COLIB IMMO"></TextBlock>
             <Button Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Click="logoutButton_Click" Padding="5,5,5,5" Margin="0,0,5,0">Déconnexion</Button>
+            <Button VerticalAlignment="Center" HorizontalAlignment="Center" Name="listProjBtn" Click="listProjButton_Click">Liste des projets</Button>
         </Grid>
         <Grid x:Name="sidePanel" HorizontalAlignment="Left" Width="280" Background="#4f4f4f">
             <StackPanel>
