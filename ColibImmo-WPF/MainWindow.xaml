@@ -9,6 +9,7 @@
     <Grid Background="#f8f8f8">
         <Grid x:Name="panelHeader" VerticalAlignment="Top" Height="60" Background="#4f4f4f" MouseDown="PanelHeader_MouseDown">
             <TextBlock FontWeight="medium" FontSize="20" FontFamily="century gothic"  VerticalAlignment="center" HorizontalAlignment="center" Foreground="white" Text="COLIB IMMO"></TextBlock>
+            <Button Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Click="logoutButton_Click" Padding="5,5,5,5" Margin="0,0,5,0">Déconnexion</Button>
         </Grid>
         <Grid x:Name="sidePanel" HorizontalAlignment="Left" Width="280" Background="#4f4f4f">
             <StackPanel>
@@ -90,6 +91,10 @@
         <Grid HorizontalAlignment="Right" Width="5" Background="#4f4f4f">
             
         </Grid>
+<<<<<<< HEAD
         
+=======
+        <Frame x:Name="Main" Content="Z"/>
+>>>>>>> 85f195a1f8efe1b2671e7cbad0edd00df57d7fa3
     </Grid>
 </Window>
