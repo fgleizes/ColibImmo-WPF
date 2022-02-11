@@ -13,6 +13,8 @@
     <None Remove="icons\icons8_calendar_50px_1.png" />
     <None Remove="icons\icons8_customer_50px_1.png" />
     <None Remove="icons\icons8_dashboard_50px_1.png" />
+    <None Remove="icons\icons8_eye_30px_2.png" />
+    <None Remove="icons\icons8_eye_30px_3.png" />
     <None Remove="icons\icons8_hashtag_activity_feed_50px.png" />
     <None Remove="icons\icons8_home_50px_2.png" />
     <None Remove="icons\icons8_menu_squared_50px.png" />
@@ -23,6 +25,8 @@
     <Resource Include="icons\icons8_calendar_50px_1.png" />
     <Resource Include="icons\icons8_customer_50px_1.png" />
     <Resource Include="icons\icons8_dashboard_50px_1.png" />
+    <Resource Include="icons\icons8_eye_30px_2.png" />
+    <Resource Include="icons\icons8_eye_30px_3.png" />
     <Resource Include="icons\icons8_hashtag_activity_feed_50px.png" />
     <Resource Include="icons\icons8_home_50px_2.png" />
     <Resource Include="icons\icons8_menu_squared_50px.png" />

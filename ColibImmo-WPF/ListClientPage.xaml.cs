@@ -44,5 +44,10 @@ namespace ColibImmo_WPF
                 MessageBox.Show("Erreur");
             }
         }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

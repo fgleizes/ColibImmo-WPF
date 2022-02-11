@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ColibImmo_WPF"
         mc:Ignorable="d"
         Title="colibImmoMainWindow" Height="800" Width="1440" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip">
-    <Grid Background="#f8f8f8">
+    <Grid Background="#f4f4f4">
         <Grid x:Name="panelHeader" VerticalAlignment="Top" Height="60" Background="#4f4f4f" MouseDown="PanelHeader_MouseDown">
             <TextBlock FontWeight="medium" FontSize="20" FontFamily="century gothic"  VerticalAlignment="center" HorizontalAlignment="center" Foreground="white" Text="COLIB IMMO"></TextBlock>
             <Button Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Click="logoutButton_Click" Padding="5,5,5,5" Margin="0,0,5,0">Déconnexion</Button>
@@ -94,6 +94,6 @@
         <Grid HorizontalAlignment="Right" Width="5" Background="#4f4f4f">
 
         </Grid>
-        <Frame Margin="110 60 20 20" x:Name="Main" Panel.ZIndex="-1" Content="Z" NavigationUIVisibility="hidden"/>
+        <Frame  x:Name="Main" Panel.ZIndex="-1"  NavigationUIVisibility="hidden" Margin="100,70,10,10"/>
     </Grid>
 </Window>
