@@ -28,11 +28,11 @@ namespace ColibImmo_WPF
         public ListeBien()
         {
             InitializeComponent();
-            TypeProject();
+            GetTypeProject();
             GetProjects();
         }
 
-        private async void TypeProject()
+        private async void GetTypeProject()
         {
             Client api = new Client();
             Stream? streamAPI = await api.GetCallAsync("project/typeProject/");
