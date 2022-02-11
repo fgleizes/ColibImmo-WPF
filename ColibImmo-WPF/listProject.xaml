@@ -6,8 +6,7 @@
         xmlns:local="clr-namespace:ColibImmo_WPF"
         mc:Ignorable="d"
         Title="listProject">
-    <Grid>
-        <DataGrid Name="listProjectGrid"/>
 
-    </Grid>
+    <DataGrid VerticalAlignment="Center" Name="listProjectGrid" Width="780"/>
+    
 </Page>

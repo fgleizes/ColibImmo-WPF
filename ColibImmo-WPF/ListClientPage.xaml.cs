@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ColibImmo_WPF.API;
+using ColibImmo_WPF.API.JSON;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using System.Text.Json;
 
 namespace ColibImmo_WPF
 {
@@ -24,5 +28,7 @@ namespace ColibImmo_WPF
         {
             InitializeComponent();
         }
+
+        
     }
 }

@@ -50,6 +50,9 @@ namespace ColibImmo_WPF
                 case "ListProject":
                     Main.Content = new ListProject();
                     break;
+                case "ListProperty":
+                    Main.Content = new ListeBien();
+                    break;
             }
         }
 
