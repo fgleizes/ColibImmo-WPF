@@ -44,7 +44,7 @@ namespace ColibImmo_WPF
                 //window.Owner = this;
                 //window.Show();
                 //MessageBoxResult result = MessageBox.Show(Application.Current.Properties["apiToken"] as string);
-                listProjectGrid.ItemsSource = (System.Collections.IEnumerable?)projects;
+                listProjectGrid.ItemsSource = projects;
             }
             else
             {

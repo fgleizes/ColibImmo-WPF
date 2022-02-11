@@ -25,35 +25,35 @@
                             <TextBlock VerticalAlignment="center" Margin="40 0 0 0" Text="Home"/>
                         </StackPanel>
                     </ListViewItem>
-                    
+
                     <ListViewItem Name="ListClient" Margin="0 10 0 10" Height="50">
                         <StackPanel Orientation="Horizontal">
                             <Image VerticalAlignment="Center" Margin="10 0 0 0" Source="icons/icons8_customer_50px_1.png"  Height="50"/>
-                            <TextBlock VerticalAlignment="center" Margin="40 0 0 0" Text="List clients"/>
+                            <TextBlock VerticalAlignment="center" Margin="40 0 0 0" Text="Clients"/>
                         </StackPanel>
                     </ListViewItem>
-                    
+
                     <ListViewItem Name="ListProject" Margin="0 10 0 10" Height="50">
                         <StackPanel Orientation="Horizontal">
                             <Image VerticalAlignment="Center" Margin="10 0 0 0" Source="icons/icons8_hashtag_activity_feed_50px.png"  Height="50"/>
-                            <TextBlock VerticalAlignment="center" Margin="40 0 0 0" Text="List Projets"/>
+                            <TextBlock VerticalAlignment="center" Margin="40 0 0 0" Text="Projets"/>
                         </StackPanel>
                     </ListViewItem>
-                    
+
                     <ListViewItem Name="ListProperty" Margin="0 10 0 10" Height="50">
                         <StackPanel Orientation="Horizontal">
                             <Image VerticalAlignment="Center" Margin="10 0 0 0" Source="icons/icons8_building_50px_1.png"  Height="50"/>
-                            <TextBlock VerticalAlignment="center" Margin="40 0 0 0" Text="List des biens"/>
+                            <TextBlock VerticalAlignment="center" Margin="40 0 0 0" Text="Biens"/>
                         </StackPanel>
                     </ListViewItem>
-                    
+
                     <ListViewItem Name="Calendar" Margin="0 10 0 10" Height="50">
                         <StackPanel Orientation="Horizontal">
                             <Image VerticalAlignment="Center" Margin="10 0 0 0" Source="icons/icons8_calendar_50px_1.png"  Height="50"/>
                             <TextBlock VerticalAlignment="center" Margin="40 0 0 0" Text="Calendrier"/>
                         </StackPanel>
                     </ListViewItem>
-                    
+
                     <ListViewItem Name="Dashboard" Margin="0 10 0 10" Height="50">
                         <StackPanel Orientation="Horizontal">
                             <Image VerticalAlignment="Center" Margin="10 0 0 0" Source="icons/icons8_dashboard_50px_1.png"  Height="50"/>
@@ -64,12 +64,12 @@
             </StackPanel>
         </Grid>
 
-        <Grid VerticalAlignment="Bottom" Height="5" Background="#4f4f4f">
+        <!--<Grid VerticalAlignment="Bottom" Height="5" Background="#4f4f4f">
 
         </Grid>
         <Grid HorizontalAlignment="Right" Width="5" Background="#4f4f4f">
 
-        </Grid>
-        <Frame x:Name="Main" Panel.ZIndex="-1" Content="Z"/>
+        </Grid>-->
+        <Frame x:Name="Main" Panel.ZIndex="-1" NavigationUIVisibility="Hidden" Margin="90,60,0,0"/>
     </Grid>
 </Window>
