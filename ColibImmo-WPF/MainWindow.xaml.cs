@@ -23,34 +23,16 @@ namespace ColibImmo_WPF
     public partial class MainWindow : Window
     {
         DispatcherTimer timer;
-        
+
         double panelWidth;
         bool hidden;
         public MainWindow()
         {
             InitializeComponent();
             timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 0, 0,0);
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 0);
             timer.Tick += Timer_Tick;
             panelWidth = sidePanel.Width;
-            listView.SelectedIndex = 0;
-        }
-
-        private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ListViewItem item = (ListViewItem)listView.Items[listView.SelectedIndex];
-            switch (item.Name)
-            {
-                case "HomePage":
-                    Main.Content = new HomePage();
-                    break;
-                case "ListClient":
-                    Main.Content = new ListClientPage();
-                    break;
-                case "ListProject":
-                    Main.Content = new ListProject();
-                    break;
-            }
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -75,9 +57,11 @@ namespace ColibImmo_WPF
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonDrawer_Click(object sender, RoutedEventArgs e)
         {
+
             timer.Start();
+
         }
 
         private void PanelHeader_MouseDown(object sender, MouseButtonEventArgs e)
@@ -86,6 +70,16 @@ namespace ColibImmo_WPF
             {
                 DragMove();
             }
+        }
+
+        private void btnPageHome(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new HomePage();
+        }
+
+        private void btnListClientPage(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new ListClientPage();
         }
 
         private void logoutButton_Click(object sender, RoutedEventArgs e)
@@ -100,5 +94,11 @@ namespace ColibImmo_WPF
             window.Owner = this;
             window.Show();
         }
+        //private void listProjButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var window = new listProject();
+        //    window.Owner = this;
+        //    window.Show();
+        //}
     }
 }

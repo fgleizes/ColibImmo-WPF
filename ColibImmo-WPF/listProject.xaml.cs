@@ -26,30 +26,30 @@ namespace ColibImmo_WPF
         public ListProject()
         {
             InitializeComponent();
-            GetProjects();
+            //GetProjects();
         }
 
-        private async void GetProjects()
-        {
-            Client api = new Client();
-            Stream? streamAPI = await api.GetCallAsync("project");
+        //private async void GetProjects()
+        //{
+        //    Client api = new Client();
+        //    Stream? streamAPI = await api.GetCallAsync("project");
 
-            if (streamAPI != null)
-            {
-                Project[]? projects = JsonSerializer.DeserializeAsync<Project[]>(streamAPI).Result;
-                //Application.Current.Properties.Add("apiToken", auth.Token);
-                //errormessage3.Text = "";
-                //Hide();
-                //var window = new MainWindow();
-                //window.Owner = this;
-                //window.Show();
-                //MessageBoxResult result = MessageBox.Show(Application.Current.Properties["apiToken"] as string);
-                listProjectGrid.ItemsSource = (System.Collections.IEnumerable?)projects;
-            }
-            else
-            {
-                MessageBox.Show("Erreur de connexion.");
-            }
-        }
+        //    if (streamAPI != null)
+        //    {
+        //        Project[]? projects = JsonSerializer.DeserializeAsync<Project[]>(streamAPI).Result;
+        //        //Application.Current.Properties.Add("apiToken", auth.Token);
+        //        //errormessage3.Text = "";
+        //        //Hide();
+        //        //var window = new MainWindow();
+        //        //window.Owner = this;
+        //        //window.Show();
+        //        //MessageBoxResult result = MessageBox.Show(Application.Current.Properties["apiToken"] as string);
+        //        listProjectGrid.ItemsSource = (System.Collections.IEnumerable?)projects;
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Erreur de connexion.");
+        //    }
+        //}
     }
 }
