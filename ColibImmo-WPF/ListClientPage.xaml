@@ -6,206 +6,258 @@
       xmlns:local="clr-namespace:ColibImmo_WPF"
       mc:Ignorable="d" 
       Title="ListClientPage">
-    
-    <TabControl SelectionChanged="TabControl_SelectionChanged" Background="Transparent" BorderThickness="0">
-        <TabControl.Resources>
-            <Style TargetType="TabItem">
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="TabItem">
-                            <Border
+    <Grid>
+        <Grid Margin="10 10 0 0" HorizontalAlignment="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" >
+                <Button  BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
+                    <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_edit_48px.png"/>
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Column="1" >
+                <Button  BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
+                    <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_close_window_48px.png"/>
+                </Button>
+            </StackPanel>
+            
+        </Grid>
+
+        <Grid>
+            <TabControl SelectionChanged="TabControl_SelectionChanged" Background="Transparent" BorderThickness="0">
+                <TabControl.Resources>
+                    <Style TargetType="TabItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="TabItem">
+                                    <Border
                                     Name="Border"
                                     BorderThickness="0"
                                     BorderBrush="White"
                                     Margin="0 0 0 -2"
                                     CornerRadius="10,10,0,0">
-                          
-                                <ContentPresenter
+
+                                        <ContentPresenter
                                         
                                         x:Name="ContentSite"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         ContentSource="Header" />
-                            </Border>
-                            
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter TargetName="Border" Property="Background" Value="white" />
-                                    <Setter TargetName="Border" Property="BorderBrush" Value="#c4c4c4"/>
-                                    <Setter TargetName="Border" Property="Margin" Value="0 0 0 -3"/>
-                                    <Setter TargetName="Border" Property="BorderThickness" Value="1 1 1 0"/>
-                                </Trigger>
-                                <Trigger Property="IsSelected" Value="False">
-                                    <Setter TargetName="Border" Property="Background" Value="#efefef" />
-                                    
-                                    <Setter TargetName="Border" Property="BorderThickness" Value="1 1 1 0"/>
-                                    <Setter TargetName="Border" Property="BorderBrush" Value="#c4c4c4"/>
-                                    
-                                    
-                                    
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-        </TabControl.Resources>
-        <TabItem Name="TabItem1"  Margin="0 0 0 0" Height="40" Width="200">
-            <TabItem.Header >
-                
-                <StackPanel>
-                    <TextBlock Text="LISTE CLIENT" FontSize="24" FontFamily="century gothic" Foreground="#4b4b4b" FontWeight="Light">
-                          
-                    </TextBlock>
-                </StackPanel>
-                
-            </TabItem.Header>
+                                    </Border>
 
-            <Border CornerRadius="0 10 10 10" BorderThickness="1" Background="White" BorderBrush="#c4c4c4" Padding="0 10 0 0">
-                <Grid>
-                    <Grid Margin="10 10 0 0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50"/>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="50"/>
-                            <ColumnDefinition Width="50"/>
-                            <ColumnDefinition Width="50"/>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel  Grid.Row="0" Grid.Column="0">
-                            <CheckBox Margin="0"/>
-                        </StackPanel>
-                        <StackPanel  Grid.Row="0" Grid.Column="1">
-                            <TextBlock FontFamily="century gothic" FontSize="14" Text="Nom"/>
-                        </StackPanel>
-                        <StackPanel  Grid.Row="0" Grid.Column="2">
-                            <TextBlock FontFamily="century gothic" FontSize="14" Text="Prénom"/>
-                        </StackPanel>
-                        <StackPanel  Grid.Row="0" Grid.Column="3">
-                            <TextBlock FontFamily="century gothic" FontSize="14" Text="Mail"/>
-                        </StackPanel>
-                        <StackPanel  Grid.Row="0" Grid.Column="4">
-                            <TextBlock FontFamily="century gothic" FontSize="14" Text="Phone"/>
-                        </StackPanel>
-                        <StackPanel Grid.Column="7" Grid.Row="0" HorizontalAlignment="Right">
-                            <TextBlock  FontFamily="century gothic" FontSize="14" Text="Details"/>
-                        </StackPanel>
-                    </Grid>
-                    <Grid Grid.Row="1" Margin="0 40 0 10">
-                        <ListView ItemsSource="{Binding ListClientContainer}"  x:Name="ListClientContainer" BorderThickness="0">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Height="30" >
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="white" />
+                                            <Setter TargetName="Border" Property="BorderBrush" Value="#c4c4c4"/>
+                                            <Setter TargetName="Border" Property="Margin" Value="0 0 0 -3"/>
+                                            <Setter TargetName="Border" Property="BorderThickness" Value="1 1 1 0"/>
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="False">
+                                            <Setter TargetName="Border" Property="Background" Value="#efefef" />
 
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="50"/>
-                                            <ColumnDefinition Width="100"/>
-                                            <ColumnDefinition Width="100"/>
-                                            <ColumnDefinition Width="200"/>
-                                            <ColumnDefinition Width="100"/>
-                                            <ColumnDefinition Width="50"/>
-                                            <ColumnDefinition Width="50"/>
-                                            <ColumnDefinition Width="50"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                                            <CheckBox Margin="4"/>
-                                        </StackPanel>
-                                        <StackPanel VerticalAlignment="Center" Grid.Column="1">
-                                            <TextBlock Text="{Binding lastname}"/>
-                                        </StackPanel>
-                                        <StackPanel VerticalAlignment="Center"  Grid.Column="2">
-                                            <TextBlock Text="{Binding firstname}"/>
-                                        </StackPanel>
-                                        <StackPanel VerticalAlignment="Center" Grid.Column="3">
-                                            <TextBlock Text="{Binding mail}"/>
-                                        </StackPanel>
-                                        <StackPanel VerticalAlignment="Center" Grid.Column="4">
-                                            <TextBlock Text="{Binding phone}"/>
-                                        </StackPanel>
-                                        
-                                        <StackPanel HorizontalAlignment="Right" Grid.Column="5"  >
-                                            <Button  BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
-                                                <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_edit_48px.png"/>
-                                            </Button>
-                                        </StackPanel>
-                                        <StackPanel HorizontalAlignment="Right" Grid.Column="6"  >
-                                            <Button  BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
-                                                <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_close_window_48px.png"/>
-                                            </Button>
-                                        </StackPanel>
-                                        <StackPanel HorizontalAlignment="Right" Grid.Column="7"  >
-                                            <Button  BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
-                                                <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_eye_30px_3.png"/>
-                                            </Button>
-                                        </StackPanel>
-                                        
-                                      
+                                            <Setter TargetName="Border" Property="BorderThickness" Value="1 1 1 0"/>
+                                            <Setter TargetName="Border" Property="BorderBrush" Value="#c4c4c4"/>
 
 
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </Grid>
-                </Grid>
-            </Border>
-        </TabItem>
-        <TabItem Header="ADD" BorderBrush="white" BorderThickness="0" Background="#efefef" Height="30"  Width="60" Foreground="#4b4b4b" FontWeight="DemiBold" Margin="0 0 0 -10">
-            <Border 
-                CornerRadius="0 10 10 10" 
-                Name="BorderAdd" 
-                Background="white" 
-                BorderBrush="#c4c4c4" 
-                BorderThickness="1">
+
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TabControl.Resources>
+                <TabItem Name="TabItem1"  Margin="0 0 0 0" Height="40" Width="200">
+                    <TabItem.Header >
+
+                        <StackPanel>
+                            <TextBlock Text="LISTE CLIENT" FontSize="24" FontFamily="century gothic" Foreground="#4b4b4b" FontWeight="Light">
+
+                            </TextBlock>
+                        </StackPanel>
+
+                    </TabItem.Header>
+
+                    <Border CornerRadius="0 10 10 10" BorderThickness="1" Background="White" BorderBrush="#c4c4c4" Padding="0 10 0 0">
+                        <Grid HorizontalAlignment="Left">
+                            <Grid Margin="10 10 0 0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel  Grid.Row="0" Grid.Column="0">
+                                    <CheckBox Margin="0"/>
+                                </StackPanel>
+                                <StackPanel  Grid.Row="0" Grid.Column="1">
+                                    <TextBlock FontFamily="century gothic" FontSize="14" Text="Nom"/>
+                                </StackPanel>
+                                <StackPanel  Grid.Row="0" Grid.Column="2">
+                                    <TextBlock FontFamily="century gothic" FontSize="14" Text="Prénom"/>
+                                </StackPanel>
+                                <StackPanel  Grid.Row="0" Grid.Column="3">
+                                    <TextBlock FontFamily="century gothic" FontSize="14" Text="Mail"/>
+                                </StackPanel>
+                                <StackPanel  Grid.Row="0" Grid.Column="4">
+                                    <TextBlock FontFamily="century gothic" FontSize="14" Text="Phone"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="7" Grid.Row="0" HorizontalAlignment="Right">
+                                    <TextBlock  FontFamily="century gothic" FontSize="14" Text="Details"/>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Row="1" Margin="0 40 0 10">
+                                <ListView ItemsSource="{Binding ListClientContainer}"  x:Name="ListClientContainer" BorderThickness="0">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Height="30" HorizontalAlignment="Right">
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="200"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="50"/>
+                                                    <ColumnDefinition Width="50"/>
+                                                    <ColumnDefinition Width="50"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                                    <CheckBox Margin="4"/>
+                                                </StackPanel>
+                                                <StackPanel VerticalAlignment="Center" Grid.Column="1">
+                                                    <TextBlock Text="{Binding lastname}"/>
+                                                </StackPanel>
+                                                <StackPanel VerticalAlignment="Center"  Grid.Column="2">
+                                                    <TextBlock Text="{Binding firstname}"/>
+                                                </StackPanel>
+                                                <StackPanel VerticalAlignment="Center" Grid.Column="3">
+                                                    <TextBlock Text="{Binding mail}"/>
+                                                </StackPanel>
+                                                <StackPanel VerticalAlignment="Center" Grid.Column="4">
+                                                    <TextBlock Text="{Binding phone}"/>
+                                                </StackPanel>
+
+                                                <StackPanel HorizontalAlignment="Right" Grid.Column="5"  >
+                                                    <Button  BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
+                                                        <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_edit_48px.png"/>
+                                                    </Button>
+                                                </StackPanel>
+                                                <StackPanel HorizontalAlignment="Right" Grid.Column="6"  >
+                                                    <Button  BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
+                                                        <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_close_window_48px.png"/>
+                                                    </Button>
+                                                </StackPanel>
+                                                <StackPanel HorizontalAlignment="Right" Grid.Column="7"  >
+                                                    <Button  BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
+                                                        <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_eye_30px_3.png"/>
+                                                    </Button>
+                                                </StackPanel>
+
+
+
+
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </TabItem>
+                <TabItem Header="ADD" BorderBrush="white" BorderThickness="0" Background="#efefef" Height="30"  Width="60" Foreground="#4b4b4b" FontWeight="DemiBold" Margin="0 0 0 -10">
+                    <Border 
+                    
+                    CornerRadius="0 10 10 10" 
+                    Name="BorderAdd" 
+                    Background="white" 
+                    BorderBrush="#c4c4c4" 
+                    BorderThickness="1">
+                    
+                        <Grid Margin="10 10 10 10"  HorizontalAlignment="Left">
+                            <Grid Width="600">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition  Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition  Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="50" />
+                                </Grid.RowDefinitions>
+
+                                <StackPanel Grid.Row="0">
+                                    <TextBlock>
+                                        INFO CLIENT
+                                    </TextBlock>
+                                </StackPanel>
+
+                                <Border CornerRadius="10"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,10,10" >
+                                    <TextBox Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Nom" />
+                                </Border>
+                                
+                                <Border CornerRadius="10"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,10,10" >
+                                    <TextBox Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Prénom"/>
+                                </Border>
+                                
+                                <Border CornerRadius="10"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="2" Grid.ColumnSpan="4"  Margin="0,0,10,10 ">
+                                    <TextBox Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Mail" Margin="10,0,0,0" />
+                                </Border>
+                                
+                                <Border CornerRadius="10"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="3" Grid.ColumnSpan="2" Margin="0,0,10,10">
+                                    <TextBox Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Phone" Margin="10,0,0,0" />
+                                </Border>
+
+                                <Border CornerRadius="10"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="4" Grid.Column="0" Margin="0,0,10,10">
+                                    <TextBox Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Number"/>
+                                </Border>
+
+                                <Border CornerRadius="10"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,0,10,10">
+
+                                    <TextBox Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Rue" />
+                                </Border>
+
+                                <Border CornerRadius="10"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,10,10">
+                                    <TextBox Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Ville" />
+                                </Border>
+
+                                <Border CornerRadius="10"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="5" Grid.Column="3" Margin="0,0,10,10">
+                                    <TextBox Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Code departement" />
+                                </Border>
+
+                            </Grid>
+
+                            <Button VerticalAlignment="bottom" HorizontalAlignment="Right" Height="40" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
+                                <Image Source="icons/icons8_enter_key_30px.png"/>
+                            </Button>
+                        </Grid>
+                        
+                        
+                        
+                    </Border>
+                </TabItem>
+               
                 
-                <Grid Margin="10 10 10 10">
-                    <StackPanel>
-                        <TextBlock>
-                            add client
-                        </TextBlock>
-                    </StackPanel>
-                </Grid>
-            </Border>
-        </TabItem>
-        <TabItem Header="EDIT" BorderBrush="white" Background="#efefef" Height="30" Width="60" Foreground="#4b4b4b" FontWeight="DemiBold" Margin="0 0 0 -10">
-            <Border 
-                CornerRadius="0 10 10 10"
-                Name="BorderEdit" Background="white" 
-                BorderBrush="#c4c4c4" 
-                BorderThickness="1">
-                
-                <Grid Margin="10 10 10 10">
-                    <StackPanel>
-                        <TextBlock>
-                            edit client
-                        </TextBlock>
-                    </StackPanel>
-                </Grid>
-            </Border>
-        </TabItem>
-        <TabItem Header="DELETE" BorderBrush="white" Background="#efefef" Height="30" Width="60" Foreground="#4b4b4b" FontWeight="DemiBold" Margin="0 0 0 -10">
-            <Border 
-                CornerRadius="0 10 10 10" 
-                Name="BorderDelete" 
-                Background="white" 
-                BorderBrush="#c4c4c4" 
-                BorderThickness="1">
-                
-                <Grid Margin="10 10 10 10">
-                    <StackPanel>
-                        <TextBlock>
-                            delete client
-                        </TextBlock>
-                    </StackPanel>
-                </Grid>
-            </Border>
-        </TabItem>
-    </TabControl>
+            </TabControl>
+        </Grid>
+    </Grid>
+
 </Page>

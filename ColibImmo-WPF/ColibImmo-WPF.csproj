@@ -6,6 +6,7 @@
     <RootNamespace>ColibImmo_WPF</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +16,7 @@
     <None Remove="icons\icons8_customer_50px_1.png" />
     <None Remove="icons\icons8_dashboard_50px_1.png" />
     <None Remove="icons\icons8_edit_48px.png" />
+    <None Remove="icons\icons8_enter_key_30px.png" />
     <None Remove="icons\icons8_eye_30px_2.png" />
     <None Remove="icons\icons8_eye_30px_3.png" />
     <None Remove="icons\icons8_hashtag_activity_feed_50px.png" />
@@ -29,6 +31,7 @@
     <Resource Include="icons\icons8_customer_50px_1.png" />
     <Resource Include="icons\icons8_dashboard_50px_1.png" />
     <Resource Include="icons\icons8_edit_48px.png" />
+    <Resource Include="icons\icons8_enter_key_30px.png" />
     <Resource Include="icons\icons8_eye_30px_2.png" />
     <Resource Include="icons\icons8_eye_30px_3.png" />
     <Resource Include="icons\icons8_hashtag_activity_feed_50px.png" />
