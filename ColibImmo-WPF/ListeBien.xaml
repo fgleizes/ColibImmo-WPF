@@ -33,6 +33,11 @@
 					<TextBlock Text="{Binding Name}" />
 				</DataTemplate>
 			</TabControl.ItemTemplate>
+			<TabControl.ContentTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding Id}" />
+				</DataTemplate>
+			</TabControl.ContentTemplate>
 		</TabControl>
 	</Grid>
         
