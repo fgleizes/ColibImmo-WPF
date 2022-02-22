@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using System.IO;
 using System.Text.Json;
 using System.Reflection;
+using ColibImmo_WPF.Class;
 
 namespace ColibImmo_WPF
 {
@@ -25,30 +26,33 @@ namespace ColibImmo_WPF
     /// </summary>
     public partial class ListeBien : Page
     {
+        
         public ListeBien()
         {
             InitializeComponent();
             GetTypeProject();
-            GetProjects();
+            //GetProjects();
         }
 
         private async void GetTypeProject()
         {
             Client api = new Client();
             Stream? streamAPI = await api.GetCallAsync("project/typeProject/");
-
             if (streamAPI != null)
             {
                 Type_Project[]? projects = JsonSerializer.DeserializeAsync<Type_Project[]>(streamAPI).Result;
                 listTypeProjetGrid.ItemsSource = projects;
-            }
+                
+
+
+    }
             else
             {
                 MessageBox.Show("Erreur de connexion.");
             }
         }
 
-        private async void GetFilterTypeProject(object sender, System.EventArgs e)
+       /* private async void GetFilterTypeProject(object sender, System.EventArgs e)
         {
             string? valueCb = listTypeProjetGrid.SelectedValue?.ToString();
 
@@ -87,6 +91,6 @@ namespace ColibImmo_WPF
             listTypeProjetGrid.SelectedIndex = -1;
             listOneProjetGrid.ItemsSource = null;
             GetProjects();
-        }
+        }*/
     }
 }
