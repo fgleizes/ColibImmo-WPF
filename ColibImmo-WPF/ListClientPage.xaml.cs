@@ -31,10 +31,6 @@ namespace ColibImmo_WPF
             InitializeComponent();
             GetClients();
         }
-
-<<<<<<< HEAD
-        
-=======
         private async void GetClients()
         {
             Client api = new Client();
@@ -61,8 +57,5 @@ namespace ColibImmo_WPF
             MainFrame.Content = new DetailsClientPage();
 
         }
-
-
->>>>>>> 17177426914dbb4e633106782bd4ca0cf723d41a
     }
 }
