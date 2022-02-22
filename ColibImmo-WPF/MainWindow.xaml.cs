@@ -50,11 +50,16 @@ namespace ColibImmo_WPF
                 case "ListProject":
                     Main.Content = new ListProject();
                     break;
+<<<<<<< HEAD
                 case "Calendar":
                     Main.Content = new CalendarPage();
                     break;
                 case "Dashboard":
                     Main.Content = new DashboardPage();
+=======
+                case "ListProperty":
+                    Main.Content = new ListeBien();
+>>>>>>> listProjet
                     break;
             }
         }
