@@ -77,10 +77,15 @@ namespace ColibImmo_WPF
             Main.Content = new HomePage();
         }
 
+        
+
+
+
         private void btnListClientPage(object sender, RoutedEventArgs e)
         {
             Main.Content = new ListClientPage();
         }
+
 
         private void logoutButton_Click(object sender, RoutedEventArgs e)
         {

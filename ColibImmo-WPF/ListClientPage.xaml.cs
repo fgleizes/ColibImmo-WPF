@@ -49,5 +49,13 @@ namespace ColibImmo_WPF
         {
 
         }
+
+        private void BtnDetailClientPage(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new DetailsClientPage();
+
+        }
+
+
     }
 }
