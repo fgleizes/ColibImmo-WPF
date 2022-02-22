@@ -9,9 +9,9 @@
       Title="ListeBien">
 
     <!--<DataGrid VerticalAlignment="Center" Name="listTypeProjetGrid" Width="200"/>-->
-
+    
     <StackPanel VerticalAlignment="Center" Width="780">
-        <ComboBox Name="listTypeProjetGrid" SelectionChanged="filterTypeProject" SelectedValuePath="Id">
+        <ComboBox Name="listTypeProjetGrid" SelectionChanged="GetFilterTypeProject" SelectedValuePath="Id">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -22,7 +22,8 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <DataGrid  Name="listOneProjetGrid"/>
+        <Button Content="Refresh" Width="50" Click="RefreshProject"/>
+        <DataGrid  Name="listOneProjetGrid" Height="250"/>
     </StackPanel>
     
 </Page>

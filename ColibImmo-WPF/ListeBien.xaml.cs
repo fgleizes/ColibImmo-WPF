@@ -48,9 +48,9 @@ namespace ColibImmo_WPF
             }
         }
 
-        private async void filterTypeProject(object sender, System.EventArgs e)
+        private async void GetFilterTypeProject(object sender, System.EventArgs e)
         {
-            string valueCb = listTypeProjetGrid.SelectedValue.ToString();
+            string? valueCb = listTypeProjetGrid.SelectedValue?.ToString();
 
             Client api = new Client();
             Stream? streamAPI = await api.GetCallAsync($"project/projectsByType/{valueCb}");
@@ -62,7 +62,7 @@ namespace ColibImmo_WPF
             }
             else
             {
-                MessageBox.Show("Erreur de connexion.");
+                MessageBox.Show("Erreur de connexion." + valueCb);
             }
         }
 
@@ -80,6 +80,13 @@ namespace ColibImmo_WPF
             {
                 MessageBox.Show("Erreur de connexion.");
             }
+        }
+
+        private void RefreshProject(object sender, System.EventArgs e)
+        {
+            listTypeProjetGrid.SelectedIndex = -1;
+            listOneProjetGrid.ItemsSource = null;
+            GetProjects();
         }
     }
 }
