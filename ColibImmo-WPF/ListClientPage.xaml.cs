@@ -2,8 +2,10 @@
 using ColibImmo_WPF.API.JSON;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,8 +29,40 @@ namespace ColibImmo_WPF
         public ListClientPage()
         {
             InitializeComponent();
+            GetClients();
         }
 
+<<<<<<< HEAD
         
+=======
+        private async void GetClients()
+        {
+            Client api = new Client();
+            Stream? streamAPI = await api.GetCallAsync("person/role/5");
+
+            if (streamAPI != null)
+            {
+                DataClient[]? clients = JsonSerializer.DeserializeAsync<DataClient[]>(streamAPI).Result;
+                ListClientContainer.ItemsSource = (System.Collections.IEnumerable?)clients;
+            }
+            else
+            {
+                MessageBox.Show("Erreur");
+            }
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void BtnDetailClientPage(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new DetailsClientPage();
+
+        }
+
+
+>>>>>>> 17177426914dbb4e633106782bd4ca0cf723d41a
     }
 }
