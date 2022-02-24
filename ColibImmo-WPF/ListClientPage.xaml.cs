@@ -18,6 +18,11 @@ using System.Windows.Shapes;
 
 namespace ColibImmo_WPF
 {
+    public static class idClient
+    {
+        public static string id;
+        
+    }
     /// <summary>
     /// Logique d'interaction pour ListClientPage.xaml
     /// </summary>
@@ -38,6 +43,7 @@ namespace ColibImmo_WPF
             {
                 DataClient[]? clients = JsonSerializer.DeserializeAsync<DataClient[]>(streamAPI).Result;
                 ListClientContainer.ItemsSource = (System.Collections.IEnumerable?)clients;
+                
             }
             else
             {
@@ -45,16 +51,37 @@ namespace ColibImmo_WPF
             }
         }
 
+      
+
+
+
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
 
-        private void BtnDetailClientPage(object sender, RoutedEventArgs e)
+        private async void BtnDeleteClient (object sender, RoutedEventArgs e)
         {
-            MainFrame.Content = new DetailsClientPage();
+            //Client api = new Client();
+            //Button idButton = (Button)sender;
+            //idClient.id = idButton.Tag.ToString();
+            //Stream? streamAPI = await api.GetCallAsync("person/"+idClient.id);
 
+            
         }
+        
+
+        private void BtnDetailsClientPage(object sender, RoutedEventArgs e)
+        {
+            Button idButton = (Button)sender;
+            idClient.id = idButton.Tag.ToString();
+            
+            this.NavigationService.Navigate(new Uri("DetailsClientPage.xaml", UriKind.Relative));
+            
+        }
+
+        
+
 
 
     }

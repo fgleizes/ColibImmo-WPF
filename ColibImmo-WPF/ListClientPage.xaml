@@ -103,19 +103,19 @@
                                     <CheckBox Margin="0"/>
                                 </StackPanel>
                                 <StackPanel  Grid.Row="0" Grid.Column="1">
-                                    <TextBlock FontFamily="century gothic" FontSize="14" Text="Nom"/>
+                                    <TextBlock FontFamily="calibri" FontSize="14" Text="Nom"/>
                                 </StackPanel>
                                 <StackPanel  Grid.Row="0" Grid.Column="2">
-                                    <TextBlock FontFamily="century gothic" FontSize="14" Text="Prénom"/>
+                                    <TextBlock FontFamily="calibri" FontSize="14" Text="Prénom"/>
                                 </StackPanel>
                                 <StackPanel  Grid.Row="0" Grid.Column="3">
-                                    <TextBlock FontFamily="century gothic" FontSize="14" Text="Mail"/>
+                                    <TextBlock FontFamily="calibri" FontSize="14" Text="Mail"/>
                                 </StackPanel>
                                 <StackPanel  Grid.Row="0" Grid.Column="4">
-                                    <TextBlock FontFamily="century gothic" FontSize="14" Text="Phone"/>
+                                    <TextBlock FontFamily="calibri" FontSize="14" Text="Phone"/>
                                 </StackPanel>
                                 <StackPanel Grid.Column="7" Grid.Row="0" HorizontalAlignment="Right">
-                                    <TextBlock  FontFamily="century gothic" FontSize="14" Text="Details"/>
+                                    <TextBlock  FontFamily="calibri" FontSize="14" Text="Details"/>
                                 </StackPanel>
                             </Grid>
                             <Grid Grid.Row="1" Margin="0 40 0 10">
@@ -139,32 +139,39 @@
                                                     <CheckBox Margin="4"/>
                                                 </StackPanel>
                                                 <StackPanel VerticalAlignment="Center" Grid.Column="1">
-                                                    <TextBlock Text="{Binding lastname}"/>
+                                                    <TextBlock FontFamily="calibri" Text="{Binding Lastname}"/>
                                                 </StackPanel>
                                                 <StackPanel VerticalAlignment="Center"  Grid.Column="2">
-                                                    <TextBlock Text="{Binding firstname}"/>
+                                                    <TextBlock FontFamily="calibri" Text="{Binding Firstname}"/>
                                                 </StackPanel>
                                                 <StackPanel VerticalAlignment="Center" Grid.Column="3">
-                                                    <TextBlock Text="{Binding mail}"/>
+                                                    <TextBlock FontFamily="calibri" Text="{Binding Mail}"/>
                                                 </StackPanel>
                                                 <StackPanel VerticalAlignment="Center" Grid.Column="4">
-                                                    <TextBlock Text="{Binding phone}"/>
+                                                    <TextBlock FontFamily="calibri" Text="{Binding Phone}"/>
                                                 </StackPanel>
 
                                                 <StackPanel HorizontalAlignment="Right" Grid.Column="5"  >
-                                                    <Button Click="BtnDetailClientPage"  BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
+                                                    <Button  BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
                                                         <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_edit_48px.png"/>
                                                     </Button>
                                                 </StackPanel>
+                                                
                                                 <StackPanel HorizontalAlignment="Right" Grid.Column="6"  >
+                                                    
                                                     <Button  BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
+                                                        
                                                         <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_close_window_48px.png"/>
                                                     </Button>
                                                 </StackPanel>
                                                 <StackPanel HorizontalAlignment="Right" Grid.Column="7"  >
-                                                    <Button  BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
-                                                        <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_eye_30px_3.png"/>
-                                                    </Button>
+                                                    <TextBlock>
+                                                        
+                                                            <Button  Tag="{Binding Id}"  Click="BtnDetailsClientPage" BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
+                                                                <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_eye_30px_3.png"/>
+                                                            </Button>
+                                                       
+                                                    </TextBlock>
                                                 </StackPanel>
 
                                                 
@@ -261,6 +268,7 @@
                 
             </TabControl>
         </Grid>
+        <Frame NavigationUIVisibility="Hidden" x:Name="frmContent"/>
     </Grid>
 
 </Page>
