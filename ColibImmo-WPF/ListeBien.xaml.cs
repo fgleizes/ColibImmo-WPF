@@ -21,17 +21,15 @@ using ColibImmo_WPF.Class;
 
 namespace ColibImmo_WPF
 {
-    /// <summary>
-    /// Logique d'interaction pour ListeBien.xaml
-    /// </summary>
+   
     public partial class ListeBien : Page
     {
-
+        
         public ListeBien()
         {
             InitializeComponent();
             GetTypeProject();
-            //GetProjects();
+            GetProjects();
             //GetFilterTypeProject();
         }
 
@@ -42,7 +40,7 @@ namespace ColibImmo_WPF
             if (streamAPI != null)
             {
                 Type_Project[]? typeProject = JsonSerializer.DeserializeAsync<Type_Project[]>(streamAPI).Result;
-                listTypeProjetGrid.ItemsSource = typeProject;
+                selectTypeProjetGrid.ItemsSource = typeProject;
             }
             else
             {
@@ -52,40 +50,38 @@ namespace ColibImmo_WPF
 
         private async void textbox1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            TextBlock tb = (TextBlock)sender;
-           
+            TextBlock textSender = (TextBlock)sender;
+
             Client api = new Client();
             Stream? streamAPI = await api.GetCallAsync("project/typeProject/");
             if (streamAPI != null)
             {
-                Type_Project[]? projects = JsonSerializer.DeserializeAsync<Type_Project[]>(streamAPI).Result;
-                string[] vs = new string[projects.Length];
+                Type_Project[]? typeProject = JsonSerializer.DeserializeAsync<Type_Project[]>(streamAPI).Result;
+                string[] vs = new string[typeProject.Length];
                 for (int i = 0; i < vs.Length; i++)
                 {
-                    if (projects[i].Name == tb.Text)
+                    if (typeProject[i].Name == textSender.Text)
                     {
-                        
+
                         Client apiProjectByType = new Client();
-                        Stream? streamAPIProjectByType = await apiProjectByType.GetCallAsync($"project/projectsByType/{projects[i].Id.ToString()}");
+                        Stream? streamAPIProjectByType = await apiProjectByType.GetCallAsync($"project/projectsByType/{typeProject[i].Id.ToString()}");
                         if (streamAPIProjectByType != null)
                         {
                             Project[]? projectByType = JsonSerializer.DeserializeAsync<Project[]>(streamAPIProjectByType).Result;
-                            MessageBox.Show(projectByType.ToString());
                             string[] vsByType = new string[projectByType.Length];
-                            for (int j = 0; j < vsByType.Length; j++)
+                            for (int numberLength = 0; numberLength < vsByType.Length; numberLength++)
                             {
-
-                                //dgUsers.ItemsSource = projectByType;
-
+                                List<Project> items = new List<Project>();
+                                items.Add(new Project() { Reference = projectByType[numberLength].Reference, Description = projectByType[numberLength].Description });
+                                testListeBien.ItemsSource = items;
                             }
-                            //lvUsers.ItemsSource = projects;
                         }
                         else
                         {
                             MessageBox.Show("Erreur de connexion.");
                         }
                     }
-                    
+
                 }
             }
             else
@@ -93,36 +89,7 @@ namespace ColibImmo_WPF
                 MessageBox.Show("Erreur GetTypeProject.");
             }
         }
-
-        /*private async void GetFilterTypeProject(object sender, System.EventArgs e)
-         {
-             string? valueCb = listTypeProjetGrid.SelectedValue?.ToString();
-
-             Client api = new Client();
-             Stream? streamAPI = await api.GetCallAsync($"project/projectsByType/{valueCb}");
-
-             if (streamAPI != null)
-             {
-                 Project[]? projects = JsonSerializer.DeserializeAsync<Project[]>(streamAPI).Result;
-                 listOneProjetGrid.ItemsSource = projects;
-             }
-             else
-             {
-                 MessageBox.Show("Erreur de connexion." + valueCb);
-             }
-         }
-
-
-
-         private void RefreshProject(object sender, System.EventArgs e)
-         {
-             listTypeProjetGrid.SelectedIndex = -1;
-             listOneProjetGrid.ItemsSource = null;
-             GetProjects();
-         }*/
-
-
-        /*private async void GetProjects()
+        private async void GetProjects()
         {
             Client api = new Client();
             Stream? streamAPI = await api.GetCallAsync("project");
@@ -130,12 +97,12 @@ namespace ColibImmo_WPF
             if (streamAPI != null)
             {
                 Project[]? projects = JsonSerializer.DeserializeAsync<Project[]>(streamAPI).Result;
-                listOneProjetGrid.ItemsSource = projects;
+                testListeBien.ItemsSource = projects;
             }
             else
             {
                 MessageBox.Show("Erreur GetProjects.");
             }
-        }*/
+        }
     }
 }

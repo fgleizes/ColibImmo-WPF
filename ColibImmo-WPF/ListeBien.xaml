@@ -7,39 +7,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ListeBien">
-
-    <!--<DataGrid VerticalAlignment="Center" Name="listTypeProjetGrid" Width="200"/>-->
-
-	<!--<StackPanel VerticalAlignment="Center" Width="780">
-        <ComboBox Name="listTypeProjetGrid" SelectionChanged="GetFilterTypeProject" SelectedValuePath="Id">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <ComboBoxItem>
-                            <TextBlock Text="{Binding Name}"/>
-                        </ComboBoxItem>
-                    </StackPanel>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <Button Content="Refresh" Width="50" Click="RefreshProject"/>
-	</StackPanel>
-	
-	<TabControl.ContentTemplate>
-				<DataTemplate>
-					<ListView Name="lvUsers">
-						
-					</ListView>
-				</DataTemplate>
-			</TabControl.ContentTemplate>
-	
-	
-	
-	
-	-->
-
 	<Grid>
-		<TabControl Name ="listTypeProjetGrid">
+		
+		<TabControl Name ="selectTypeProjetGrid">
 			<TabControl.ItemTemplate>
 				<DataTemplate>
 					<StackPanel>
@@ -47,13 +17,14 @@
 					</StackPanel>
 				</DataTemplate>
 			</TabControl.ItemTemplate>
-			<TabControl.ContentTemplate>
-				<DataTemplate>
-					<DataGrid Name="dgUsers" />
-				</DataTemplate>
-			</TabControl.ContentTemplate>
 		</TabControl>
+		<ListView Name="testListeBien" Height="233">
+			<ListView.View>
+				<GridView>
+					<GridViewColumn Header="Reference" Width="120" DisplayMemberBinding="{Binding Reference}" />
+					<GridViewColumn Header="Description" Width="50" DisplayMemberBinding="{Binding Description}" />
+				</GridView>
+			</ListView.View>
+		</ListView>
 	</Grid>
-        
-    
 </Page>
