@@ -9,16 +9,26 @@ namespace ColibImmo_WPF.API.JSON
 {
     internal class DataClient
     {
+        [JsonPropertyName("id")]
+        public int Id { get; set; }
+
         [JsonPropertyName("lastname")]
-        public string? lastname { get; set; }
+        public string? Lastname { get; set; }
 
         [JsonPropertyName("firstname")]
-        public string? firstname { get; set; }
+        public string? Firstname { get; set; }
 
         [JsonPropertyName("mail")]
-        public string mail { get; set; }
+        public string? Mail { get; set; }
 
         [JsonPropertyName("phone")]
-        public string? phone { get; set; }
+        public string? Phone { get; set; }
+
+        [JsonPropertyName("created_at")]
+        public string? Created_at { get; set; }
+
+
+        [JsonPropertyName("address")]
+        public Address? Address { get; set; }
     }
 }

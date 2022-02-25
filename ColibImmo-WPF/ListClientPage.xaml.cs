@@ -21,6 +21,11 @@ using System.Text.Json;
 
 namespace ColibImmo_WPF
 {
+    public static class idClient
+    {
+        public static string id;
+        
+    }
     /// <summary>
     /// Logique d'interaction pour ListClientPage.xaml
     /// </summary>
@@ -34,12 +39,14 @@ namespace ColibImmo_WPF
         private async void GetClients()
         {
             Client api = new Client();
-            Stream? streamAPI = await api.GetCallAsync("person/role/5");
-
+            api.Token = Application.Current.Properties["apiToken"].ToString();
+            Stream? streamAPI = await api.GetCallAsync("person/role/5",null,true);
+            
             if (streamAPI != null)
             {
                 DataClient[]? clients = JsonSerializer.DeserializeAsync<DataClient[]>(streamAPI).Result;
                 ListClientContainer.ItemsSource = (System.Collections.IEnumerable?)clients;
+                
             }
             else
             {
@@ -47,15 +54,42 @@ namespace ColibImmo_WPF
             }
         }
 
+      
+
+
+
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
 
-        private void BtnDetailClientPage(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Content = new DetailsClientPage();
+        //private async void DeleteClient (object sender, RoutedEventArgs e)
+        //{
+        //    Client api = new Client();
+        //    Button idButton = (Button)sender;
+        //    idClient.id = idButton.Tag.ToString();
+        //    Stream? streamAPI = await api.GetCallAsync("person/" + idClient.id);
+            
 
+
+        //}
+        
+
+        private void BtnDetailsClientPage(object sender, RoutedEventArgs e)
+        {
+            Button idButton = (Button)sender;
+            idClient.id = idButton.Tag.ToString();
+            
+            this.NavigationService.Navigate(new Uri("DetailsClientPage.xaml", UriKind.Relative));
+            
         }
+<<<<<<< HEAD
+=======
+
+        
+
+
+
+>>>>>>> dbe23a6d47fd937cc4704e04584d6bf2f55c3f95
     }
 }

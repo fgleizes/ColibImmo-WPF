@@ -26,8 +26,50 @@ namespace ColibImmo_WPF
         public DetailsClientPage()
         {
             InitializeComponent();
+            GetDetailsClient();
+            
         }
 
-        
+        private async void GetDetailsClient()
+        {
+            Client api = new Client();
+            api.Token = Application.Current.Properties["apiToken"].ToString();
+            Stream? streamAPI = await api.GetCallAsync("person/"+idClient.id,null, true);
+            
+            if (streamAPI != null)
+            {
+
+                DataClient? clients = JsonSerializer.DeserializeAsync<DataClient>(streamAPI).Result;
+                
+
+                this.lastname.Text = clients.Lastname+" "+clients.Firstname;
+                this.created_at.Text ="Date inscription : "+clients.Created_at;
+                this.mail.Text ="Mail : "+clients.Mail;
+                this.phone.Text = "Phone : " + clients.Phone;
+
+                if (clients.Address == null)
+                {
+                    this.adresse.Text = "pas d'adresse renseigné";
+                    this.city.Text = "pas de ville renseigné";
+                    this.zip_code.Text = "pas de département renseigné";
+                }
+
+                else
+                {
+
+                this.adresse.Text = "Adresse : "+clients.Address.Number.ToString()+" " +clients.Address.Street;
+                this.city.Text = "Ville : " + clients.Address.City;
+                this.zip_code.Text = "Code département : " + clients.Address.Zip_code;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Erreur");
+            }
+        }
+
+
+
     }
 }
