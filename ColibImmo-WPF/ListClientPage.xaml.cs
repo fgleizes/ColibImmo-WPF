@@ -37,8 +37,9 @@ namespace ColibImmo_WPF
         private async void GetClients()
         {
             Client api = new Client();
-            Stream? streamAPI = await api.GetCallAsync("person/role/5");
-
+            api.Token = Application.Current.Properties["apiToken"].ToString();
+            Stream? streamAPI = await api.GetCallAsync("person/role/5",null,true);
+            
             if (streamAPI != null)
             {
                 DataClient[]? clients = JsonSerializer.DeserializeAsync<DataClient[]>(streamAPI).Result;
@@ -60,15 +61,16 @@ namespace ColibImmo_WPF
 
         }
 
-        private async void BtnDeleteClient (object sender, RoutedEventArgs e)
-        {
-            //Client api = new Client();
-            //Button idButton = (Button)sender;
-            //idClient.id = idButton.Tag.ToString();
-            //Stream? streamAPI = await api.GetCallAsync("person/"+idClient.id);
-
+        //private async void DeleteClient (object sender, RoutedEventArgs e)
+        //{
+        //    Client api = new Client();
+        //    Button idButton = (Button)sender;
+        //    idClient.id = idButton.Tag.ToString();
+        //    Stream? streamAPI = await api.GetCallAsync("person/" + idClient.id);
             
-        }
+
+
+        //}
         
 
         private void BtnDetailsClientPage(object sender, RoutedEventArgs e)

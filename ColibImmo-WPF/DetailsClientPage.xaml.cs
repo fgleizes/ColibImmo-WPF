@@ -33,7 +33,8 @@ namespace ColibImmo_WPF
         private async void GetDetailsClient()
         {
             Client api = new Client();
-            Stream? streamAPI = await api.GetCallAsync("person/"+idClient.id);
+            api.Token = Application.Current.Properties["apiToken"].ToString();
+            Stream? streamAPI = await api.GetCallAsync("person/"+idClient.id,null, true);
             
             if (streamAPI != null)
             {
