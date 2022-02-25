@@ -22,7 +22,7 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Button Content="Refresh" Width="50" Click="RefreshProject"/>
+        <Button Content="Refresh" Width="50" Click="RefreshProjectButton_Click"/>
         <DataGrid  Name="listOneProjetGrid" Height="250"/>
     </StackPanel>
     

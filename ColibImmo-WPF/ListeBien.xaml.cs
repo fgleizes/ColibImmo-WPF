@@ -44,25 +44,28 @@ namespace ColibImmo_WPF
             }
             else
             {
-                MessageBox.Show("Erreur de connexion.");
+                MessageBox.Show("Erreur GetTypeProject.");
             }
         }
 
         private async void GetFilterTypeProject(object sender, System.EventArgs e)
         {
-            string? valueCb = listTypeProjetGrid.SelectedValue?.ToString();
-
-            Client api = new Client();
-            Stream? streamAPI = await api.GetCallAsync($"project/projectsByType/{valueCb}");
-
-            if (streamAPI != null)
+            if(listTypeProjetGrid.SelectedIndex != -1)
             {
-                Project[]? projects = JsonSerializer.DeserializeAsync<Project[]>(streamAPI).Result;
-                listOneProjetGrid.ItemsSource = projects;
-            }
-            else
-            {
-                MessageBox.Show("Erreur de connexion." + valueCb);
+                string? valueCb = listTypeProjetGrid.SelectedValue?.ToString();
+
+                Client api = new Client();
+                Stream? streamAPI = await api.GetCallAsync($"project/projectsByType/{valueCb}");
+
+                if (streamAPI != null)
+                {
+                    Project[]? projects = JsonSerializer.DeserializeAsync<Project[]>(streamAPI).Result;
+                    listOneProjetGrid.ItemsSource = projects;
+                }
+                else
+                {
+                    MessageBox.Show("Erreur GetFilterTypeProject" + valueCb);
+                }
             }
         }
 
@@ -78,11 +81,11 @@ namespace ColibImmo_WPF
             }
             else
             {
-                MessageBox.Show("Erreur de connexion.");
+                MessageBox.Show("Erreur GetProjects.");
             }
         }
 
-        private void RefreshProject(object sender, System.EventArgs e)
+        private void RefreshProjectButton_Click(object sender, System.EventArgs e)
         {
             listTypeProjetGrid.SelectedIndex = -1;
             listOneProjetGrid.ItemsSource = null;
