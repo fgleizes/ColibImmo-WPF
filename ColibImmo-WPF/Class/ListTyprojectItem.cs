@@ -1,22 +1,18 @@
-﻿using System;
+﻿using ColibImmo_WPF.API.JSON;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace ColibImmo_WPF.API.JSON
+namespace ColibImmo_WPF.Class
 {
-    internal class Type_Project
+    internal class ListTyprojectItem
     {
+       
 
-        [JsonPropertyName("id")]
         public int? Id { get; set; }
 
-        [JsonPropertyName("name")]
         public string? Name { get; set; }
-        
     }
-
-
 }

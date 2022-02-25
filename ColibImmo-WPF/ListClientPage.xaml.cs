@@ -39,9 +39,14 @@ namespace ColibImmo_WPF
         private async void GetClients()
         {
             Client api = new Client();
+<<<<<<< HEAD
             api.Token = Application.Current.Properties["apiToken"].ToString();
             Stream? streamAPI = await api.GetCallAsync("person/role/5",null,true);
             
+=======
+            Stream? streamAPI = await api.GetCallAsync("person/role/5",null,true);
+
+>>>>>>> d7a069493c664c91b19252ab0211e828df4cc9a5
             if (streamAPI != null)
             {
                 DataClient[]? clients = JsonSerializer.DeserializeAsync<DataClient[]>(streamAPI).Result;

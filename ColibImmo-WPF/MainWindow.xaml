@@ -70,6 +70,6 @@
         <Grid HorizontalAlignment="Right" Width="5" Background="#4f4f4f">
 
         </Grid>-->
-        <Frame x:Name="Main" Panel.ZIndex="-1" NavigationUIVisibility="Hidden" Margin="90,60,0,0"/>
+        <Frame x:Name="Main" Panel.ZIndex="-1" NavigationUIVisibility="Hidden" Margin="100,70,10,10"/>
     </Grid>
 </Window>
