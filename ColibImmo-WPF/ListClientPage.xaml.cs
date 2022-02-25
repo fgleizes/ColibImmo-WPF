@@ -23,7 +23,7 @@ namespace ColibImmo_WPF
 {
     public static class idClient
     {
-        public static string id;
+        public static string? id;
         
     }
     /// <summary>
@@ -81,15 +81,6 @@ namespace ColibImmo_WPF
             idClient.id = idButton.Tag.ToString();
             
             this.NavigationService.Navigate(new Uri("DetailsClientPage.xaml", UriKind.Relative));
-            
         }
-<<<<<<< HEAD
-=======
-
-        
-
-
-
->>>>>>> dbe23a6d47fd937cc4704e04584d6bf2f55c3f95
     }
 }
