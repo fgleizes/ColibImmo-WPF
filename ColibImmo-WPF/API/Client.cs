@@ -27,6 +27,7 @@ namespace ColibImmo_WPF.API
             clientApi.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             if (isSecure)
             {
+                Token = Application.Current.Properties["apiToken"].ToString();
                 clientApi.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token); ;
             }
         }
