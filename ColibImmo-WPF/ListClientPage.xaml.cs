@@ -34,7 +34,7 @@ namespace ColibImmo_WPF
         private async void GetClients()
         {
             Client api = new Client();
-            Stream? streamAPI = await api.GetCallAsync("person/role/5");
+            Stream? streamAPI = await api.GetCallAsync("person/role/5",null,true);
 
             if (streamAPI != null)
             {

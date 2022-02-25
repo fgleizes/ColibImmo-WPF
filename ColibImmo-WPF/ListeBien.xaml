@@ -23,19 +23,33 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <Button Content="Refresh" Width="50" Click="RefreshProject"/>
-	</StackPanel>-->
+	</StackPanel>
+	
+	<TabControl.ContentTemplate>
+				<DataTemplate>
+					<ListView Name="lvUsers">
+						
+					</ListView>
+				</DataTemplate>
+			</TabControl.ContentTemplate>
+	
+	
+	
+	
+	-->
 
 	<Grid>
 		<TabControl Name ="listTypeProjetGrid">
-			
 			<TabControl.ItemTemplate>
 				<DataTemplate>
-					<TextBlock Text="{Binding Name}" />
+					<StackPanel>
+							<TextBlock MouseLeftButtonDown="textbox1_MouseLeftButtonDown" Text ="{Binding Name}"/>
+					</StackPanel>
 				</DataTemplate>
 			</TabControl.ItemTemplate>
 			<TabControl.ContentTemplate>
 				<DataTemplate>
-					<TextBlock Text="{Binding Id}" />
+					<DataGrid Name="dgUsers" />
 				</DataTemplate>
 			</TabControl.ContentTemplate>
 		</TabControl>
