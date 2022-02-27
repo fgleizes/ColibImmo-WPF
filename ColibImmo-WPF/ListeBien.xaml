@@ -12,9 +12,7 @@
 		<TabControl Name ="selectTypeProjetGrid">
 			<TabControl.ItemTemplate>
 				<DataTemplate>
-					<StackPanel>
 							<TextBlock MouseLeftButtonDown="textbox1_MouseLeftButtonDown" Text ="{Binding Name}"/>
-					</StackPanel>
 				</DataTemplate>
 			</TabControl.ItemTemplate>
 		</TabControl>
@@ -23,6 +21,8 @@
 				<GridView>
 					<GridViewColumn Header="Reference" Width="120" DisplayMemberBinding="{Binding Reference}" />
 					<GridViewColumn Header="Description" Width="50" DisplayMemberBinding="{Binding Description}" />
+					<GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding Id}" />
+
 				</GridView>
 			</ListView.View>
 		</ListView>

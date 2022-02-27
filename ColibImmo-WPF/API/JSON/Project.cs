@@ -9,6 +9,9 @@ namespace ColibImmo_WPF.API.JSON
 {
     internal class Project
     {
+        [JsonPropertyName("id")]
+        public int? Id { get; set; }
+
         [JsonPropertyName("reference")]
         public string? Reference { get; set; }
 
