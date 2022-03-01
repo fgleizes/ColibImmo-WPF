@@ -18,14 +18,17 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="2*" />
                 </Grid.ColumnDefinitions>
                 <Border Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="#FFDADADA" BorderThickness="0,0,0,1"  Margin="0,0,0,-2">
                     <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock>Coucou</TextBlock>
+                        <!--<Label>Selected date:</Label>-->
+                        <DatePicker x:Name="DatePicker" Text="{Binding ElementName=AppointmentsCalendar, Path=SelectedDate, StringFormat='dd/MM/yyyy', UpdateSourceTrigger=PropertyChanged}" SelectedDateChanged="Calendar_SelectedDatesChanged" />
+                        <!--<TextBlock x:Name="DateTextBlock" />-->
+
                     </StackPanel>
                 </Border>
-                <ListView Name="ListAppointmentContainer" Grid.Row="1" Grid.Column="0" BorderThickness="0" Margin="-2,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                <ListView Name="ListAppointmentContainer" Grid.Row="1" Grid.Column="0" BorderThickness="0" Margin="-2,0,0,0">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="BorderBrush" Value="#FFDADADA" />
@@ -40,7 +43,8 @@
                                     <RowDefinition Height="30"/>
                                 </Grid.RowDefinitions>
                                 <StackPanel Grid.Row="0">
-                                    <TextBlock Text="DOSSIER 0213543" FontFamily="Arial"/>
+                                    <TextBlock Text="{Binding PersonAppointment[0].Project.Reference}" FontFamily="Arial"/>
+                                    <TextBlock Text="{Binding Subject}" FontFamily="Arial"/>
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
                                     <WrapPanel>
@@ -52,7 +56,7 @@
                                 <StackPanel Grid.Row="2" VerticalAlignment="Bottom">
                                     <WrapPanel>
                                         <TextBlock Text="Project_id : " FontFamily="Arial"/>
-                                        <TextBlock Text="{Binding PersonAppointment[0].IdProject}" FontFamily="Arial"/>
+                                        <TextBlock Text="{Binding PersonAppointment[0].Project.Reference}" FontFamily="Arial"/>
                                     </WrapPanel>
                                 </StackPanel>
                             </Grid>
@@ -60,11 +64,9 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <Grid Grid.Row="1" Grid.Column="1">
-                    <StackPanel>
-                        <Calendar Name="cldSample" />
-                        <Label>Selected date:</Label>
-                        <TextBox Text="{Binding ElementName=cldSample, Path=SelectedDate, StringFormat=d, UpdateSourceTrigger=PropertyChanged}" />
-                    </StackPanel>
+                    <Viewbox>
+                        <Calendar Name="AppointmentsCalendar" IsTodayHighlighted="false" SelectedDatesChanged="Calendar_SelectedDatesChanged"/>
+                    </Viewbox>
                 </Grid>
             </Grid>
         </TabItem>

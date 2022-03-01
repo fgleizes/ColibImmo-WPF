@@ -27,18 +27,22 @@ namespace ColibImmo_WPF
         public CalendarPage()
         {
             InitializeComponent();
-            GetProjects();
-            cldSample.SelectedDate = DateTime.Now.AddDays(1);
+            GetAppointments();
+            //AppointmentsCalendar.SelectedDate = DateTime.Now.AddDays(1);
         }
 
-        private async void GetProjects()
+        private List<Appointment>? appointments = null;
+
+        private async void GetAppointments()
         {
             Client api = new();
             Stream? streamAPI = await api.GetCallAsync("appointment", null, true);
 
             if (streamAPI != null)
             {
-                List<Appointment>? appointments = JsonSerializer.DeserializeAsync<List<Appointment>>(streamAPI).Result;
+                //List<Appointment>? appointments = JsonSerializer.DeserializeAsync<List<Appointment>>(streamAPI).Result;
+                appointments = JsonSerializer.DeserializeAsync<List<Appointment>>(streamAPI).Result;
+
                 foreach (Appointment appointment in appointments)
                 {
                     DateTime myStartDate = DateTime.Parse(appointment.Start);
@@ -51,6 +55,24 @@ namespace ColibImmo_WPF
             else
             {
                 MessageBox.Show("Erreur de connexion.");
+            }
+        }
+
+        private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Calendar calendar = sender as Calendar;
+
+            if (this.DatePicker.SelectedDate.HasValue)
+            {
+                DateTime date = this.DatePicker.SelectedDate.Value;
+                //this.DateTextBlock.Text = date.ToShortDateString();
+
+                //List<Appointment> filteredAppointments = appointments.FindAll(appointment => appointment.Start = date.ToShortDateString());
+                List<Appointment> filteredList = appointments.Where(appointment => appointment.AppointmentDate == date.ToShortDateString()).ToList();
+                ListAppointmentContainer.ItemsSource = filteredList;
+            } else
+            {
+                ListAppointmentContainer.ItemsSource = appointments;
             }
         }
     }
