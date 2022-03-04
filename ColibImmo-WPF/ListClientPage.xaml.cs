@@ -1,5 +1,8 @@
 ﻿using ColibImmo_WPF.API;
 using ColibImmo_WPF.API.JSON;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -62,17 +65,19 @@ namespace ColibImmo_WPF
 
         }
 
-        //private async void DeleteClient (object sender, RoutedEventArgs e)
-        //{
-        //    Client api = new Client();
-        //    Button idButton = (Button)sender;
-        //    idClient.id = idButton.Tag.ToString();
-        //    Stream? streamAPI = await api.GetCallAsync("person/" + idClient.id);
-            
-
-
-        //}
         
+
+        private async void BtnDeleteClients(object sender, RoutedEventArgs e)
+        {
+            Client api = new Client();
+            Button idButton = (Button)sender;
+            idClient.id = idButton.Tag.ToString();
+            Stream? streamAPI = await api.DeleteCallAsync("person/"+idClient.id, null, true);
+            InitializeComponent();
+            GetClients();
+        }
+       
+
 
         private void BtnDetailsClientPage(object sender, RoutedEventArgs e)
         {
