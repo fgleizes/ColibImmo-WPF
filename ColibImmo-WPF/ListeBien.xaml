@@ -7,13 +7,18 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ListeBien">
-	<Grid>
-		
-		<TabControl Name ="selectTypeProjetGrid">
-			<TabControl.ItemTemplate>
-				<DataTemplate>
-							<TextBlock MouseLeftButtonDown="textbox1_MouseLeftButtonDown" Text ="{Binding Name}"/>
-				</DataTemplate>
+    
+
+    <Grid>
+        
+        <TabControl Name ="selectTypeProjet">
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock MouseLeftButtonDown="getFilterType" Text ="All" Background="Yellow" Padding="10,10,10,10"/>
+                        <TextBlock MouseLeftButtonDown="getFilterType" Text ="{Binding Name}" Background="Yellow" Padding="10,10,10,10"/>
+                    </StackPanel>
+                </DataTemplate>
 			</TabControl.ItemTemplate>
 		</TabControl>
 		<ListView Name="testListeBien" Height="233">
@@ -22,7 +27,13 @@
 					<GridViewColumn Header="Reference" Width="120" DisplayMemberBinding="{Binding Reference}" />
 					<GridViewColumn Header="Description" Width="50" DisplayMemberBinding="{Binding Description}" />
 					<GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding Id}" />
-
+					<!--<GridViewColumn Header="Fichier CSV" Width="370">
+						<GridViewColumn.CellTemplate>
+							<DataTemplate>
+                                <Button Name="OpenFile" Content="Open File" Click="click"/>
+							</DataTemplate>
+						</GridViewColumn.CellTemplate>
+					</GridViewColumn>-->
 				</GridView>
 			</ListView.View>
 		</ListView>

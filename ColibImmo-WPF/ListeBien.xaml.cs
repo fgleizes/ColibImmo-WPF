@@ -40,7 +40,7 @@ namespace ColibImmo_WPF
             if (streamAPI != null)
             {
                 Type_Project[]? typeProject = JsonSerializer.DeserializeAsync<Type_Project[]>(streamAPI).Result;
-                selectTypeProjetGrid.ItemsSource = typeProject;
+                selectTypeProjet.ItemsSource = typeProject;
             }
             else
             {
@@ -48,7 +48,7 @@ namespace ColibImmo_WPF
             }
         }
 
-        private async void textbox1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void getFilterType(object sender, MouseButtonEventArgs e)
         {
             TextBlock textSender = (TextBlock)sender;
 
@@ -62,7 +62,6 @@ namespace ColibImmo_WPF
                 {
                     if (typeProject[i].Name == textSender.Text)
                     {
-
                         Client apiProjectByType = new Client();
                         Stream? streamAPIProjectByType = await apiProjectByType.GetCallAsync($"project/projectsByType/{typeProject[i].Id.ToString()}");
                         if (streamAPIProjectByType != null)
@@ -75,13 +74,12 @@ namespace ColibImmo_WPF
                         {
                             MessageBox.Show("Erreur de connexion.");
                         }
-                    }
 
+                    }else if (textSender.Text == "All")
+                    {
+                        GetProjects();
+                    }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Erreur GetTypeProject.");
             }
         }
         private async void GetProjects()
@@ -99,5 +97,47 @@ namespace ColibImmo_WPF
                 MessageBox.Show("Erreur GetProjects.");
             }
         }
+
+        
+
+        /*public static Task<HttpResponseMessage>(object sender, MouseButtonEventArgs e)
+        {
+            /*Client api = new Client();
+            Stream? streamAPI = await api.DeleteAsync("/project/6");
+            if (streamAPI != null)
+            {
+                MessageBox.Show("suprimer");
+            }
+            else
+            {
+                MessageBox.Show("Erreur de connexion.");
+            }
+           
+            
+            /*else
+            {
+                MessageBox.Show("Erreur GetTypeProject.");
+            }
+            /*try
+            {
+                Client apiProjectByType = new Client();
+                Stream? streamAPIProjectByType = await apiProjectByType.GetCallAsync($"project/projectsByType/{typeProject[i].Id.ToString()}");
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(apiUrl);
+                    client.Timeout = TimeSpan.FromSeconds(900);
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    var response = client.DeleteAsync(apiUrl);
+                    response.Wait();
+                    return response;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }*/
+
+
     }
 }
