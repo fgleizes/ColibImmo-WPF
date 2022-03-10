@@ -5,6 +5,21 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using ColibImmo_WPF.Class;
+using ColibImmo_WPF.API;
+using ColibImmo_WPF.API.JSON;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.Json;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Net.Http.Json;
 
 namespace ColibImmo_WPF.API
 {
@@ -35,6 +50,7 @@ namespace ColibImmo_WPF.API
         public async Task<Stream?> GetCallAsync(string URI, FormData[]? formDatas = null, bool isSecure = false)
         {
             Connect(isSecure);
+            
             string getData = "";
             if (formDatas != null)
             {
@@ -59,6 +75,48 @@ namespace ColibImmo_WPF.API
             }
             Stream stream = await response.Content.ReadAsStreamAsync();
             return stream;
+        }
+
+      
+
+        //creation des clients 
+        public async Task<Stream?> CreateCallAsync(DataClient p, string URI, bool isSecure=false, FormData[]? formDatas = null )
+        {
+            Connect(isSecure);
+            
+
+            string getData = "";
+            if (formDatas != null)
+            {
+                getData += "?";
+                bool isFirst = true;
+                string glueData = "";
+                foreach (FormData formData in formDatas)
+                {
+                    if (!isFirst)
+                    {
+                        glueData = "&";
+                    }
+                    getData += glueData + formData.Field + "=" + formData.Value;
+                    isFirst = false;
+                }
+            }
+
+                
+                
+                var response = (await clientApi.PostAsJsonAsync(URI+getData, p));
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.Write("Success");
+
+                    
+                }
+                else
+                Console.Write("Error");
+                MessageBox.Show(response.ToString());
+                Stream stream = await response.Content.ReadAsStreamAsync();
+                return stream;
+            
         }
 
         public void Disconnect(string URI)

@@ -12,6 +12,9 @@ namespace ColibImmo_WPF.API.JSON
         [JsonPropertyName("id")]
         public int Id { get; set; }
 
+        [JsonPropertyName("id_Role")]
+        public int? Id_Role { get; set; }
+
         [JsonPropertyName("lastname")]
         public string? Lastname { get; set; }
 
@@ -26,6 +29,7 @@ namespace ColibImmo_WPF.API.JSON
 
         [JsonPropertyName("created_at")]
         public string? Created_at { get; set; }
+
 
 
         [JsonPropertyName("address")]
