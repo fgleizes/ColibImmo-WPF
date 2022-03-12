@@ -26,14 +26,23 @@
 				<GridView>
 					<GridViewColumn Header="Reference" Width="120" DisplayMemberBinding="{Binding Reference}" />
 					<GridViewColumn Header="Description" Width="50" DisplayMemberBinding="{Binding Description}" />
-					<GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding Id}" />
-					<!--<GridViewColumn Header="Fichier CSV" Width="370">
-						<GridViewColumn.CellTemplate>
-							<DataTemplate>
-                                <Button Name="OpenFile" Content="Open File" Click="click"/>
-							</DataTemplate>
-						</GridViewColumn.CellTemplate>
-					</GridViewColumn>-->
+                    <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="deleteProject">
+                                    <TextBlock Text ="{Binding Id}" />
+                                </Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="PostAsync">add</Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
 				</GridView>
 			</ListView.View>
 		</ListView>
