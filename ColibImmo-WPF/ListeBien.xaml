@@ -7,21 +7,26 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ListeBien">
-    
+
 
     <Grid>
-        
-        <TabControl Name ="selectTypeProjet">
+
+
+        <Button PreviewMouseLeftButtonDown="getFilterType" Content ="All" HorizontalAlignment="Center" Width="30" Height="30" VerticalAlignment="Top"/>
+
+        <TabControl Name ="selectTypeProjet" Margin="0 30 0 0">
+           
             <TabControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <TextBlock MouseLeftButtonDown="getFilterType" Text ="All" Background="Yellow" Padding="10,10,10,10"/>
+                    
                         <TextBlock MouseLeftButtonDown="getFilterType" Text ="{Binding Name}" Background="Yellow" Padding="10,10,10,10"/>
-                    </StackPanel>
+                        
                 </DataTemplate>
-			</TabControl.ItemTemplate>
-		</TabControl>
-		<ListView Name="testListeBien" Height="233">
+            </TabControl.ItemTemplate>
+        </TabControl>
+
+
+        <ListView Name="testListeBien" Height="233">
 			<ListView.View>
 				<GridView>
 					<GridViewColumn Header="Reference" Width="120" DisplayMemberBinding="{Binding Reference}" />

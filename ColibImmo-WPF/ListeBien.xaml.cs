@@ -40,7 +40,7 @@ namespace ColibImmo_WPF
             Client api = new Client();
             Stream? streamAPI = await api.GetCallAsync("project/typeProject/");
             if (streamAPI != null)
-            {
+            { 
                 Type_Project[]? typeProject = JsonSerializer.DeserializeAsync<Type_Project[]>(streamAPI).Result;
                 selectTypeProjet.ItemsSource = typeProject;
             }
@@ -52,7 +52,8 @@ namespace ColibImmo_WPF
 
         private async void getFilterType(object sender, MouseButtonEventArgs e)
         {
-            TextBlock textSender = (TextBlock)sender;
+            var senderText = sender as TextBlock;
+            var senderBtn = sender as Button;
 
             Client api = new Client();
             Stream? streamAPI = await api.GetCallAsync("project/typeProject/");
@@ -62,7 +63,7 @@ namespace ColibImmo_WPF
                 string[] vs = new string[typeProject.Length];
                 for (int i = 0; i < vs.Length; i++)
                 {
-                    if (typeProject[i].Name == textSender.Text)
+                    if (typeProject[i].Name == senderText?.Text)
                     {
                         Client apiProjectByType = new Client();
                         Stream? streamAPIProjectByType = await apiProjectByType.GetCallAsync($"project/projectsByType/{typeProject[i].Id.ToString()}");
@@ -77,7 +78,7 @@ namespace ColibImmo_WPF
                             MessageBox.Show("Erreur de connexion.");
                         }
 
-                    }else if (textSender.Text == "All")
+                    }else if (senderBtn?.Content.ToString() == "All")
                     {
                         GetProjects();
                     }
@@ -112,15 +113,14 @@ namespace ColibImmo_WPF
 
         public async void PostAsync(object sender, RoutedEventArgs e)
         {
-            var project = new Project();
-            project.idTypeProject = 1;
-            project.idPerson = 5;
-            project.idPersonAgent = 9;
-            project.idAddress = 1;
-            var type_property = new Type_Property();
-            type_property.Id = 1;
+            var postProject = new PostProject();
+            postProject.idTypeProject = 1;
+            postProject.idPerson = 5;
+            postProject.idPersonAgent = 9;
+            postProject.idAddress = 1;
+            postProject.Type = 2;
 
-            var json = JsonSerializer.Serialize(project);
+            var json = JsonSerializer.Serialize(postProject);
 
             var data = new StringContent(json, Encoding.UTF8, "application/json");
 
