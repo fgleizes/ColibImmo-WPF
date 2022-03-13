@@ -81,5 +81,14 @@ namespace ColibImmo_WPF
             
             this.NavigationService.Navigate(new Uri("DetailsClientPage.xaml", UriKind.Relative));
         }
+
+        private void BtnEditClientPage(object sender, RoutedEventArgs e)
+        {
+            Button idButton = (Button)sender;
+            idClient.id = idButton.Tag.ToString();
+
+            this.NavigationService.Navigate(new Uri("EditClientPage.xaml", UriKind.Relative));
+        }
+
     }
 }
