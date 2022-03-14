@@ -80,7 +80,7 @@
 
                 </Grid>
 
-                <Button VerticalAlignment="bottom" HorizontalAlignment="Right" Height="40" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
+                <Button Click="BtnEditClient" VerticalAlignment="bottom" HorizontalAlignment="Right" Height="40" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                     <Image Source="icons/icons8_enter_key_30px.png"/>
                 </Button>
                 

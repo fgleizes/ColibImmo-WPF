@@ -29,6 +29,21 @@ namespace ColibImmo_WPF
             GetDetailsClient();
         }
 
+        private async void BtnEditClient(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("hum1");
+            string? firstnameText = firstname.Text;
+            string? lastnameText = lastname.Text;
+            string? mailText = mail.Text;
+            string? phoneText = phone.Text;
+            DataClient p = new DataClient { Firstname = firstnameText, Lastname = lastnameText, Mail = mailText, Phone = phoneText, Id_Role = 5 };
+            Client api = new Client();
+            Stream? streamAPI = await api.EditCallAsync(p, "person/" + idClient.id, true, null);
+            this.NavigationService.Navigate(new Uri("ListClientPage.xaml", UriKind.Relative));
+
+
+        }
+
         private async void GetDetailsClient()
         {
             Client api = new Client();
@@ -46,25 +61,23 @@ namespace ColibImmo_WPF
                 this.firstname.Text = clients.Firstname;
                 this.mail.Text = clients.Mail;
                 this.phone.Text = clients.Phone;
-                this.number.Text = clients.Address.Number.ToString();
-                this.city.Text = clients.Address.City;
-                this.zip_code.Text = clients.Address.Zip_code;
+                
 
                 
 
                 if (clients.Address == null)
                 {
-                    //this.adresse.Text = "pas d'adresse renseigné";
-                    //this.city.Text = "pas de ville renseigné";
-                    //this.zip_code.Text = "pas de département renseigné";
+                    this.number.Text = "pas d'adresse renseigné";
+                    this.city.Text = "pas de ville renseigné";
+                    this.zip_code.Text = "pas de département renseigné";
                 }
 
                 else
                 {
 
-                    //this.adresse.Text = "Adresse : " + clients.Address.Number.ToString() + " " + clients.Address.Street;
-                    //this.city.Text = "Ville : " + clients.Address.City;
-                    //this.zip_code.Text = "Code département : " + clients.Address.Zip_code;
+                    this.number.Text = clients.Address.Number.ToString();
+                    this.city.Text = "Ville : " + clients.Address.City;
+                    this.zip_code.Text = "Code département : " + clients.Address.Zip_code;
                 }
 
             }
