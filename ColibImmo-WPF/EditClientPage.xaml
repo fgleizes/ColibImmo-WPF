@@ -46,36 +46,36 @@
                     </Grid>
 
                     <Border CornerRadius="5"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,10,10" >
-                        <TextBox Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Name="lastname" Text="Prénom" />
+                        <TextBox Margin="10,0,0,0" Foreground="#a4a4a4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Name="lastname" Text="Prénom" />
                     </Border>
 
                     <Border CornerRadius="5"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,10,10" >
-                        <TextBox Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Name="firstname" Text="Prénom"/>
+                        <TextBox Margin="10,0,0,0" Foreground="#a4a4a4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Name="firstname" Text="Prénom"/>
                     </Border>
 
                     <Border CornerRadius="5"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="2" Grid.ColumnSpan="4"  Margin="0,0,10,10 ">
-                        <TextBox Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Mail" Margin="10,0,0,0" />
+                        <TextBox Foreground="#a4a4a4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Name="mail" Text="Mail" Margin="10,0,0,0" />
                     </Border>
 
                     <Border CornerRadius="5"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="3" Grid.ColumnSpan="2" Margin="0,0,10,10">
-                        <TextBox Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Phone" Margin="10,0,0,0" />
+                        <TextBox Foreground="#a4a4a4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Name="phone" Text="Phone" Margin="10,0,0,0" />
                     </Border>
 
                     <Border CornerRadius="5"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="4" Grid.Column="0" Margin="0,0,10,10">
-                        <TextBox Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Number"/>
+                        <TextBox Margin="10,0,0,0" Foreground="#a4a4a4" VerticalAlignment="Center" Background="Transparent" Name="number" BorderThickness="0" Text="Number"/>
                     </Border>
 
                     <Border CornerRadius="5"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,0,10,10">
 
-                        <TextBox Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Rue" />
+                        <TextBox Margin="10,0,0,0" Foreground="#a4a4a4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Name="street" Text="Rue" />
                     </Border>
 
                     <Border CornerRadius="5"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,10,10">
-                        <TextBox Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Ville" />
+                        <TextBox Margin="10,0,0,0" Foreground="#a4a4a4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Name="city" Text="Ville" />
                     </Border>
 
                     <Border CornerRadius="5"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="5" Grid.Column="3" Margin="0,0,10,10">
-                        <TextBox Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Code departement" />
+                        <TextBox Margin="10,0,0,0" Foreground="#a4a4a4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Name="zip_code"  Text="Code departement" />
                     </Border>
 
                 </Grid>

@@ -42,12 +42,15 @@ namespace ColibImmo_WPF
 
 
                 this.enTête.Text ="Modification "+ clients.Lastname + " " + clients.Firstname;
-                this.lastname = clients.Lastname;
-                this.firstname = clients.Firstname;
+                this.lastname.Text = clients.Lastname;
+                this.firstname.Text = clients.Firstname;
+                this.mail.Text = clients.Mail;
+                this.phone.Text = clients.Phone;
+                this.number.Text = clients.Address.Number.ToString();
+                this.city.Text = clients.Address.City;
+                this.zip_code.Text = clients.Address.Zip_code;
 
-                //this.created_at.Text = "Date inscription : " + clients.Created_at;
-                //this.mail.Text = "Mail : " + clients.Mail;
-                //this.phone.Text = "Phone : " + clients.Phone;
+                
 
                 if (clients.Address == null)
                 {
