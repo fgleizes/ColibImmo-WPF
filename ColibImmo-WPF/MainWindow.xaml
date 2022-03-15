@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ColibImmo_WPF"
         mc:Ignorable="d"
-        Title="colibImmoMainWindow" Height="800" Width="1440" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip">
+        Title="colibImmoMainWindow" Height="800" Width="1050" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip">
     <Grid Background="#f8f8f8">
         <Grid x:Name="panelHeader" VerticalAlignment="Top" Height="60" Background="#4f4f4f" MouseDown="PanelHeader_MouseDown">
             <TextBlock FontWeight="medium" FontSize="20" FontFamily="century gothic"  VerticalAlignment="center" HorizontalAlignment="center" Foreground="white" Text="COLIB IMMO"></TextBlock>

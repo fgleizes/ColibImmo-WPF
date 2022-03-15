@@ -20,6 +20,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net.Http.Json;
+using System.Windows.Navigation;
+
 
 namespace ColibImmo_WPF.API
 {
@@ -27,7 +29,7 @@ namespace ColibImmo_WPF.API
     {
         //Cet objet permet de se connecter à une url
         HttpClient clientApi = new HttpClient();
-
+        
         readonly string URL = "http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/";
 
         public string? Token { get; set; }
@@ -45,7 +47,9 @@ namespace ColibImmo_WPF.API
                 Token = Application.Current.Properties["apiToken"].ToString();
                 clientApi.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token); ;
             }
+            
         }
+
 
         public async Task<Stream?> EditCallAsync(DataClient p, string URI, bool isSecure = false, FormData[]? formDatas = null)
         {
@@ -121,13 +125,12 @@ namespace ColibImmo_WPF.API
             return stream;
         }
 
-      
 
-        //creation des clients 
-        public async Task<Stream?> CreateCallAsync(DataClient p, string URI, bool isSecure=false, FormData[]? formDatas = null )
+
+        public async Task<Stream?> CreateCallAsync(DataClient p, string URI, bool isSecure = false, FormData[]? formDatas = null)
         {
             Connect(isSecure);
-            
+
 
             string getData = "";
             if (formDatas != null)
@@ -146,22 +149,63 @@ namespace ColibImmo_WPF.API
                 }
             }
 
-                
-                
-                var response = (await clientApi.PostAsJsonAsync(URI+getData, p));
-                if (response.IsSuccessStatusCode)
-                {
-                    Console.Write("Success");
 
-                    
-                }
-                else
+
+            var response = (await clientApi.PostAsJsonAsync(URI + getData, p));
+            if (response.IsSuccessStatusCode)
+            {
+                Console.Write("Success");
+
+
+            }
+            else
                 Console.Write("Error");
-                MessageBox.Show(response.ToString());
-                Stream stream = await response.Content.ReadAsStreamAsync();
-                return stream;
-            
+            MessageBox.Show(response.ToString());
+            Stream stream = await response.Content.ReadAsStreamAsync();
+            return stream;
+
         }
+
+        public async Task<Stream?> DeleteCallAsync(string URI, FormData[]? formDatas = null, bool isSecure = false)
+        {
+            Connect(isSecure);
+            string getData = "";
+            if (formDatas != null)
+            {
+                getData += "?";
+                bool isFirst = true;
+                string glueData = "";
+                foreach (FormData formData in formDatas)
+                {
+                    if (!isFirst)
+                    {
+                        glueData = "&";
+                    }
+                    getData += glueData + formData.Field + "=" + formData.Value;
+                    isFirst = false;
+                }
+            }
+
+            HttpResponseMessage response = await clientApi.DeleteAsync(URI + getData);
+            if (!response.IsSuccessStatusCode)
+            {
+                return null;
+
+            }
+            Stream stream = await response.Content.ReadAsStreamAsync();
+            MessageBox.Show("client supprimé");
+
+            return stream;
+
+
+
+        }
+
+
+
+
+
+
 
         public void Disconnect(string URI)
         {

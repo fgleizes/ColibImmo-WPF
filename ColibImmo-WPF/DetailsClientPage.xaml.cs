@@ -27,7 +27,51 @@ namespace ColibImmo_WPF
         {
             InitializeComponent();
             GetDetailsClient();
+            GetProjectsListByClient();
+            GetAppointmentsListByClient();
+        }
+
+        private async void GetProjectsListByClient()
+        {
+            Client api = new Client();
+            api.Token = Application.Current.Properties["apiToken"].ToString();
+            Stream? streamAPI = await api.GetCallAsync("project/person/"+idClient.id, null, true);
             
+            if (streamAPI != null)
+            {
+                Project[]? projects = JsonSerializer.DeserializeAsync<Project[]>(streamAPI).Result;
+                ListProjectByClientContainer.ItemsSource = (System.Collections.IEnumerable?)projects;
+                
+            }
+            else
+            {
+                MessageBox.Show("Erreur");
+            }
+        }
+
+        private async void GetAppointmentsListByClient()
+        {
+            Client api = new Client();
+            api.Token = Application.Current.Properties["apiToken"].ToString();
+            Stream? streamAPI = await api.GetCallAsync("appointment/customerAppointments/" + idClient.id, null, true);
+
+            if (streamAPI != null)
+            {
+                Appointment[]? appointments = JsonSerializer.DeserializeAsync<Appointment[]>(streamAPI).Result;
+                foreach (Appointment appointment in appointments)
+                {
+                    DateTime myStartDate = DateTime.Parse(appointment.Start);
+                    DateTime myEndDate = DateTime.Parse(appointment.End);
+                    appointment.AppointmentHour = myStartDate.Hour.ToString() + ":" + myStartDate.Minute.ToString() + " — " + myEndDate.Hour.ToString() + ":" + myStartDate.Minute.ToString();
+                    appointment.Start = myStartDate.ToShortDateString();
+                    
+                }
+                ListAppointmentByClientContainer.ItemsSource = appointments;
+            }
+            else
+            {
+                MessageBox.Show("Erreur");
+            }
         }
 
         private async void GetDetailsClient()

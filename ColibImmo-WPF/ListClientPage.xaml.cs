@@ -1,5 +1,8 @@
 ﻿using ColibImmo_WPF.API;
 using ColibImmo_WPF.API.JSON;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -67,6 +70,7 @@ namespace ColibImmo_WPF
 
         }
 
+
        private async void BtnCreateClient(object sender, RoutedEventArgs e)
         {
             string firstnameText = firstnameAddForm.Text;
@@ -81,6 +85,17 @@ namespace ColibImmo_WPF
 
         }
 
+
+        private async void BtnDeleteClients(object sender, RoutedEventArgs e)
+        {
+            Client api = new Client();
+            Button idButton = (Button)sender;
+            idClient.id = idButton.Tag.ToString();
+            Stream? streamAPI = await api.DeleteCallAsync("person/"+idClient.id, null, true);
+            InitializeComponent();
+            GetClients();
+        }
+       
 
 
         private void BtnDetailsClientPage(object sender, RoutedEventArgs e)
