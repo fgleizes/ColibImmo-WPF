@@ -152,7 +152,7 @@
                                                 </StackPanel>
 
                                                 <StackPanel HorizontalAlignment="Right" Grid.Column="5"  >
-                                                    <Button  BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
+                                                    <Button Tag="{Binding Id}" Click="BtnEditClientPage" BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
                                                         <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_edit_48px.png"/>
                                                     </Button>
                                                 </StackPanel>

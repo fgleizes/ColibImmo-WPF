@@ -42,7 +42,7 @@ namespace ColibImmo_WPF
                 DataClient? clients = JsonSerializer.DeserializeAsync<DataClient>(streamAPI).Result;
                 
 
-                this.lastname.Text = clients.Lastname+" "+clients.Firstname;
+                this.lastname.Text =clients.Lastname+" "+clients.Firstname;
                 this.created_at.Text ="Date inscription : "+clients.Created_at;
                 this.mail.Text ="Mail : "+clients.Mail;
                 this.phone.Text = "Phone : " + clients.Phone;

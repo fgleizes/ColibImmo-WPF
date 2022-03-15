@@ -47,6 +47,50 @@ namespace ColibImmo_WPF.API
             }
         }
 
+        public async Task<Stream?> EditCallAsync(DataClient p, string URI, bool isSecure = false, FormData[]? formDatas = null)
+        {
+            Connect(isSecure);
+
+
+            string getData = "";
+            if (formDatas != null)
+            {
+                getData += "?";
+                bool isFirst = true;
+                string glueData = "";
+                foreach (FormData formData in formDatas)
+                {
+                    if (!isFirst)
+                    {
+                        glueData = "&";
+                    }
+                    getData += glueData + formData.Field + "=" + formData.Value;
+                    isFirst = false;
+                }
+            }
+            MessageBox.Show(idClient.id);
+
+
+            var response = (await clientApi.PutAsJsonAsync(URI + getData, p));
+            if (response.IsSuccessStatusCode)
+            {
+                
+                Stream stream = await response.Content.ReadAsStreamAsync();
+                Console.Write("Success");
+                return stream;
+                
+
+
+            }
+            else
+                Console.Write("Error");
+                MessageBox.Show(response.ToString());
+                return null;
+           
+
+        }
+
+
         public async Task<Stream?> GetCallAsync(string URI, FormData[]? formDatas = null, bool isSecure = false)
         {
             Connect(isSecure);
