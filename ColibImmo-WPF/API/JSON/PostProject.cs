@@ -66,10 +66,10 @@ namespace ColibImmo_WPF.API.JSON
         [JsonPropertyName("type")]
         public int? Type { get; set; }
 
-        [JsonPropertyName("room")]
-        public int? Room { get; set; }
+        [JsonPropertyName("rooms")]
+        public string? Rooms { get; set; }
 
-        [JsonPropertyName("option")]
-        public int? Option { get; set; }
+        [JsonPropertyName("options")]
+        public string? Options { get; set; }
     }
 }

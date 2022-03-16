@@ -22,7 +22,7 @@ namespace ColibImmo_WPF.API.JSON
         public DateTime? UpdtedAt { get; set; }
 
         [JsonPropertyName("price")]
-        public int Price { get; set; }
+        public int? Price { get; set; }
 
         [JsonPropertyName("description")]
         public string? Description { get; set; }

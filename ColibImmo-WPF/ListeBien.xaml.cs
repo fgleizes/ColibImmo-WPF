@@ -118,7 +118,10 @@ namespace ColibImmo_WPF
             postProject.idPerson = 5;
             postProject.idPersonAgent = 9;
             postProject.idAddress = 1;
-            postProject.Type = 2;
+            postProject.Type = 1;
+            postProject.Rooms = "a:3:{i:0;a:2:{s:12:\"id_Type_room\";i:2;s:4:\"area\";i:50;}i:1;a:2:{s:12:\"id_Type_room\";i:1;s:4:\"area\";i:20;}i:2;a:2:{s:12:\"id_Type_room\";i:3;s:4:\"area\";i:10;}}";
+            postProject.Options = "a:3:{i:0;i:3;i:1;i:3;i:2;i:3;}";
+
 
             var json = JsonSerializer.Serialize(postProject);
 
@@ -130,7 +133,7 @@ namespace ColibImmo_WPF
             var response = await client.PostAsync(url, data);
 
             string result = response.Content.ReadAsStringAsync().Result;
-            MessageBox.Show(result);
+            MessageBox.Show(result + postProject.idTypeProject + "id person : "+postProject.idPerson + "id personAgent : " + postProject.idPersonAgent + "id Adresse : " + postProject.idAddress + "id TYpe : " + postProject.Type + "room : " + postProject.Rooms + "option : " + postProject.Options);
         }
     }
 }
