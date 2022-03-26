@@ -71,7 +71,7 @@ namespace ColibImmo_WPF
                         {
                             //(System.Collections.IEnumerable?)
                             Project[]? projectByType = JsonSerializer.DeserializeAsync<Project[]>(streamAPIProjectByType).Result;
-                            testListeBien.ItemsSource = (System.Collections.IEnumerable?)projectByType;
+                            listeBien.ItemsSource = (System.Collections.IEnumerable?)projectByType;
                         }
                         else
                         {
@@ -93,7 +93,7 @@ namespace ColibImmo_WPF
             if (streamAPI != null)
             {
                 Project[]? projects = JsonSerializer.DeserializeAsync<Project[]>(streamAPI).Result;
-                testListeBien.ItemsSource = projects;
+                listeBien.ItemsSource = projects;
             }
             else
             {
@@ -134,6 +134,17 @@ namespace ColibImmo_WPF
 
             string result = response.Content.ReadAsStringAsync().Result;
             MessageBox.Show(result + postProject.idTypeProject + "id person : "+postProject.idPerson + "id personAgent : " + postProject.idPersonAgent + "id Adresse : " + postProject.idAddress + "id TYpe : " + postProject.Type + "room : " + postProject.Rooms + "option : " + postProject.Options);
+        }
+
+        private void PutAsync(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            TextBlock textBlock = (TextBlock)button.Content;
+            //MessageBox.Show("salut" + textBlock.Text);
+
+            PutBien newpage = new PutBien(textBlock.Text);
+            this.NavigationService.Navigate(newpage, textBlock);
+
         }
     }
 }

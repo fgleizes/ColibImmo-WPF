@@ -13,20 +13,16 @@
 
 
         <Button PreviewMouseLeftButtonDown="getFilterType" Content ="All" HorizontalAlignment="Center" Width="30" Height="30" VerticalAlignment="Top"/>
-
+        <Button Click="PostAsync" HorizontalAlignment="Left" Width="30" Height="30" VerticalAlignment="Top">add</Button>
         <TabControl Name ="selectTypeProjet" Margin="0 30 0 0">
-           
             <TabControl.ItemTemplate>
                 <DataTemplate>
-                    
-                        <TextBlock MouseLeftButtonDown="getFilterType" Text ="{Binding Name}" Background="Yellow" Padding="10,10,10,10"/>
-                        
+                    <TextBlock MouseLeftButtonDown="getFilterType" Text ="{Binding Name}" Background="Yellow" Padding="10,10,10,10"/>
                 </DataTemplate>
             </TabControl.ItemTemplate>
         </TabControl>
 
-
-        <ListView Name="testListeBien" Height="233">
+        <ListView Name="listeBien" Height="233">
 			<ListView.View>
 				<GridView>
 					<GridViewColumn Header="Reference" Width="120" DisplayMemberBinding="{Binding Reference}" />
@@ -44,7 +40,9 @@
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Click="PostAsync">add</Button>
+                                <Button Click="PutAsync">
+                                    <TextBlock Text ="{Binding Id}" />
+                                </Button>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
