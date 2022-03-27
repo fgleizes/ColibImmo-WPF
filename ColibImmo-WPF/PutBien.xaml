@@ -9,6 +9,16 @@
       Title="PutBien">
 
     <Grid>
-        <TextBlock Name="textBox1" />
+        <StackPanel>
+            <Label Content="Description" Margin="5"/>
+            <TextBox Grid.Row="1" Name="Description" Margin="5" Width="200" Height="20"/>
+            <Label Content="Resumé" Margin="5"/>
+            <TextBox Grid.Row="1" Name="Resume" Margin="5" Width="200" Height="20"/>
+            <Label Content="Prix" Margin="5" />
+            <TextBox Grid.Row="1" Name="Prix" Margin="5" Width="200" Height="20"/>
+            <Button Click="PutProjects" Width="70" Height="20">
+                <TextBlock Text ="Modifier" />
+            </Button>
+        </StackPanel>
     </Grid>
 </Page>

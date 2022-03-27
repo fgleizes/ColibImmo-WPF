@@ -32,7 +32,6 @@ namespace ColibImmo_WPF
             InitializeComponent();
             GetTypeProject();
             GetProjects();
-            //GetFilterTypeProject();
         }
 
         private async void GetTypeProject()
@@ -133,7 +132,6 @@ namespace ColibImmo_WPF
             var response = await client.PostAsync(url, data);
 
             string result = response.Content.ReadAsStringAsync().Result;
-            MessageBox.Show(result + postProject.idTypeProject + "id person : "+postProject.idPerson + "id personAgent : " + postProject.idPersonAgent + "id Adresse : " + postProject.idAddress + "id TYpe : " + postProject.Type + "room : " + postProject.Rooms + "option : " + postProject.Options);
         }
 
         private void PutAsync(object sender, RoutedEventArgs e)

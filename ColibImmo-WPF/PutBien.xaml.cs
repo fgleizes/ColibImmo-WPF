@@ -24,35 +24,24 @@ namespace ColibImmo_WPF
     /// </summary>
     public partial class PutBien : Page
     {
+        string id;
         public PutBien(string value)
         {
             InitializeComponent();
-            PutProjects(value.ToString());
+            id = value.ToString();
         }
 
-        private async void PutProjects(string id)
+        private async void PutProjects(object sender, RoutedEventArgs e)
         {
-            var putProject = new PutProject();
-            putProject.Description = "a vendre aux gens";
-            putProject.idTypeProject = 1;
-            putProject.idPerson = 5;
-            putProject.idPersonAgent = 9;
-            putProject.idAddress = 1;
-            putProject.Type = 1;
-            putProject.Rooms = "a:3:{i:0;a:2:{s:12:\"id_Type_room\";i:2;s:4:\"area\";i:50;}i:1;a:2:{s:12:\"id_Type_room\";i:1;s:4:\"area\";i:20;}i:2;a:2:{s:12:\"id_Type_room\";i:3;s:4:\"area\";i:10;}}";
-            putProject.Options = "a:3:{i:0;i:3;i:1;i:3;i:2;i:3;}";
-
-
-            var json = JsonSerializer.Serialize(putProject);
-
-            var data = new StringContent(json, Encoding.UTF8, "application/x-www-form-urlencoded");
-
             var url = "http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/project/" + id;
             using var client = new HttpClient();
+            var dict = new Dictionary<string, string>();
+            dict.Add("description", Description.Text);
+            dict.Add("short_description", Resume.Text);
+            dict.Add("price", Prix.Text);
+            var req = new HttpRequestMessage(HttpMethod.Put, url) { Content = new FormUrlEncodedContent(dict) };
+            var res = await client.SendAsync(req);
 
-            var response = await client.PutAsync(url, data);
-
-            string result = response.Content.ReadAsStringAsync().Result;
         }
 
     }
