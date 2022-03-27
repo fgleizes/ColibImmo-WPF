@@ -110,28 +110,11 @@ namespace ColibImmo_WPF
             var res = await client.DeleteAsync(weburidelete);
         }
 
-        public async void PostAsync(object sender, RoutedEventArgs e)
+        public void PostAsync(object sender, RoutedEventArgs e)
         {
-            var postProject = new PostProject();
-            postProject.idTypeProject = 1;
-            postProject.idPerson = 5;
-            postProject.idPersonAgent = 9;
-            postProject.idAddress = 1;
-            postProject.Type = 1;
-            postProject.Rooms = "a:3:{i:0;a:2:{s:12:\"id_Type_room\";i:2;s:4:\"area\";i:50;}i:1;a:2:{s:12:\"id_Type_room\";i:1;s:4:\"area\";i:20;}i:2;a:2:{s:12:\"id_Type_room\";i:3;s:4:\"area\";i:10;}}";
-            postProject.Options = "a:3:{i:0;i:3;i:1;i:3;i:2;i:3;}";
-
-
-            var json = JsonSerializer.Serialize(postProject);
-
-            var data = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var url = "http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/project";
-            using var client = new HttpClient();
-
-            var response = await client.PostAsync(url, data);
-
-            string result = response.Content.ReadAsStringAsync().Result;
+            AddBien newpage = new AddBien();
+            this.NavigationService.Navigate(newpage);
+            this.NavigationService.Navigate(newpage);
         }
 
         private void PutAsync(object sender, RoutedEventArgs e)
