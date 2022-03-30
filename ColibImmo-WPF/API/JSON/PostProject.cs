@@ -71,5 +71,6 @@ namespace ColibImmo_WPF.API.JSON
 
         [JsonPropertyName("options")]
         public string? Options { get; set; }
+
     }
 }

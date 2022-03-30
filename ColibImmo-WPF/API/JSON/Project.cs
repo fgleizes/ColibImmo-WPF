@@ -40,10 +40,10 @@ namespace ColibImmo_WPF.API.JSON
         public string? shortDescription { get; set; }
         
         [JsonPropertyName("id_Person")]
-        public int? idPerson { get; set; }
+        public object? idPerson { get; set; }
 
         [JsonPropertyName("id_Type_project")]
-        public int? idTypeProject { get; set; }
+        public object? idTypeProject { get; set; }
 
         [JsonPropertyName("id_Statut_project")]
         public object? idStatutproject { get; set; }
@@ -55,7 +55,7 @@ namespace ColibImmo_WPF.API.JSON
         public object? idAddress { get; set; }
 
         [JsonPropertyName("id_PersonAgent")]
-        public int? idPersonAgent { get; set; }
+        public object? idPersonAgent { get; set; }
 
         [JsonPropertyName("option_project")]
         public object? optionProject { get; set; }
