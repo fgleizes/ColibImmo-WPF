@@ -47,7 +47,7 @@ namespace ColibImmo_WPF
                 this.mail.Text ="Mail : "+clients.Mail;
                 this.phone.Text = "Phone : " + clients.Phone;
 
-                if (clients.Address == null)
+                if (clients.AddressClient == null)
                 {
                     this.adresse.Text = "pas d'adresse renseigné";
                     this.city.Text = "pas de ville renseigné";
@@ -57,9 +57,9 @@ namespace ColibImmo_WPF
                 else
                 {
 
-                this.adresse.Text = "Adresse : "+clients.Address.Number.ToString()+" " +clients.Address.Street;
-                this.city.Text = "Ville : " + clients.Address.City;
-                this.zip_code.Text = "Code département : " + clients.Address.Zip_code;
+                this.adresse.Text = "Adresse : "+clients.AddressClient.Number.ToString()+" " +clients.AddressClient.Street;
+                this.city.Text = "Ville : " + clients.AddressClient.City;
+                this.zip_code.Text = "Code département : " + clients.AddressClient.ZipCode;
                 }
 
             }
