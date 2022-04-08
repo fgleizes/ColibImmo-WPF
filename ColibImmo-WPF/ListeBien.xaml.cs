@@ -68,7 +68,6 @@ namespace ColibImmo_WPF
                         Stream? streamAPIProjectByType = await apiProjectByType.GetCallAsync($"project/projectsByType/{typeProject[i].Id.ToString()}");
                         if (streamAPIProjectByType != null)
                         {
-                            //(System.Collections.IEnumerable?)
                             Project[]? projectByType = JsonSerializer.DeserializeAsync<Project[]>(streamAPIProjectByType).Result;
                             listeBien.ItemsSource = (System.Collections.IEnumerable?)projectByType;
                         }
@@ -80,6 +79,7 @@ namespace ColibImmo_WPF
                     }else if (senderBtn?.Content.ToString() == "All")
                     {
                         GetProjects();
+                        selectTypeProjet.SelectedItem = null;
                     }
                 }
             }
@@ -105,16 +105,16 @@ namespace ColibImmo_WPF
         {
             Button button = (Button)sender;
             TextBlock textBlock = (TextBlock)button.Content;
-            var weburidelete = "http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/project/" + textBlock.Text;
+            var webUriDelete = "http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/project/" + textBlock.Text;
             HttpClient client = new HttpClient();
-            var res = await client.DeleteAsync(weburidelete);
+            var res = await client.DeleteAsync(webUriDelete);
+            MessageBox.Show("Le projet est supprimé");
         }
 
         public void PostAsync(object sender, RoutedEventArgs e)
         {
-            AddBien newpage = new AddBien();
-            this.NavigationService.Navigate(newpage);
-            this.NavigationService.Navigate(newpage);
+            AddBien newPage = new AddBien();
+            this.NavigationService.Navigate(newPage);
         }
 
         private void PutAsync(object sender, RoutedEventArgs e)
