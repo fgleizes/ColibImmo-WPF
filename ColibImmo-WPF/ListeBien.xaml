@@ -17,17 +17,22 @@
         <TabControl Name ="selectTypeProjet" Margin="0 30 0 0">
             <TabControl.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock MouseLeftButtonDown="getFilterType" Text ="{Binding Name}" Background="Yellow" Padding="10,10,10,10"/>
+                    <TextBlock MouseLeftButtonDown="getFilterType" Text ="{Binding Name}" TextAlignment="Center"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="23" Margin="-6" Padding="10"/>
                 </DataTemplate>
             </TabControl.ItemTemplate>
         </TabControl>
 
-        <ListView Name="listeBien" Height="233">
+        <ListView Name="listeBien" Height="514" Margin="0,75,0,0">
 			<ListView.View>
 				<GridView>
-					<GridViewColumn Header="Reference" Width="120" DisplayMemberBinding="{Binding Reference}" />
-					<GridViewColumn Header="Description" Width="50" DisplayMemberBinding="{Binding Description}" />
-                    <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding Id}"/>
+
+                    <GridViewColumn Header="Nom d'agent" Width="120" DisplayMemberBinding="{Binding IdPersonAgent.Lastname}"/>
+                    <GridViewColumn Header="Prénom d'agent" Width="120" DisplayMemberBinding="{Binding IdPersonAgent.Firstname}"/>
+                    <GridViewColumn Header="Nom client" Width="120" DisplayMemberBinding="{Binding Person.Lastname}"/>
+                    <GridViewColumn Header="Prénom client" Width="120" DisplayMemberBinding="{Binding Person.Firstname}"/>
+                    <GridViewColumn Header="Reference" Width="120" DisplayMemberBinding="{Binding Reference}" />
+                    <GridViewColumn Header="Reference" Width="120" DisplayMemberBinding="{Binding CreatedAt}" />
+
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

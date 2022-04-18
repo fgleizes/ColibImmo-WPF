@@ -26,10 +26,10 @@ namespace ColibImmo_WPF.API.JSON
 
         [JsonPropertyName("description")]
         public string? Description { get; set; }
-        
+
         [JsonPropertyName("area")]
         public int? area { get; set; }
-        
+
         [JsonPropertyName("min_price")]
         public int? min_price { get; set; }
 
@@ -38,7 +38,13 @@ namespace ColibImmo_WPF.API.JSON
 
         [JsonPropertyName("short_description")]
         public string? shortDescription { get; set; }
-        
-        
+
+        [JsonPropertyName("id_PersonAgent")]
+        public PersonAgent? IdPersonAgent { get; set; }
+
+        [JsonPropertyName("person")]
+        public Person? Person { get; set; }
+
+
     }
 }
