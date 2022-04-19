@@ -69,7 +69,7 @@ namespace ColibImmo_WPF
                         Stream? streamAPIProjectByType = await apiProjectByType.GetCallAsync($"project/projectsByType/{typeProject[i].Id.ToString()}");
                         if (streamAPIProjectByType != null)
                         {
-                            Project[]? projectByType = JsonSerializer.DeserializeAsync<Project[]>(streamAPIProjectByType).Result;
+                            ProjectFilter[]? projectByType = JsonSerializer.DeserializeAsync<ProjectFilter[]>(streamAPIProjectByType).Result;
                             listeBien.ItemsSource = (System.Collections.IEnumerable?)projectByType;
                         }
                         else
