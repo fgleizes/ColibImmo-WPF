@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -37,19 +38,63 @@ namespace ColibImmo_WPF
             if (streamAPI != null)
             {
                 Project[]? projects = JsonSerializer.DeserializeAsync<Project[]>(streamAPI).Result;
-                //Application.Current.Properties.Add("apiToken", auth.Token);
-                //errormessage3.Text = "";
-                //Hide();
-                //var window = new MainWindow();
-                //window.Owner = this;
-                //window.Show();
-                //MessageBoxResult result = MessageBox.Show(Application.Current.Properties["apiToken"] as string);
+                
                 listProjectGrid.ItemsSource = projects;
             }
             else
             {
                 MessageBox.Show("Erreur de connexion.");
             }
+        }
+
+        private void PutProject(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            StackPanel ModelStackpanel = new StackPanel();
+            ModelStackpanel = (StackPanel)button.Content;
+            TextBlock ModelTextBlock = new TextBlock();
+            foreach (var child in ModelStackpanel.Children)
+            {
+                if (child.GetType().ToString() == "System.Windows.Controls.TextBlock")
+
+                {
+
+                    ModelTextBlock = (TextBlock)child;
+                    var webUriDelete = "http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/project/" + ModelTextBlock.Text;
+                    HttpClient client = new HttpClient();
+                    PutBien newpage = new PutBien(ModelTextBlock.Text);
+                    this.NavigationService.Navigate(newpage, ModelTextBlock.Text);
+
+                }
+
+            }
+
+
+
+        }
+
+        private async void DeleteProject(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            StackPanel ModelStackpanel = new StackPanel();
+            ModelStackpanel = (StackPanel)button.Content;
+            TextBlock ModelTextBlock = new TextBlock();
+            foreach (var child in ModelStackpanel.Children)
+            {
+                if (child.GetType().ToString() == "System.Windows.Controls.TextBlock")
+
+                {
+
+                    ModelTextBlock = (TextBlock)child;
+                    var webUriDelete = "http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/project/" + ModelTextBlock.Text;
+                    HttpClient client = new HttpClient();
+                    var res = await client.DeleteAsync(webUriDelete);
+                    MessageBox.Show("Le projet est supprimé");
+
+                }
+
+            }
+            
         }
     }
 }

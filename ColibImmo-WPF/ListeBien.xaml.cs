@@ -105,11 +105,25 @@ namespace ColibImmo_WPF
         private async void deleteProject(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            TextBlock textBlock = (TextBlock)button.Content;
-            var webUriDelete = "http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/project/" + textBlock.Text;
-            HttpClient client = new HttpClient();
-            var res = await client.DeleteAsync(webUriDelete);
-            MessageBox.Show("Le projet est supprimé");
+            StackPanel ModelStackpanel = new StackPanel();
+            ModelStackpanel = (StackPanel)button.Content;
+            TextBlock ModelTextBlock = new TextBlock();
+            foreach (var child in ModelStackpanel.Children)
+            {
+                if (child.GetType().ToString() == "System.Windows.Controls.TextBlock")
+
+                {
+
+                    ModelTextBlock = (TextBlock)child;
+                    var webUriDelete = "http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/project/" + ModelTextBlock.Text;
+                    HttpClient client = new HttpClient();
+                    var res = await client.DeleteAsync(webUriDelete);
+                    MessageBox.Show("Le projet est supprimé");
+
+                }
+
+            }
+            
         }
 
         public void PostAsync(object sender, RoutedEventArgs e)
@@ -121,11 +135,26 @@ namespace ColibImmo_WPF
         private void PutAsync(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            TextBlock textBlock = (TextBlock)button.Content;
-            //MessageBox.Show("salut" + textBlock.Text);
+            StackPanel ModelStackpanel = new StackPanel();
+            ModelStackpanel = (StackPanel)button.Content;
+            TextBlock ModelTextBlock = new TextBlock();
+            foreach (var child in ModelStackpanel.Children)
+            {
+                if (child.GetType().ToString() == "System.Windows.Controls.TextBlock")
 
-            PutBien newpage = new PutBien(textBlock.Text);
-            this.NavigationService.Navigate(newpage, textBlock);
+                {
+
+                    ModelTextBlock = (TextBlock)child;
+                    var webUriDelete = "http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/project/" + ModelTextBlock.Text;
+                    HttpClient client = new HttpClient();
+                    PutBien newpage = new PutBien(ModelTextBlock.Text);
+                    this.NavigationService.Navigate(newpage, ModelTextBlock.Text);
+
+                }
+
+            }
+
+            
 
         }
     }

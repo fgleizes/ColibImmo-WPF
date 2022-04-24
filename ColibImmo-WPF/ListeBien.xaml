@@ -31,13 +31,16 @@
                     <GridViewColumn Header="Nom client" Width="120" DisplayMemberBinding="{Binding Person.Lastname}"/>
                     <GridViewColumn Header="Prénom client" Width="120" DisplayMemberBinding="{Binding Person.Firstname}"/>
                     <GridViewColumn Header="Reference" Width="120" DisplayMemberBinding="{Binding Reference}" />
-                    <GridViewColumn Header="Reference" Width="120" DisplayMemberBinding="{Binding CreatedAt}" />
+                    <GridViewColumn Header="Reference" Width="120" DisplayMemberBinding="{Binding CreatedAt, StringFormat=d, ConverterCulture=fr-FR}" />
 
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Click="deleteProject">
-                                    <TextBlock Text ="{Binding Id}" />
+                                <Button Click="deleteProject" Background="{x:Null}" BorderBrush="{x:Null}">
+                                    <StackPanel>
+                                        <Image Height="30" Source="icons/icons8_close_window_48px.png"/>
+                                        <TextBlock Height="0" Text ="{Binding Id}" Foreground="{x:Null}" />
+                                    </StackPanel>
                                 </Button>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
@@ -45,8 +48,11 @@
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Click="PutAsync">
-                                    <TextBlock Text ="{Binding Id}" />
+                                <Button Click="PutAsync" Background="{x:Null}" BorderBrush="{x:Null}">
+                                    <StackPanel>
+                                        <Image Height="30" Source="icons/icons8_edit_48px.png" />
+                                        <TextBlock Height="0" Text ="{Binding Id}" Foreground="{x:Null}" />
+                                    </StackPanel>
                                 </Button>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>

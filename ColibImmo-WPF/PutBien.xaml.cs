@@ -44,5 +44,15 @@ namespace ColibImmo_WPF
 
         }
 
+
+        private void PreviousButton(object sender, RoutedEventArgs e)
+        {
+            
+                    ListeBien previousPage = new ListeBien();
+                    this.NavigationService.Navigate(previousPage);
+
+        }
+
+
     }
 }
