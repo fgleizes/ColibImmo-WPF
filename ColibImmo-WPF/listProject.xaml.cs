@@ -92,5 +92,10 @@ namespace ColibImmo_WPF
             }
             
         }
+        public void PostAsync(object sender, RoutedEventArgs e)
+        {
+            AddBien newPage = new AddBien();
+            this.NavigationService.Navigate(newPage);
+        }
     }
 }

@@ -10,7 +10,7 @@
 
     <Grid>
         <StackPanel>
-            <Button Click="PreviousButton" Width="70" Height="20" Command="{x:Static NavigationCommands.BrowseBack}">
+            <Button Height="20"  BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Width="20" Command="{x:Static NavigationCommands.BrowseBack}">
                 <Image Height="30" Source="icons/icons8_back_26px.png" />
             </Button>
             <Label Content="Description" Margin="5"/>
