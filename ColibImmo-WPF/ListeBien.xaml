@@ -32,7 +32,6 @@
                     <GridViewColumn Header="Prénom client" Width="120" DisplayMemberBinding="{Binding Person.Firstname}"/>
                     <GridViewColumn Header="Reference" Width="120" DisplayMemberBinding="{Binding Reference}" />
                     <GridViewColumn Header="Reference" Width="120" DisplayMemberBinding="{Binding CreatedAt, StringFormat=d, ConverterCulture=fr-FR}" />
-
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

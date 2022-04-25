@@ -60,7 +60,6 @@ namespace ColibImmo_WPF
                 {
 
                     ModelTextBlock = (TextBlock)child;
-                    var webUriDelete = "http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/project/" + ModelTextBlock.Text;
                     HttpClient client = new HttpClient();
                     PutBien newpage = new PutBien(ModelTextBlock.Text);
                     this.NavigationService.Navigate(newpage, ModelTextBlock.Text);
@@ -68,9 +67,6 @@ namespace ColibImmo_WPF
                 }
 
             }
-
-
-
         }
 
         private async void DeleteProject(object sender, RoutedEventArgs e)

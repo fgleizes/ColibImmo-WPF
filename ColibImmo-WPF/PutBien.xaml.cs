@@ -43,16 +43,5 @@ namespace ColibImmo_WPF
             var res = await client.SendAsync(req);
 
         }
-
-
-        private void PreviousButton(object sender, RoutedEventArgs e)
-        {
-            
-                    ListeBien previousPage = new ListeBien();
-                    this.NavigationService.Navigate(previousPage);
-
-        }
-
-
     }
 }

@@ -10,8 +10,8 @@
 
     <Grid>
         <StackPanel>
-            <Button Click="PreviousButton" Width="70" Height="20">
-                <TextBlock Text ="Précédent" />
+            <Button Click="PreviousButton" Width="70" Height="20" Command="{x:Static NavigationCommands.BrowseBack}">
+                <Image Height="30" Source="icons/icons8_back_26px.png" />
             </Button>
             <Label Content="Description" Margin="5"/>
             <TextBox Grid.Row="1" Name="Description" Margin="5" Width="200" Height="20"/>
