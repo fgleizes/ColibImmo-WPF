@@ -1,8 +1,11 @@
-﻿using ColibImmo_WPF.API.JSON;
+﻿using ColibImmo_WPF.API;
+using ColibImmo_WPF.API.JSON;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -23,20 +26,52 @@ namespace ColibImmo_WPF
     /// </summary>
     public partial class AddBien : Page
     {
+        private Type_Project[]? typeProject = null;
         public AddBien()
         {
             InitializeComponent();
+            GetTypeProject();
+            GetPerson();
+        }
+        private async void GetTypeProject()
+        {
+            Client api = new Client();
+            Stream? streamAPI = await api.GetCallAsync("project/typeProject/");
+            if (streamAPI != null)
+            {
+                typeProject = JsonSerializer.DeserializeAsync<Type_Project[]>(streamAPI).Result;
+                TypeProject.ItemsSource = typeProject;
+            }
+            else
+            {
+                MessageBox.Show("Erreur de connexion.1");
+            }
         }
 
-
+        private async void GetPerson()
+        {
+            Client api = new Client();
+            api.Token = Application.Current.Properties["apiToken"].ToString();
+            Stream? streamAPI = await api.GetCallAsync("person", null, true);
+            if (streamAPI != null)
+            {
+                Person[]? person = JsonSerializer.DeserializeAsync<Person[]>(streamAPI).Result;
+                ComboPerson.ItemsSource = person;
+            }
+            else
+            {
+                MessageBox.Show("Erreur de connexion.2");
+            }
+        }
         public async void AddProject(object sender, RoutedEventArgs e)
         {
+
             var postProject = new PostProject();
             postProject.Description = Description.Text;
             postProject.shortDescription =Resume.Text;
             postProject.Price = int.Parse(Prix.Text);
-            postProject.idTypeProject = 1;
-            postProject.idPerson = 5;
+            postProject.idTypeProject = TypeProject.SelectedIndex;
+            postProject.idPerson = ComboPerson.SelectedIndex;
             postProject.idPersonAgent = 9;
             postProject.idAddress = 1;
             postProject.Type = 1;
@@ -54,6 +89,7 @@ namespace ColibImmo_WPF
             var response = await client.PostAsync(url, data);
 
             string result = response.Content.ReadAsStringAsync().Result;
+            MessageBox.Show("Projet créer" + ComboPerson.SelectedIndex.ToString());
         }
     }
 }
