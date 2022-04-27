@@ -1,6 +1,7 @@
 ﻿using ColibImmo_WPF.API;
 using ColibImmo_WPF.API.JSON;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -65,13 +66,14 @@ namespace ColibImmo_WPF
         }
         public async void AddProject(object sender, RoutedEventArgs e)
         {
-
+            Person? selectedPerson = ComboPerson.SelectedItem as Person;
+            Type_Project? selectedTypeProject = TypeProject.SelectedItem as Type_Project;
             var postProject = new PostProject();
             postProject.Description = Description.Text;
             postProject.shortDescription =Resume.Text;
             postProject.Price = int.Parse(Prix.Text);
-            postProject.idTypeProject = TypeProject.SelectedIndex;
-            postProject.idPerson = ComboPerson.SelectedIndex;
+            postProject.idTypeProject = int.Parse(selectedTypeProject.Id.ToString());
+            postProject.idPerson = int.Parse(selectedPerson.Id.ToString());
             postProject.idPersonAgent = 9;
             postProject.idAddress = 1;
             postProject.Type = 1;
@@ -89,7 +91,7 @@ namespace ColibImmo_WPF
             var response = await client.PostAsync(url, data);
 
             string result = response.Content.ReadAsStringAsync().Result;
-            MessageBox.Show("Projet créer" + ComboPerson.SelectedIndex.ToString());
+            //MessageBox.Show("Projet créer" + selectedPerson.Id.ToString() + postProject.idPerson.ToString());
         }
     }
 }
