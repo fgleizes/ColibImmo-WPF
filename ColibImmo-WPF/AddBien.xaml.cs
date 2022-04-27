@@ -33,6 +33,7 @@ namespace ColibImmo_WPF
             InitializeComponent();
             GetTypeProject();
             GetPerson();
+            GetPersonAgent();
         }
         private async void GetTypeProject()
         {
@@ -45,7 +46,7 @@ namespace ColibImmo_WPF
             }
             else
             {
-                MessageBox.Show("Erreur de connexion.1");
+                MessageBox.Show("Erreur de connexion");
             }
         }
 
@@ -61,12 +62,28 @@ namespace ColibImmo_WPF
             }
             else
             {
-                MessageBox.Show("Erreur de connexion.2");
+                MessageBox.Show("Erreur de connexion");
+            }
+        }
+        private async void GetPersonAgent()
+        {
+            Client api = new Client();
+            api.Token = Application.Current.Properties["apiToken"].ToString();
+            Stream? streamAPI = await api.GetCallAsync("person/role/4", null, true);
+            if (streamAPI != null)
+            {
+                Person[]? person = JsonSerializer.DeserializeAsync<Person[]>(streamAPI).Result;
+                ComboPersonAgent.ItemsSource = person;
+            }
+            else
+            {
+                MessageBox.Show("Erreur de connexion");
             }
         }
         public async void AddProject(object sender, RoutedEventArgs e)
         {
             Person? selectedPerson = ComboPerson.SelectedItem as Person;
+            Person? selectedPersonAgent = ComboPersonAgent.SelectedItem as Person;
             Type_Project? selectedTypeProject = TypeProject.SelectedItem as Type_Project;
             var postProject = new PostProject();
             postProject.Description = Description.Text;
@@ -74,7 +91,7 @@ namespace ColibImmo_WPF
             postProject.Price = int.Parse(Prix.Text);
             postProject.idTypeProject = int.Parse(selectedTypeProject.Id.ToString());
             postProject.idPerson = int.Parse(selectedPerson.Id.ToString());
-            postProject.idPersonAgent = 9;
+            postProject.idPersonAgent = int.Parse(selectedPersonAgent.Id.ToString());
             postProject.idAddress = 1;
             postProject.Type = 1;
             postProject.Rooms = "a:3:{i:0;a:2:{s:12:\"id_Type_room\";i:2;s:4:\"area\";i:50;}i:1;a:2:{s:12:\"id_Type_room\";i:1;s:4:\"area\";i:20;}i:2;a:2:{s:12:\"id_Type_room\";i:3;s:4:\"area\";i:10;}}";
