@@ -70,6 +70,28 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+            <Label Content="Type Propriété" Margin="5" />
+            <ComboBox Name="ComboTypeProperty" Margin="15" Width="150" SelectedValue="{Binding Id}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" />
+                            <TextBlock Text="{Binding Id}" Foreground="{x:Null}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label Content="Energie index" Margin="5" />
+            <ComboBox Name="ComboEnergyIndex" Margin="15" Width="150" SelectedValue="{Binding Id}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Index}" />
+                            <TextBlock Text="{Binding Id}" Foreground="{x:Null}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <Button Click="AddProject" Width="70" Height="20">
                 <TextBlock Text ="Ajouter" />
             </Button>

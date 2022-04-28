@@ -39,6 +39,9 @@ namespace ColibImmo_WPF.API.JSON
         [JsonPropertyName("short_description")]
         public string? shortDescription { get; set; }
 
+        [JsonPropertyName("id_Energy_index")]
+        public int? idEnergyIndex { get; set; }
+
         [JsonPropertyName("id_PersonAgent")]
         public PersonAgent? IdPersonAgent { get; set; }
 

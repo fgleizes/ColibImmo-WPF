@@ -36,6 +36,8 @@ namespace ColibImmo_WPF
             GetPerson();
             GetPersonAgent();
             GetAddress();
+            GetTypeProperty();
+            GetEnergyIndex();
         }
         private async void GetTypeProject()
         {
@@ -74,8 +76,24 @@ namespace ColibImmo_WPF
             Stream? streamAPI = await api.GetCallAsync("person/role/4", null, true);
             if (streamAPI != null)
             {
-                Person[]? person = JsonSerializer.DeserializeAsync<Person[]>(streamAPI).Result;
-                ComboPersonAgent.ItemsSource = person;
+                Person[]? personAgent = JsonSerializer.DeserializeAsync<Person[]>(streamAPI).Result;
+                ComboPersonAgent.ItemsSource = personAgent;
+            }
+            else
+            {
+                MessageBox.Show("Erreur de connexion");
+            }
+        }
+
+        private async void GetTypeProperty()
+        {
+            Client api = new Client();
+            api.Token = Application.Current.Properties["apiToken"].ToString();
+            Stream? streamAPI = await api.GetCallAsync("typeProperty", null, true);
+            if (streamAPI != null)
+            {
+                Type_Property[]? type_Properties = JsonSerializer.DeserializeAsync<Type_Property[]>(streamAPI).Result;
+                ComboTypeProperty.ItemsSource = type_Properties;
             }
             else
             {
@@ -105,21 +123,49 @@ namespace ColibImmo_WPF
             }
         }
 
+        private async void GetEnergyIndex()
+        {
+            Client api = new Client();
+            api.Token = Application.Current.Properties["apiToken"].ToString();
+            Stream? streamAPI = await api.GetCallAsync("project/energieIndexAll", null, true);
+            if (streamAPI != null)
+            {
+                EnergyIndex[]? energyIndices = JsonSerializer.DeserializeAsync<EnergyIndex[]>(streamAPI).Result;
+                ComboEnergyIndex.ItemsSource = energyIndices;
+            }
+            else
+            {
+                MessageBox.Show("Erreur de connexion");
+            }
+        }
+
         public async void AddProject(object sender, RoutedEventArgs e)
         {
             Person? selectedPerson = ComboPerson.SelectedItem as Person;
             Person? selectedPersonAgent = ComboPersonAgent.SelectedItem as Person;
             Type_Project? selectedTypeProject = TypeProject.SelectedItem as Type_Project;
             Address? selectedAddress = ComboAddress.SelectedItem as Address;
+            Type_Property? selectedTypeProperty = ComboTypeProperty.SelectedItem as Type_Property;
+            EnergyIndex? selectedEnergyIndex = ComboEnergyIndex.SelectedItem as EnergyIndex;
             var postProject = new PostProject();
             postProject.Description = Description.Text;
             postProject.shortDescription = Resume.Text;
-            postProject.Price = int.Parse(Prix.Text);
+            int emptyPrice;
+            if (!int.TryParse(Prix.Text, out emptyPrice)) 
+            {
+                emptyPrice = 0;
+                postProject.Price = emptyPrice;
+                MessageBox.Show("Mettez-y le prix");
+            }
+            else {
+                postProject.Price = int.Parse(Prix.Text);
+            }
             postProject.idTypeProject = int.Parse(selectedTypeProject.Id.ToString());
             postProject.idPerson = int.Parse(selectedPerson.Id.ToString());
             postProject.idPersonAgent = int.Parse(selectedPersonAgent.Id.ToString());
             postProject.idAddress = int.Parse(selectedAddress.Id.ToString());
-            postProject.Type = 1;
+            postProject.Type = int.Parse(selectedTypeProperty.Id.ToString());
+            postProject.idEnergyindex = int.Parse(selectedEnergyIndex.Id.ToString());
             postProject.Rooms = "a:3:{i:0;a:2:{s:12:\"id_Type_room\";i:2;s:4:\"area\";i:50;}i:1;a:2:{s:12:\"id_Type_room\";i:1;s:4:\"area\";i:20;}i:2;a:2:{s:12:\"id_Type_room\";i:3;s:4:\"area\";i:10;}}";
             postProject.Options = "a:3:{i:0;i:3;i:1;i:3;i:2;i:3;}";
 

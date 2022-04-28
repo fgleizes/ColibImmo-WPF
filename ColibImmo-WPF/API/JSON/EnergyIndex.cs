@@ -13,7 +13,7 @@ namespace ColibImmo_WPF.API.JSON
     {
         [JsonPropertyName("id")]
         public int? Id { get; set; }
-        [JsonPropertyName("name")]
-        public string? Name { get; set; }
+        [JsonPropertyName("index")]
+        public string? Index { get; set; }
     }
 }

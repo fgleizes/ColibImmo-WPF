@@ -24,7 +24,6 @@
                 </DataTemplate>
             </TabControl.ItemTemplate>
         </TabControl>
-
         <ListView Name="listeBien"  VerticalAlignment="Stretch" Grid.Row="1">
 			<ListView.View>
 				<GridView>
