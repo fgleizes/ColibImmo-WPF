@@ -28,7 +28,7 @@ namespace ColibImmo_WPF
     /// </summary>
     public partial class AddBien : Page
     {
-        private Type_Project[]? typeProject = null;
+        
         public AddBien()
         {
             InitializeComponent();
@@ -45,7 +45,7 @@ namespace ColibImmo_WPF
             Stream? streamAPI = await api.GetCallAsync("project/typeProject/");
             if (streamAPI != null)
             {
-                typeProject = JsonSerializer.DeserializeAsync<Type_Project[]>(streamAPI).Result;
+                Type_Project[]? typeProject = JsonSerializer.DeserializeAsync<Type_Project[]>(streamAPI).Result;
                 TypeProject.ItemsSource = typeProject;
                 TypeProject.SelectedIndex = 1;
             }

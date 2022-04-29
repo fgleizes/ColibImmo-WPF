@@ -9,8 +9,9 @@
       Title="PutBien">
 
     <Grid>
-        <StackPanel>
-            <Button Height="20"  BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Width="20" Command="{x:Static NavigationCommands.BrowseBack}">
+
+        <StackPanel Orientation="Vertical">
+            <Button  HorizontalAlignment="Left" Height="20"  BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Width="20" Command="{x:Static NavigationCommands.BrowseBack}">
                 <Image Height="30" Source="icons/icons8_back_26px.png" />
             </Button>
             <Label Content="Description" Margin="5"/>
@@ -19,6 +20,79 @@
             <TextBox Grid.Row="1" Name="Resume" Margin="5" Width="200" Height="20"/>
             <Label Content="Prix" Margin="5" />
             <TextBox Grid.Row="1" Name="Prix" Margin="5" Width="200" Height="20"/>
+            <Label Content="Type de projet" Margin="5" />
+            <ComboBox Name="TypeProject" Margin="15" Width="150" SelectedValue="{Binding Id}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" />
+                            <TextBlock Text="{Binding Id}" Foreground="{x:Null}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label Content="Client" Margin="5" />
+            <ComboBox Name="ComboPerson" SelectedValue="{Binding Id}" Margin="15" Width="150">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Lastname}" Margin="0,0,5,0" />
+                            <TextBlock Text="{Binding Firstname}"/>
+                            <TextBlock Text="{Binding Id}" Foreground="{x:Null}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label Content="Agent" Margin="5" />
+            <ComboBox Name="ComboPersonAgent" SelectedValue="{Binding Id}" Margin="15" Width="150">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Lastname}" Margin="0,0,5,0" />
+                            <TextBlock Text="{Binding Firstname}"/>
+                            <TextBlock Text="{Binding Id}" Foreground="{x:Null}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label Content="Addresse" Margin="5" />
+            <ComboBox Name="ComboAddress" SelectedValue="{Binding Id}" Margin="15" Width="150">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Number}" Margin="0,0,5,0" />
+                            <TextBlock Text="{Binding Street}"/>
+                            <TextBlock Text="{Binding AdditionalAddress}"/>
+                            <TextBlock Text="{Binding Building}"/>
+                            <TextBlock Text="{Binding Floor}"/>
+                            <TextBlock Text="{Binding Staircase}"/>
+                            <TextBlock Text="{Binding Id}" Foreground="{x:Null}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label Content="Type Propriété" Margin="5" />
+            <ComboBox Name="ComboTypeProperty" Margin="15" Width="150" SelectedValue="{Binding Id}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" />
+                            <TextBlock Text="{Binding Id}" Foreground="{x:Null}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label Content="Energie index" Margin="5" />
+            <ComboBox Name="ComboEnergyIndex" Margin="15" Width="150" SelectedValue="{Binding Id}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Index}" />
+                            <TextBlock Text="{Binding Id}" Foreground="{x:Null}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <Button Click="PutProjects" Width="70" Height="20">
                 <TextBlock Text ="Modifier" />
             </Button>
