@@ -21,7 +21,7 @@
             <TextBox Grid.Row="1" Name="Prix" Margin="5" Width="200" Height="20" PreviewTextInput="PreviewTextInput"/>
 			<Label Content="Type de projet" Margin="5" />
             <ComboBox Name="TypeProject" Margin="15" Width="150" SelectedValue="{Binding Id}">
-				<ComboBox.ItemTemplate>
+                <ComboBox.ItemTemplate>
                     <DataTemplate>
 						<StackPanel Orientation="Horizontal">
 							<TextBlock Text="{Binding Name}" />

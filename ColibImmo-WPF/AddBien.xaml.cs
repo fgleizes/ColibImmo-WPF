@@ -47,6 +47,7 @@ namespace ColibImmo_WPF
             {
                 typeProject = JsonSerializer.DeserializeAsync<Type_Project[]>(streamAPI).Result;
                 TypeProject.ItemsSource = typeProject;
+                TypeProject.SelectedIndex = 1;
             }
             else
             {
@@ -63,6 +64,7 @@ namespace ColibImmo_WPF
             {
                 Person[]? person = JsonSerializer.DeserializeAsync<Person[]>(streamAPI).Result;
                 ComboPerson.ItemsSource = person;
+                ComboPerson.SelectedIndex = 1;
             }
             else
             {
@@ -78,6 +80,7 @@ namespace ColibImmo_WPF
             {
                 Person[]? personAgent = JsonSerializer.DeserializeAsync<Person[]>(streamAPI).Result;
                 ComboPersonAgent.ItemsSource = personAgent;
+                ComboPersonAgent.SelectedIndex = 1;
             }
             else
             {
@@ -94,6 +97,7 @@ namespace ColibImmo_WPF
             {
                 Type_Property[]? type_Properties = JsonSerializer.DeserializeAsync<Type_Property[]>(streamAPI).Result;
                 ComboTypeProperty.ItemsSource = type_Properties;
+                ComboTypeProperty.SelectedIndex = 1;
             }
             else
             {
@@ -116,6 +120,7 @@ namespace ColibImmo_WPF
             {
                 Address[]? address = JsonSerializer.DeserializeAsync<Address[]>(streamAPI).Result;
                 ComboAddress.ItemsSource = address;
+                ComboAddress.SelectedIndex = 1;
             }
             else
             {
@@ -132,12 +137,15 @@ namespace ColibImmo_WPF
             {
                 EnergyIndex[]? energyIndices = JsonSerializer.DeserializeAsync<EnergyIndex[]>(streamAPI).Result;
                 ComboEnergyIndex.ItemsSource = energyIndices;
+                ComboEnergyIndex.SelectedIndex = 1;
             }
             else
             {
                 MessageBox.Show("Erreur de connexion");
             }
         }
+
+
 
         public async void AddProject(object sender, RoutedEventArgs e)
         {
@@ -148,26 +156,25 @@ namespace ColibImmo_WPF
             Type_Property? selectedTypeProperty = ComboTypeProperty.SelectedItem as Type_Property;
             EnergyIndex? selectedEnergyIndex = ComboEnergyIndex.SelectedItem as EnergyIndex;
             var postProject = new PostProject();
-            postProject.Description = Description.Text;
-            postProject.shortDescription = Resume.Text;
-            int emptyPrice;
-            if (!int.TryParse(Prix.Text, out emptyPrice)) 
+            if (Prix.Text == string.Empty)
             {
-                emptyPrice = 0;
-                postProject.Price = emptyPrice;
-                MessageBox.Show("Mettez-y le prix");
+                MessageBox.Show("Mettez le prix");
             }
-            else {
+            else
+            {
+                postProject.Description = Description.Text;
+                postProject.shortDescription = Resume.Text;
                 postProject.Price = int.Parse(Prix.Text);
+                postProject.idTypeProject = int.Parse(selectedTypeProject.Id.ToString());
+                postProject.idPerson = int.Parse(selectedPerson.Id.ToString());
+                postProject.idPersonAgent = int.Parse(selectedPersonAgent.Id.ToString());
+                postProject.idAddress = int.Parse(selectedAddress.Id.ToString());
+                postProject.Type = int.Parse(selectedTypeProperty.Id.ToString());
+                postProject.idEnergyindex = int.Parse(selectedEnergyIndex.Id.ToString());
+                postProject.Rooms = "a:3:{i:0;a:2:{s:12:\"id_Type_room\";i:2;s:4:\"area\";i:50;}i:1;a:2:{s:12:\"id_Type_room\";i:1;s:4:\"area\";i:20;}i:2;a:2:{s:12:\"id_Type_room\";i:3;s:4:\"area\";i:10;}}";
+                postProject.Options = "a:3:{i:0;i:3;i:1;i:3;i:2;i:3;}";
             }
-            postProject.idTypeProject = int.Parse(selectedTypeProject.Id.ToString());
-            postProject.idPerson = int.Parse(selectedPerson.Id.ToString());
-            postProject.idPersonAgent = int.Parse(selectedPersonAgent.Id.ToString());
-            postProject.idAddress = int.Parse(selectedAddress.Id.ToString());
-            postProject.Type = int.Parse(selectedTypeProperty.Id.ToString());
-            postProject.idEnergyindex = int.Parse(selectedEnergyIndex.Id.ToString());
-            postProject.Rooms = "a:3:{i:0;a:2:{s:12:\"id_Type_room\";i:2;s:4:\"area\";i:50;}i:1;a:2:{s:12:\"id_Type_room\";i:1;s:4:\"area\";i:20;}i:2;a:2:{s:12:\"id_Type_room\";i:3;s:4:\"area\";i:10;}}";
-            postProject.Options = "a:3:{i:0;i:3;i:1;i:3;i:2;i:3;}";
+            
 
 
             var json = JsonSerializer.Serialize(postProject);
@@ -180,7 +187,7 @@ namespace ColibImmo_WPF
             var response = await client.PostAsync(url, data);
 
             string result = response.Content.ReadAsStringAsync().Result;
-                //MessageBox.Show("Projet créer" + selectedPerson.Id.ToString() + postProject.idPerson.ToString());
+            MessageBox.Show("Projet créer");
         }
     }
 }
