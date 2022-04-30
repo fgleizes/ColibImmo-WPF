@@ -35,7 +35,6 @@ namespace ColibImmo_WPF
             GetPerson();
             GetPersonAgent();
             GetAddress();
-            GetTypeProperty();
             GetEnergyIndex();
         }
 
@@ -88,22 +87,7 @@ namespace ColibImmo_WPF
             }
         }
 
-        private async void GetTypeProperty()
-        {
-            Client api = new Client();
-            api.Token = Application.Current.Properties["apiToken"].ToString();
-            Stream? streamAPI = await api.GetCallAsync("typeProperty", null, true);
-            if (streamAPI != null)
-            {
-                Type_Property[]? type_Properties = JsonSerializer.DeserializeAsync<Type_Property[]>(streamAPI).Result;
-                ComboTypeProperty.ItemsSource = type_Properties;
-                ComboTypeProperty.SelectedIndex = 1;
-            }
-            else
-            {
-                MessageBox.Show("Erreur de connexion");
-            }
-        }
+        
 
         private new void PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -147,12 +131,22 @@ namespace ColibImmo_WPF
 
         private async void PutProjects(object sender, RoutedEventArgs e)
         {
+            Person? selectedPerson = ComboPerson.SelectedItem as Person;
+            Person? selectedPersonAgent = ComboPersonAgent.SelectedItem as Person;
+            Type_Project? selectedTypeProject = TypeProject.SelectedItem as Type_Project;
+            Address? selectedAddress = ComboAddress.SelectedItem as Address;
+            EnergyIndex? selectedEnergyIndex = ComboEnergyIndex.SelectedItem as EnergyIndex;
             var url = "http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/project/" + id;
             using var client = new HttpClient();
             var dict = new Dictionary<string, string>();
             dict.Add("description", Description.Text);
             dict.Add("short_description", Resume.Text);
             dict.Add("price", Prix.Text);
+            dict.Add("id_Type_project", selectedTypeProject.Id.ToString());
+            dict.Add("id_Person", selectedPerson.Id.ToString());
+            dict.Add("id_PersonAgent", selectedPersonAgent.Id.ToString());
+            dict.Add("id_Address", selectedAddress.Id.ToString());
+            dict.Add("id_Energy_index", selectedEnergyIndex.Id.ToString());
             var req = new HttpRequestMessage(HttpMethod.Put, url) { Content = new FormUrlEncodedContent(dict) };
             var res = await client.SendAsync(req);
 

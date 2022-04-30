@@ -47,7 +47,5 @@ namespace ColibImmo_WPF.API.JSON
 
         [JsonPropertyName("id_Person")]
         public Person? Person { get; set; }
-
-
     }
 }
