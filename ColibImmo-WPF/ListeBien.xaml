@@ -11,20 +11,21 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.9*"/>
-            <RowDefinition Height="6*" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="8*" />
         </Grid.RowDefinitions>
 
         <Button PreviewMouseLeftButtonDown="getFilterType" Content ="All" HorizontalAlignment="Center" Width="30" Height="30" VerticalAlignment="Top"/>
         <Button Click="PostAsync" HorizontalAlignment="Left" Width="30" Height="30" VerticalAlignment="Top">add</Button>
-        <TabControl Name ="selectTypeProjet" Margin="0 30 0 0">
+        <TabControl Name ="selectTypeProjet" Grid.Row="1">
             <TabControl.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock MouseLeftButtonDown="getFilterType" Text ="{Binding Name}" TextAlignment="Center"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="23" Margin="-6" Padding="10"/>
+                    <TextBlock MouseLeftButtonDown="getFilterType" Text ="{Binding Name}" TextAlignment="Center"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="23" Margin="-6" Padding="5 5 5 19"/>
                 </DataTemplate>
             </TabControl.ItemTemplate>
         </TabControl>
-        <ListView Name="listeBien"  VerticalAlignment="Stretch" Grid.Row="1">
+        <ListView Name="listeBien"  VerticalAlignment="Stretch" Grid.Row="2">
 			<ListView.View>
 				<GridView>
 
@@ -33,7 +34,7 @@
                     <GridViewColumn Header="Nom client" Width="120" DisplayMemberBinding="{Binding Person.Lastname}"/>
                     <GridViewColumn Header="Prénom client" Width="120" DisplayMemberBinding="{Binding Person.Firstname}"/>
                     <GridViewColumn Header="Reference" Width="120" DisplayMemberBinding="{Binding Reference}" />
-                    <GridViewColumn Header="Reference" Width="120" DisplayMemberBinding="{Binding CreatedAt, StringFormat=d, ConverterCulture=fr-FR}" />
+                    <GridViewColumn Header="Date de rendez-vous" Width="120" DisplayMemberBinding="{Binding CreatedAt, StringFormat=d, ConverterCulture=fr-FR}" />
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
