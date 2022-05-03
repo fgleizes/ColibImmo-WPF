@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="listProject">
     <Grid>
-        <Button Click="PostAsync" HorizontalAlignment="Left" Width="30" Height="30" VerticalAlignment="Top">add</Button>
+        <Button Click="PostAsync" HorizontalAlignment="Left" Width="30" Height="30" VerticalAlignment="Top">Ajouter Bien</Button>
         <ListView Name="listProjectGrid" Height="500">
             <ListView.View>
                 <GridView>
