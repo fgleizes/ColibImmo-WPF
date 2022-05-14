@@ -152,14 +152,14 @@
                                                 </StackPanel>
 
                                                 <StackPanel HorizontalAlignment="Right" Grid.Column="5"  >
-                                                    <Button  BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
+                                                    <Button Tag="{Binding Id}" Click="BtnEditClientPage" BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
                                                         <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_edit_48px.png"/>
                                                     </Button>
                                                 </StackPanel>
                                                 
                                                 <StackPanel HorizontalAlignment="Right" Grid.Column="6"  >
-                                                    
-                                                    <Button  BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
+
+                                                    <Button Click="BtnDeleteClients" Tag="{Binding Id}"  BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
                                                         
                                                         <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_close_window_48px.png"/>
                                                     </Button>
@@ -220,32 +220,32 @@
                                 </StackPanel>
 
                                 <Border CornerRadius="5"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,10,10" >
-                                    <TextBox Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Nom" />
+                                    <TextBox Name="lastnameAddForm" Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Nom" />
                                 </Border>
 
                                 <Border CornerRadius="5"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,10,10" >
-                                    <TextBox Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Prénom"/>
+                                    <TextBox Name="firstnameAddForm" Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Prénom"/>
                                 </Border>
 
                                 <Border CornerRadius="5"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="2" Grid.ColumnSpan="4"  Margin="0,0,10,10 ">
-                                    <TextBox Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Mail" Margin="10,0,0,0" />
+                                    <TextBox Name="mailAddForm" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Mail" Margin="10,0,0,0" />
                                 </Border>
 
                                 <Border CornerRadius="5"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="3" Grid.ColumnSpan="2" Margin="0,0,10,10">
-                                    <TextBox Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Phone" Margin="10,0,0,0" />
+                                    <TextBox Name="phoneAddForm" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Phone" Margin="10,0,0,0" />
                                 </Border>
 
                                 <Border CornerRadius="5"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="4" Grid.Column="0" Margin="0,0,10,10">
-                                    <TextBox Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Number"/>
+                                    <TextBox Name="numberAddForm" Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Number"/>
                                 </Border>
 
                                 <Border CornerRadius="5"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,0,10,10">
 
-                                    <TextBox Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Rue" />
+                                    <TextBox Name="rue" Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Rue" />
                                 </Border>
 
                                 <Border CornerRadius="5"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,10,10">
-                                    <TextBox Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Ville" />
+                                    <TextBox Name="city" Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Ville" />
                                 </Border>
 
                                 <Border CornerRadius="5"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="5" Grid.Column="3" Margin="0,0,10,10">
@@ -254,10 +254,10 @@
 
                             </Grid>
 
-                            <Button VerticalAlignment="bottom" HorizontalAlignment="Right" Height="40" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
+                            <Button  Click="BtnCreateClient" VerticalAlignment="bottom" HorizontalAlignment="Right" Height="40" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                                 <Image Source="icons/icons8_enter_key_30px.png"/>
                             </Button>
-                            <Frame Width="300" Height="300" x:Name="MainFrame"  Panel.ZIndex="-1"  NavigationUIVisibility="hidden" Margin="100,70,10,10"/>
+                            
                         </Grid>
 
 

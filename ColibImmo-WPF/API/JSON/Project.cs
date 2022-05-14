@@ -28,24 +28,39 @@ namespace ColibImmo_WPF.API.JSON
         public string? Description { get; set; }
 
         [JsonPropertyName("area")]
-        public int? area { get; set; }
-
+        public int? Area { get; set; }
+        
         [JsonPropertyName("min_price")]
-        public int? min_price { get; set; }
+        public int? Min_price { get; set; }
 
         [JsonPropertyName("max_price")]
-        public int? max_price { get; set; }
+        public int? Max_price { get; set; }
 
         [JsonPropertyName("short_description")]
         public string? shortDescription { get; set; }
+        
+        [JsonPropertyName("id_Person")]
+        public object? idPerson { get; set; }
+
+        [JsonPropertyName("id_Type_project")]
+        public object? idTypeProject { get; set; }
+
+        [JsonPropertyName("id_Statut_project")]
+        public object? idStatutproject { get; set; }
 
         [JsonPropertyName("id_Energy_index")]
-        public int? idEnergyIndex { get; set; }
+        public object? idEnergyindex { get; set; }
+
+        [JsonPropertyName("id_Address")]
+        public object? idAddress { get; set; }
 
         [JsonPropertyName("id_PersonAgent")]
-        public PersonAgent? IdPersonAgent { get; set; }
+        public object? idPersonAgent { get; set; }
 
-        [JsonPropertyName("id_Person")]
-        public Person? Person { get; set; }
+        [JsonPropertyName("option_project")]
+        public object? optionProject { get; set; }
+
+        [JsonPropertyName("room_project")]
+        public object? roomProject { get; set; }
     }
 }
