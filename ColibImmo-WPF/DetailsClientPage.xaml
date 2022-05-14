@@ -196,15 +196,6 @@
                                             <TextBlock Name="Ville" Text="{Binding Address.City.Name}"/>
                                         </StackPanel>
 
-
-
-
-
-
-
-
-
-
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -212,8 +203,6 @@
                         </ListView>
                     </Border>
                 </Grid>
-
-
 
             </Grid>
         </Grid>

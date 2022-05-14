@@ -30,8 +30,6 @@ namespace ColibImmo_WPF.API.JSON
         [JsonPropertyName("created_at")]
         public string? Created_at { get; set; }
 
-
-
         [JsonPropertyName("address")]
         public AddressClient? AddressClient { get; set; }
     }
