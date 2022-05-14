@@ -39,7 +39,7 @@ namespace ColibImmo_WPF
             
             if (streamAPI != null)
             {
-                Project[]? projects = JsonSerializer.DeserializeAsync<Project[]>(streamAPI).Result;
+                ProjectClient[]? projects = JsonSerializer.DeserializeAsync<ProjectClient[]>(streamAPI).Result;
                 ListProjectByClientContainer.ItemsSource = (System.Collections.IEnumerable?)projects;
                 
             }

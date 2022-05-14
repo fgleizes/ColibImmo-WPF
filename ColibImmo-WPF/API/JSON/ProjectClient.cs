@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace ColibImmo_WPF.API.JSON
 {
-    internal class Project
+    internal class ProjectClient
     {
-        [JsonPropertyName("id")]
-        public int? Id { get; set; }
-
         [JsonPropertyName("reference")]
         public string? Reference { get; set; }
 
@@ -22,30 +19,45 @@ namespace ColibImmo_WPF.API.JSON
         public DateTime? UpdtedAt { get; set; }
 
         [JsonPropertyName("price")]
-        public int? Price { get; set; }
+        public int Price { get; set; }
 
         [JsonPropertyName("description")]
         public string? Description { get; set; }
 
         [JsonPropertyName("area")]
-        public int? area { get; set; }
+        public int? Area { get; set; }
 
         [JsonPropertyName("min_price")]
-        public int? min_price { get; set; }
+        public int? Min_price { get; set; }
 
         [JsonPropertyName("max_price")]
-        public int? max_price { get; set; }
+        public int? Max_price { get; set; }
 
         [JsonPropertyName("short_description")]
         public string? shortDescription { get; set; }
 
+        [JsonPropertyName("id_Person")]
+        public object? IdPerson { get; set; }
+
+        [JsonPropertyName("id_Type_project")]
+        public object? IdTypeProject { get; set; }
+
+        [JsonPropertyName("id_Statut_project")]
+        public object? IdStatutproject { get; set; }
+
         [JsonPropertyName("id_Energy_index")]
-        public int? idEnergyIndex { get; set; }
+        public object? IdEnergyindex { get; set; }
+
+        [JsonPropertyName("id_Address")]
+        public ProjectAddress? Address { get; set; }
 
         [JsonPropertyName("id_PersonAgent")]
-        public PersonAgent? IdPersonAgent { get; set; }
+        public object? IdPersonAgent { get; set; }
 
-        [JsonPropertyName("id_Person")]
-        public Person? Person { get; set; }
+        [JsonPropertyName("option_project")]
+        public object? OptionProject { get; set; }
+
+        [JsonPropertyName("room_project")]
+        public object? RoomProject { get; set; }
     }
 }
