@@ -145,7 +145,6 @@ namespace ColibImmo_WPF
                 {
 
                     ModelTextBlock = (TextBlock)child;
-                    HttpClient client = new HttpClient();
                     PutBien newpage = new PutBien(ModelTextBlock.Text);
                     this.NavigationService.Navigate(newpage, ModelTextBlock.Text);
 
