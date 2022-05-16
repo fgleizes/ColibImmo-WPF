@@ -19,6 +19,6 @@ namespace ColibImmo_WPF.API.JSON
         public int IdProject { get; set; }
 
         [JsonPropertyName("project")]
-        public Project? Project { get; set; }
+        public ProjectAppointment? Project { get; set; }
     }
 }
