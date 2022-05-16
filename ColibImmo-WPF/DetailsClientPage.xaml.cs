@@ -27,7 +27,51 @@ namespace ColibImmo_WPF
         {
             InitializeComponent();
             GetDetailsClient();
+            GetProjectsListByClient();
+            GetAppointmentsListByClient();
+        }
+
+        private async void GetProjectsListByClient()
+        {
+            Client api = new Client();
+            api.Token = Application.Current.Properties["apiToken"].ToString();
+            Stream? streamAPI = await api.GetCallAsync("project/person/"+idClient.id, null, true);
             
+            if (streamAPI != null)
+            {
+                ProjectClient[]? projects = JsonSerializer.DeserializeAsync<ProjectClient[]>(streamAPI).Result;
+                ListProjectByClientContainer.ItemsSource = (System.Collections.IEnumerable?)projects;
+                
+            }
+            else
+            {
+                MessageBox.Show("Erreur");
+            }
+        }
+
+        private async void GetAppointmentsListByClient()
+        {
+            Client api = new Client();
+            api.Token = Application.Current.Properties["apiToken"].ToString();
+            Stream? streamAPI = await api.GetCallAsync("appointment/customerAppointments/" + idClient.id, null, true);
+
+            if (streamAPI != null)
+            {
+                Appointment[]? appointments = JsonSerializer.DeserializeAsync<Appointment[]>(streamAPI).Result;
+                foreach (Appointment appointment in appointments)
+                {
+                    DateTime myStartDate = DateTime.Parse(appointment.Start);
+                    DateTime myEndDate = DateTime.Parse(appointment.End);
+                    appointment.AppointmentHour = myStartDate.Hour.ToString() + ":" + myStartDate.Minute.ToString() + " — " + myEndDate.Hour.ToString() + ":" + myStartDate.Minute.ToString();
+                    appointment.Start = myStartDate.ToShortDateString();
+                    
+                }
+                ListAppointmentByClientContainer.ItemsSource = appointments;
+            }
+            else
+            {
+                MessageBox.Show("Erreur");
+            }
         }
 
         private async void GetDetailsClient()
@@ -42,12 +86,12 @@ namespace ColibImmo_WPF
                 DataClient? clients = JsonSerializer.DeserializeAsync<DataClient>(streamAPI).Result;
                 
 
-                this.lastname.Text = clients.Lastname+" "+clients.Firstname;
+                this.lastname.Text =clients.Lastname+" "+clients.Firstname;
                 this.created_at.Text ="Date inscription : "+clients.Created_at;
                 this.mail.Text ="Mail : "+clients.Mail;
                 this.phone.Text = "Phone : " + clients.Phone;
 
-                if (clients.Address == null)
+                if (clients.AddressClient == null)
                 {
                     this.adresse.Text = "pas d'adresse renseigné";
                     this.city.Text = "pas de ville renseigné";
@@ -57,9 +101,9 @@ namespace ColibImmo_WPF
                 else
                 {
 
-                this.adresse.Text = "Adresse : "+clients.Address.Number.ToString()+" " +clients.Address.Street;
-                this.city.Text = "Ville : " + clients.Address.City;
-                this.zip_code.Text = "Code département : " + clients.Address.Zip_code;
+                this.adresse.Text = "Adresse : "+clients.AddressClient.Number.ToString()+" " +clients.AddressClient.Street;
+                this.city.Text = "Ville : " + clients.AddressClient.City;
+                this.zip_code.Text = "Code département : " + clients.AddressClient.ZipCode;
                 }
 
             }

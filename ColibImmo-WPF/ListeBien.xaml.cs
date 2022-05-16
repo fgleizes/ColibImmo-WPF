@@ -18,21 +18,20 @@ using System.IO;
 using System.Text.Json;
 using System.Reflection;
 using ColibImmo_WPF.Class;
+using System.Net.Http;
+using System.Text.Json.Nodes;
 
 namespace ColibImmo_WPF
 {
-    /// <summary>
-    /// Logique d'interaction pour ListeBien.xaml
-    /// </summary>
+   
     public partial class ListeBien : Page
     {
-
+        
         public ListeBien()
         {
             InitializeComponent();
             GetTypeProject();
-            //GetProjects();
-            //GetFilterTypeProject();
+            GetProjects();
         }
 
         private async void GetTypeProject()
@@ -40,9 +39,9 @@ namespace ColibImmo_WPF
             Client api = new Client();
             Stream? streamAPI = await api.GetCallAsync("project/typeProject/");
             if (streamAPI != null)
-            {
+            { 
                 Type_Project[]? typeProject = JsonSerializer.DeserializeAsync<Type_Project[]>(streamAPI).Result;
-                listTypeProjetGrid.ItemsSource = typeProject;
+                selectTypeProjet.ItemsSource = typeProject;
             }
             else
             {
@@ -50,79 +49,43 @@ namespace ColibImmo_WPF
             }
         }
 
-        private async void textbox1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void getFilterType(object sender, MouseButtonEventArgs e)
         {
-            TextBlock tb = (TextBlock)sender;
-           
+            var senderText = sender as TextBlock;
+            var senderBtn = sender as Button;
+
+
             Client api = new Client();
             Stream? streamAPI = await api.GetCallAsync("project/typeProject/");
             if (streamAPI != null)
             {
-                Type_Project[]? projects = JsonSerializer.DeserializeAsync<Type_Project[]>(streamAPI).Result;
-                string[] vs = new string[projects.Length];
+                Type_Project[]? typeProject = JsonSerializer.DeserializeAsync<Type_Project[]>(streamAPI).Result;
+                string[] vs = new string[typeProject.Length];
                 for (int i = 0; i < vs.Length; i++)
                 {
-                    if (projects[i].Name == tb.Text)
+                    if (typeProject[i].Name == senderText?.Text)
                     {
-                        
                         Client apiProjectByType = new Client();
-                        Stream? streamAPIProjectByType = await apiProjectByType.GetCallAsync($"project/projectsByType/{projects[i].Id.ToString()}");
+                        Stream? streamAPIProjectByType = await apiProjectByType.GetCallAsync($"project/projectsByType/{typeProject[i].Id.ToString()}");
                         if (streamAPIProjectByType != null)
                         {
-                            Project[]? projectByType = JsonSerializer.DeserializeAsync<Project[]>(streamAPIProjectByType).Result;
-                            MessageBox.Show(projectByType.ToString());
-                            string[] vsByType = new string[projectByType.Length];
-                            for (int j = 0; j < vsByType.Length; j++)
-                            {
-
-                                //dgUsers.ItemsSource = projectByType;
-
-                            }
-                            //lvUsers.ItemsSource = projects;
+                            ProjectFilter[]? projectByType = JsonSerializer.DeserializeAsync<ProjectFilter[]>(streamAPIProjectByType).Result;
+                            listeBien.ItemsSource = (System.Collections.IEnumerable?)projectByType;
                         }
                         else
                         {
                             MessageBox.Show("Erreur de connexion.");
                         }
+
+                    }else if (senderBtn?.Content.ToString() != null)
+                    {
+                        GetProjects();
+                        selectTypeProjet.SelectedItem = null;
                     }
-                    
                 }
             }
-            else
-            {
-                MessageBox.Show("Erreur GetTypeProject.");
-            }
         }
-
-        /*private async void GetFilterTypeProject(object sender, System.EventArgs e)
-         {
-             string? valueCb = listTypeProjetGrid.SelectedValue?.ToString();
-
-             Client api = new Client();
-             Stream? streamAPI = await api.GetCallAsync($"project/projectsByType/{valueCb}");
-
-             if (streamAPI != null)
-             {
-                 Project[]? projects = JsonSerializer.DeserializeAsync<Project[]>(streamAPI).Result;
-                 listOneProjetGrid.ItemsSource = projects;
-             }
-             else
-             {
-                 MessageBox.Show("Erreur de connexion." + valueCb);
-             }
-         }
-
-
-
-         private void RefreshProject(object sender, System.EventArgs e)
-         {
-             listTypeProjetGrid.SelectedIndex = -1;
-             listOneProjetGrid.ItemsSource = null;
-             GetProjects();
-         }*/
-
-
-        /*private async void GetProjects()
+        private async void GetProjects()
         {
             Client api = new Client();
             Stream? streamAPI = await api.GetCallAsync("project");
@@ -130,12 +93,67 @@ namespace ColibImmo_WPF
             if (streamAPI != null)
             {
                 Project[]? projects = JsonSerializer.DeserializeAsync<Project[]>(streamAPI).Result;
-                listOneProjetGrid.ItemsSource = projects;
+                listeBien.ItemsSource = projects;
             }
             else
             {
                 MessageBox.Show("Erreur GetProjects.");
             }
-        }*/
+        }
+
+
+        private async void deleteProject(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            StackPanel ModelStackpanel = new StackPanel();
+            ModelStackpanel = (StackPanel)button.Content;
+            TextBlock ModelTextBlock = new TextBlock();
+            foreach (var child in ModelStackpanel.Children)
+            {
+                if (child.GetType().ToString() == "System.Windows.Controls.TextBlock")
+
+                {
+
+                    ModelTextBlock = (TextBlock)child;
+                    var webUriDelete = "http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/project/" + ModelTextBlock.Text;
+                    HttpClient client = new HttpClient();
+                    var res = await client.DeleteAsync(webUriDelete);
+                    MessageBox.Show("Le projet est supprimé");
+
+                }
+
+            }
+            
+        }
+
+        public void PostAsync(object sender, RoutedEventArgs e)
+        {
+            AddBien newPage = new AddBien();
+            this.NavigationService.Navigate(newPage);
+        }
+
+        private void PutAsync(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            StackPanel ModelStackpanel = new StackPanel();
+            ModelStackpanel = (StackPanel)button.Content;
+            TextBlock ModelTextBlock = new TextBlock();
+            foreach (var child in ModelStackpanel.Children)
+            {
+                if (child.GetType().ToString() == "System.Windows.Controls.TextBlock")
+
+                {
+
+                    ModelTextBlock = (TextBlock)child;
+                    PutBien newpage = new PutBien(ModelTextBlock.Text);
+                    this.NavigationService.Navigate(newpage, ModelTextBlock.Text);
+
+                }
+
+            }
+
+            
+
+        }
     }
 }

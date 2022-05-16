@@ -1,0 +1,118 @@
+﻿<Page x:Class="ColibImmo_WPF.AddBien"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ColibImmo_WPF"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddBien">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Button Height="20"  BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Width="20" Command="{x:Static NavigationCommands.BrowseBack}">
+                <Image Height="30" Source="icons/icons8_back_26px.png" />
+            </Button>
+            <TextBlock Grid.Row="1" Grid.Column="1" Width="200" >Ajout de Nouveaux Biens</TextBlock>
+            <Label Grid.Column="0" Grid.Row="2" Content="Description :"/>
+        <TextBox Grid.Column="0" Grid.Row="3" Name="Description"  Width="350"/>
+        <Label Grid.Column="1" Grid.Row="2" Content="Resumé :"/>
+        <TextBox Grid.Column="1" Grid.Row="3" Name="Resume" Width="350"/>
+        <Label Grid.Column="2" Grid.Row="2" Content="Prix :"/>
+        <TextBox Grid.Column="2" Grid.Row="3" Name="Prix" Width="350" PreviewTextInput="PreviewTextInput"/>
+        <Label Grid.Column="0" Grid.Row="4" Content="Type de projet :"  Width="100"/>
+        <ComboBox Grid.Column="0" Grid.Row="5" Name="TypeProject" SelectedValue="{Binding Id}" Height="28"  Width="110">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Text="{Binding Id}" Foreground="{x:Null}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label Grid.Column="0" Grid.Row="6" Content="Client :"   Width="100"/>
+        <ComboBox Grid.Column="0" Grid.Row="7" Name="ComboPerson" SelectedValue="{Binding Id}" Height="28"  Width="180">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Lastname}" Margin="0,0,5,0" />
+                        <TextBlock Text="{Binding Firstname}"/>
+                        <TextBlock Text="{Binding Id}" Foreground="{x:Null}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label Grid.Column="1" Grid.Row="6" Content="Agent :" Margin="5" Width="100"/>
+        <ComboBox Grid.Column="1" Grid.Row="7" Name="ComboPersonAgent" SelectedValue="{Binding Id}" Height="28" Width="100">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Lastname}" Margin="0,0,5,0" />
+                        <TextBlock Text="{Binding Firstname}"/>
+                        <TextBlock Text="{Binding Id}" Foreground="{x:Null}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label Grid.Column="2" Grid.Row="4" Content="Nouvelle Addresse :"  Width="120"/>
+        <ComboBox Grid.Column="2" Grid.Row="5" Name="ComboAddress" SelectedValue="{Binding Id}" Height="28" Width="160">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Number}" Margin="0,0,5,0" />
+                        <TextBlock Text="{Binding Street}"/>
+                        <TextBlock Text="{Binding AdditionalAddress}"/>
+                        <TextBlock Text="{Binding Building}"/>
+                        <TextBlock Text="{Binding Floor}"/>
+                        <TextBlock Text="{Binding Staircase}"/>
+                        <TextBlock Text="{Binding Id}" Foreground="{x:Null}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label Grid.Column="2" Grid.Row="6" Content="Type Propriété"  Width="120"/>
+        <ComboBox Grid.Column="2" Grid.Row="7" Name="ComboTypeProperty" Height="28" Width="160" SelectedValue="{Binding Id}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" />
+                            <TextBlock Text="{Binding Id}" Foreground="{x:Null}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        <Label Grid.Column="1" Grid.Row="4" Content="index énergie pour le bien :" Width="160"/>
+        <ComboBox Grid.Column="1" Grid.Row="5" Name="ComboEnergyIndex" SelectedValue="{Binding Id}" Height="28" Width="40">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Index}" />
+                        <TextBlock Text="{Binding Id}" Foreground="{x:Null}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button Grid.Column="1" Grid.Row="10" Click="AddProject" Width="70" Height="20">
+                <TextBlock Text ="Ajouter" />
+            </Button>
+    </Grid>
+</Page>

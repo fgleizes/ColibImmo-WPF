@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ColibImmo_WPF.API.JSON
 {
-    internal class Address
+    internal class ProjectAddress
     {
         [JsonPropertyName("id")]
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         [JsonPropertyName("number")]
         public int? Number { get; set; }
@@ -19,7 +19,7 @@ namespace ColibImmo_WPF.API.JSON
         public string? Street { get; set; }
 
         [JsonPropertyName("additional_address")]
-        public string? AdditionalAddress { get; set; }
+        public string? Additional_address { get; set; }
 
         [JsonPropertyName("building")]
         public string? Building { get; set; }
@@ -33,8 +33,14 @@ namespace ColibImmo_WPF.API.JSON
         [JsonPropertyName("staircase")]
         public string? Staircase { get; set; }
 
-        [JsonPropertyName("City")]
-        public City? City { get; set; }
+        [JsonPropertyName("city")]
+        public ProjectCity? City { get; set; }
+
+        [JsonPropertyName("department")]
+        public Object? Department { get; set; }
+
+        [JsonPropertyName("region")]
+        public Object? Degion { get; set; }
 
 
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ColibImmo_WPF.API.JSON
 {
-    internal class Project
+    internal class ProjectFilter
     {
         [JsonPropertyName("id")]
         public int? Id { get; set; }
@@ -39,13 +39,10 @@ namespace ColibImmo_WPF.API.JSON
         [JsonPropertyName("short_description")]
         public string? shortDescription { get; set; }
 
-        [JsonPropertyName("id_Energy_index")]
-        public int? idEnergyIndex { get; set; }
-
         [JsonPropertyName("id_PersonAgent")]
         public PersonAgent? IdPersonAgent { get; set; }
 
-        [JsonPropertyName("id_Person")]
+        [JsonPropertyName("person")]
         public Person? Person { get; set; }
     }
 }

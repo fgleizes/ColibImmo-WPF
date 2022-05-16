@@ -118,6 +118,7 @@ namespace ColibImmo_WPF
             Client api = new Client();
             Stream? streamAPI = await api.GetCallAsync("user/login", formDataArray);
 
+
             if(streamAPI != null)
             {
                 Auth? auth = JsonSerializer.DeserializeAsync<Auth>(streamAPI).Result;

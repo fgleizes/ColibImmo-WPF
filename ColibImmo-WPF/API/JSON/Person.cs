@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
+
 
 namespace ColibImmo_WPF.API.JSON
 {
-    internal class PersonAgent
+    internal class Person
     {
         [JsonPropertyName("id")]
         public int? Id { get; set; }
@@ -17,7 +18,5 @@ namespace ColibImmo_WPF.API.JSON
         public string? Firstname { get; set; }
         [JsonPropertyName("mail")]
         public string? Mail { get; set; }
-        
-
     }
 }

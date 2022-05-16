@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ColibImmo_WPF.API.JSON
 {
-    internal class Project
+    internal class PostProject
     {
         [JsonPropertyName("id")]
         public int? Id { get; set; }
@@ -22,7 +22,7 @@ namespace ColibImmo_WPF.API.JSON
         public DateTime? UpdtedAt { get; set; }
 
         [JsonPropertyName("price")]
-        public int? Price { get; set; }
+        public int Price { get; set; }
 
         [JsonPropertyName("description")]
         public string? Description { get; set; }
@@ -39,13 +39,38 @@ namespace ColibImmo_WPF.API.JSON
         [JsonPropertyName("short_description")]
         public string? shortDescription { get; set; }
 
+        [JsonPropertyName("id_Person")]
+        public int? idPerson { get; set; }
+
+        [JsonPropertyName("id_Type_project")]
+        public int? idTypeProject { get; set; }
+
+        [JsonPropertyName("id_Statut_project")]
+        public object? idStatutproject { get; set; }
+
         [JsonPropertyName("id_Energy_index")]
-        public int? idEnergyIndex { get; set; }
+        public object? idEnergyindex { get; set; }
+
+        [JsonPropertyName("id_Address")]
+        public object? idAddress { get; set; }
 
         [JsonPropertyName("id_PersonAgent")]
-        public PersonAgent? IdPersonAgent { get; set; }
+        public int? idPersonAgent { get; set; }
 
-        [JsonPropertyName("id_Person")]
-        public Person? Person { get; set; }
+        [JsonPropertyName("option_project")]
+        public object? optionProject { get; set; }
+
+        [JsonPropertyName("room_project")]
+        public object? roomProject { get; set; }
+
+        [JsonPropertyName("type")]
+        public int? Type { get; set; }
+
+        [JsonPropertyName("rooms")]
+        public string? Rooms { get; set; }
+
+        [JsonPropertyName("options")]
+        public string? Options { get; set; }
+
     }
 }
