@@ -33,11 +33,6 @@ namespace ColibImmo_WPF
         {
             InitializeComponent();
             GetTypeProject();
-            GetPerson();
-            GetPersonAgent();
-            GetAddress();
-            GetTypeProperty();
-            GetEnergyIndex();
         }
         private async void GetTypeProject()
         {
@@ -47,62 +42,63 @@ namespace ColibImmo_WPF
             {
                 Type_Project[]? typeProject = JsonSerializer.DeserializeAsync<Type_Project[]>(streamAPI).Result;
                 TypeProject.ItemsSource = typeProject;
-                TypeProject.SelectedIndex = 1;
+                TypeProject.SelectedIndex = 0;
             }
             else
             {
                 MessageBox.Show("Erreur de connexion");
             }
+            GetPerson();
         }
 
         private async void GetPerson()
         {
             Client api = new Client();
-            api.Token = Application.Current.Properties["apiToken"].ToString();
             Stream? streamAPI = await api.GetCallAsync("person", null, true);
             if (streamAPI != null)
             {
                 Person[]? person = JsonSerializer.DeserializeAsync<Person[]>(streamAPI).Result;
                 ComboPerson.ItemsSource = person;
-                ComboPerson.SelectedIndex = 1;
+                ComboPerson.SelectedIndex = 0;
             }
             else
             {
-                MessageBox.Show("Erreur de connexion");
+                MessageBox.Show("Erreur de connexion GetPerson");
             }
+            GetPersonAgent();
         }
         private async void GetPersonAgent()
         {
             Client api = new Client();
-            api.Token = Application.Current.Properties["apiToken"].ToString();
             Stream? streamAPI = await api.GetCallAsync("person/role/4", null, true);
             if (streamAPI != null)
             {
                 Person[]? personAgent = JsonSerializer.DeserializeAsync<Person[]>(streamAPI).Result;
                 ComboPersonAgent.ItemsSource = personAgent;
-                ComboPersonAgent.SelectedIndex = 1;
+                ComboPersonAgent.SelectedIndex = 0;
             }
             else
             {
                 MessageBox.Show("Erreur de connexion");
             }
+            GetTypeProperty();
         }
 
         private async void GetTypeProperty()
         {
             Client api = new Client();
-            api.Token = Application.Current.Properties["apiToken"].ToString();
             Stream? streamAPI = await api.GetCallAsync("typeProperty", null, true);
             if (streamAPI != null)
             {
                 Type_Property[]? type_Properties = JsonSerializer.DeserializeAsync<Type_Property[]>(streamAPI).Result;
                 ComboTypeProperty.ItemsSource = type_Properties;
-                ComboTypeProperty.SelectedIndex = 1;
+                ComboTypeProperty.SelectedIndex = 0;
             }
             else
             {
                 MessageBox.Show("Erreur de connexion");
             }
+            GetAddress();
         }
 
         private new void PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -114,30 +110,29 @@ namespace ColibImmo_WPF
         private async void GetAddress()
         {
             Client api = new Client();
-            api.Token = Application.Current.Properties["apiToken"].ToString();
             Stream? streamAPI = await api.GetCallAsync("address", null, true);
             if (streamAPI != null)
             {
                 Address[]? address = JsonSerializer.DeserializeAsync<Address[]>(streamAPI).Result;
                 ComboAddress.ItemsSource = address;
-                ComboAddress.SelectedIndex = 1;
+                ComboAddress.SelectedIndex = 0;
             }
             else
             {
                 MessageBox.Show("Erreur de connexion");
             }
+            GetEnergyIndex();
         }
 
         private async void GetEnergyIndex()
         {
             Client api = new Client();
-            api.Token = Application.Current.Properties["apiToken"].ToString();
             Stream? streamAPI = await api.GetCallAsync("project/energieIndexAll", null, true);
             if (streamAPI != null)
             {
                 EnergyIndex[]? energyIndices = JsonSerializer.DeserializeAsync<EnergyIndex[]>(streamAPI).Result;
                 ComboEnergyIndex.ItemsSource = energyIndices;
-                ComboEnergyIndex.SelectedIndex = 1;
+                ComboEnergyIndex.SelectedIndex = 0;
             }
             else
             {
@@ -186,8 +181,15 @@ namespace ColibImmo_WPF
 
             var response = await client.PostAsync(url, data);
 
-            string result = response.Content.ReadAsStringAsync().Result;
-            MessageBox.Show("Projet créer");
+            if (response.IsSuccessStatusCode)
+            {
+                string result = response.Content.ReadAsStringAsync().Result;
+                NavigationService.Navigate(new Uri("listProject.xaml", UriKind.Relative));
+            }
+            else
+            {
+                MessageBox.Show("Erreur lors de l'ajout de ce projet!");
+            }
         }
     }
 }

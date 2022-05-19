@@ -27,10 +27,34 @@ namespace ColibImmo_WPF
     public partial class PutBien : Page
     {
         string id;
+        DetailsProject? project = null;
         public PutBien(string value)
         {
             InitializeComponent();
             id = value.ToString();
+            GetDetailsProject();
+        }
+
+        private async void GetDetailsProject()
+        {
+            Client api = new Client();
+            Stream? streamAPI = await api.GetCallAsync("project/" + id);
+
+            if (streamAPI != null)
+            {
+                project = JsonSerializer.DeserializeAsync<DetailsProject>(streamAPI).Result;
+                if(project != null)
+                {
+                    Description.Text = project.Description;
+                    Resume.Text = project.shortDescription;
+                    Prix.Text = project.Price.ToString();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Erreur de connexion");
+            }
+
             GetTypeProject();
             GetPerson();
             GetPersonAgent();
@@ -45,8 +69,17 @@ namespace ColibImmo_WPF
             if (streamAPI != null)
             {
                 Type_Project[]? typeProject = JsonSerializer.DeserializeAsync<Type_Project[]>(streamAPI).Result;
-                TypeProject.ItemsSource = typeProject;
-                TypeProject.SelectedIndex = 1;
+                if(typeProject != null)
+                {
+                    TypeProject.ItemsSource = typeProject;
+                    for(int i = 0; i < typeProject.Length; i++)
+                    {
+                        if (typeProject[i].Id == project?.typeProject?.Id)
+                        {
+                            TypeProject.SelectedIndex = i;
+                        }
+                    }
+                }
             }
             else
             {
@@ -57,13 +90,22 @@ namespace ColibImmo_WPF
         private async void GetPerson()
         {
             Client api = new Client();
-            api.Token = Application.Current.Properties["apiToken"].ToString();
             Stream? streamAPI = await api.GetCallAsync("person", null, true);
             if (streamAPI != null)
             {
                 Person[]? person = JsonSerializer.DeserializeAsync<Person[]>(streamAPI).Result;
-                ComboPerson.ItemsSource = person;
-                ComboPerson.SelectedIndex = 1;
+
+                if (person != null)
+                {
+                    ComboPerson.ItemsSource = person;
+                    for (int i = 0; i < person.Length; i++)
+                    {
+                        if (person[i].Id == project?.idPerson)
+                        {
+                            ComboPerson.SelectedIndex = i;
+                        }
+                    }
+                }
             }
             else
             {
@@ -73,13 +115,21 @@ namespace ColibImmo_WPF
         private async void GetPersonAgent()
         {
             Client api = new Client();
-            api.Token = Application.Current.Properties["apiToken"].ToString();
             Stream? streamAPI = await api.GetCallAsync("person/role/4", null, true);
             if (streamAPI != null)
             {
                 Person[]? personAgent = JsonSerializer.DeserializeAsync<Person[]>(streamAPI).Result;
-                ComboPersonAgent.ItemsSource = personAgent;
-                ComboPersonAgent.SelectedIndex = 1;
+                if (personAgent != null)
+                {
+                    ComboPersonAgent.ItemsSource = personAgent;
+                    for (int i = 0; i < personAgent.Length; i++)
+                    {
+                        if (personAgent[i].Id == project?.idPersonAgent)
+                        {
+                            ComboPersonAgent.SelectedIndex = i;
+                        }
+                    }
+                }
             }
             else
             {
@@ -98,13 +148,21 @@ namespace ColibImmo_WPF
         private async void GetAddress()
         {
             Client api = new Client();
-            api.Token = Application.Current.Properties["apiToken"].ToString();
             Stream? streamAPI = await api.GetCallAsync("address", null, true);
             if (streamAPI != null)
             {
                 Address[]? address = JsonSerializer.DeserializeAsync<Address[]>(streamAPI).Result;
-                ComboAddress.ItemsSource = address;
-                ComboAddress.SelectedIndex = 1;
+                if (address != null)
+                {
+                    ComboAddress.ItemsSource = address;
+                    for (int i = 0; i < address.Length; i++)
+                    {
+                        if (address[i].Id == project?.address?.Id)
+                        {
+                            ComboAddress.SelectedIndex = i;
+                        }
+                    }
+                }
             }
             else
             {
@@ -115,13 +173,21 @@ namespace ColibImmo_WPF
         private async void GetEnergyIndex()
         {
             Client api = new Client();
-            api.Token = Application.Current.Properties["apiToken"].ToString();
             Stream? streamAPI = await api.GetCallAsync("project/energieIndexAll", null, true);
             if (streamAPI != null)
             {
                 EnergyIndex[]? energyIndices = JsonSerializer.DeserializeAsync<EnergyIndex[]>(streamAPI).Result;
-                ComboEnergyIndex.ItemsSource = energyIndices;
-                ComboEnergyIndex.SelectedIndex = 1;
+                if (energyIndices != null)
+                {
+                    ComboEnergyIndex.ItemsSource = energyIndices;
+                    for (int i = 0; i < energyIndices.Length; i++)
+                    {
+                        if (energyIndices[i].Id == project?.idEnergyIndex)
+                        {
+                            ComboEnergyIndex.SelectedIndex = i;
+                        }
+                    }
+                }
             }
             else
             {
@@ -139,17 +205,49 @@ namespace ColibImmo_WPF
             var url = "http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/project/" + id;
             using var client = new HttpClient();
             var dict = new Dictionary<string, string>();
-            dict.Add("description", Description.Text);
-            dict.Add("short_description", Resume.Text);
-            dict.Add("price", Prix.Text);
-            dict.Add("id_Type_project", selectedTypeProject.Id.ToString());
-            dict.Add("id_Person", selectedPerson.Id.ToString());
-            dict.Add("id_PersonAgent", selectedPersonAgent.Id.ToString());
-            dict.Add("id_Address", selectedAddress.Id.ToString());
-            dict.Add("id_Energy_index", selectedEnergyIndex.Id.ToString());
+            if(Description.Text != null)
+            {
+                dict.Add("description", Description.Text);
+            }
+            if(Resume.Text != null)
+            {
+                dict.Add("short_description", Resume.Text);
+            }
+            if(Prix.Text != null)
+            {
+                dict.Add("price", Prix.Text);
+            }
+            if(selectedTypeProject != null)
+            {
+                dict.Add("id_Type_project", selectedTypeProject.Id.ToString());
+            }
+            if(selectedPerson != null)
+            {
+                dict.Add("id_Person", selectedPerson.Id.ToString());
+            }
+            if(selectedPersonAgent != null)
+            {
+                dict.Add("id_PersonAgent", selectedPersonAgent.Id.ToString());
+            }
+            if(selectedAddress != null)
+            {
+                dict.Add("id_Address", selectedAddress.Id.ToString());
+            }
+            if(selectedEnergyIndex != null)
+            {
+                dict.Add("id_Energy_index", selectedEnergyIndex.Id.ToString());
+            }
             var req = new HttpRequestMessage(HttpMethod.Put, url) { Content = new FormUrlEncodedContent(dict) };
             var res = await client.SendAsync(req);
 
+            if (res.IsSuccessStatusCode)
+            {
+                NavigationService.Navigate(new Uri("listProject.xaml", UriKind.Relative));
+            }
+            else
+            {
+                MessageBox.Show("Erreur lors de la modification de ce projet!");
+            }
         }
     }
 }

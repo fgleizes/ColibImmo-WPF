@@ -170,15 +170,9 @@
                                                             <Button  Tag="{Binding Id}"  Click="BtnDetailsClientPage" BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
                                                                 <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_eye_30px_3.png"/>
                                                             </Button>
-                                                       
+
                                                     </TextBlock>
                                                 </StackPanel>
-
-
-
-
-
-
                                             </Grid>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>

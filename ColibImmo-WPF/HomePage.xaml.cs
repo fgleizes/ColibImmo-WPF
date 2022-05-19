@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,13 @@ namespace ColibImmo_WPF
         public HomePage()
         {
             InitializeComponent();
+            Welcome();
+        }
+
+        public void Welcome()
+        {
+            TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+            welcomeMessage.Text = $"Bienvenue {ti.ToTitleCase(Application.Current.Properties["firstname"].ToString())} {ti.ToTitleCase(Application.Current.Properties["lastname"].ToString())} sur ColibImmo";
         }
     }
 }

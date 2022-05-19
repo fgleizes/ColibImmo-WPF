@@ -9,7 +9,7 @@
       Title="HomePage">
     <Border CornerRadius="10" Background="white">
         <Grid>
-            <TextBlock VerticalAlignment="center" HorizontalAlignment="center" Text="home"></TextBlock>
+            <TextBlock Name="welcomeMessage" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" FontSize="36"></TextBlock>
         </Grid>
     </Border>
 </Page>

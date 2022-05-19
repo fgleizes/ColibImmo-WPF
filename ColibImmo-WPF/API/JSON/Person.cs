@@ -18,5 +18,9 @@ namespace ColibImmo_WPF.API.JSON
         public string? Firstname { get; set; }
         [JsonPropertyName("mail")]
         public string? Mail { get; set; }
+        [JsonPropertyName("id_Role")]
+        public int? idRole { get; set; }
+        //[JsonPropertyName("address")]
+        //public Address? Address { get; set; }
     }
 }

@@ -1,26 +1,44 @@
 ﻿<Page x:Class="ColibImmo_WPF.ListProject"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ColibImmo_WPF"
-        mc:Ignorable="d"
-        Title="listProject">
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ColibImmo_WPF"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ListeBien">
+
+
     <Grid>
-        <Button Click="PostAsync" HorizontalAlignment="Left" Width="30" Height="30" VerticalAlignment="Top">Ajouter Bien</Button>
-        <ListView Name="listProjectGrid" Height="500">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="8*" />
+        </Grid.RowDefinitions>
+
+        <Button PreviewMouseLeftButtonDown="Filter_MouseDown" HorizontalAlignment="Center" Width="auto" Height="30" VerticalAlignment="Top" Content="Réinitialiser le résultat"/>
+        <Button Click="PostAsync" HorizontalAlignment="Left" Width="auto" Height="30" VerticalAlignment="Top">Ajouter un projet</Button>
+        <TabControl Name ="selectTypeProjet" Grid.Row="1">
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock MouseLeftButtonDown="Filter_MouseDown" Text="{Binding Name}" TextAlignment="Center"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="23" Margin="-6" Padding="5 5 5 19"/>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+        </TabControl>
+        <ListView Name="listProject"  VerticalAlignment="Stretch" Grid.Row="2">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding IdPersonAgent.Lastname}"/>
-                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding IdPersonAgent.Firstname}"/>
-                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding Person.Lastname}"/>
-                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding Person.Firstname}"/>
-                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding Reference}" />
-                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding CreatedAt, StringFormat=d, ConverterCulture=fr-FR}" />
+
+                    <GridViewColumn Header="Nom d'agent" Width="120" DisplayMemberBinding="{Binding IdPersonAgent.Lastname}"/>
+                    <GridViewColumn Header="Prénom d'agent" Width="120" DisplayMemberBinding="{Binding IdPersonAgent.Firstname}"/>
+                    <GridViewColumn Header="Nom client" Width="120" DisplayMemberBinding="{Binding Person.Lastname}"/>
+                    <GridViewColumn Header="Prénom client" Width="120" DisplayMemberBinding="{Binding Person.Firstname}"/>
+                    <GridViewColumn Header="Reference" Width="120" DisplayMemberBinding="{Binding Reference}" />
+                    <GridViewColumn Header="Date de création" Width="120" DisplayMemberBinding="{Binding CreatedAt, StringFormat=d, ConverterCulture=fr-FR}" />
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Click="DeleteProject" Background="{x:Null}" BorderBrush="{x:Null}">
+                                <Button Click="deleteProject" Background="{x:Null}" BorderBrush="{x:Null}">
                                     <StackPanel>
                                         <Image Height="30" Source="icons/icons8_close_window_48px.png"/>
                                         <TextBlock Height="0" Text ="{Binding Id}" Foreground="{x:Null}" />
@@ -32,7 +50,7 @@
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Click="PutProject" Background="{x:Null}" BorderBrush="{x:Null}">
+                                <Button Click="PutAsync" Background="{x:Null}" BorderBrush="{x:Null}">
                                     <StackPanel>
                                         <Image Height="30" Source="icons/icons8_edit_48px.png" />
                                         <TextBlock Height="0" Text ="{Binding Id}" Foreground="{x:Null}" />
@@ -43,6 +61,6 @@
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
-    </ListView>
+        </ListView>
     </Grid>
 </Page>

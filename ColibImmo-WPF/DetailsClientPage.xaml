@@ -70,22 +70,22 @@
                             </Border>
                         </Border>
                         <Border BorderBrush="#e4e4e4" BorderThickness="0 1 1 1" Padding="10" CornerRadius="0 10 10 0" Background="white" Grid.Column="1">
-                            
-                        <Grid >
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                            </Grid.RowDefinitions>
 
-                            <TextBlock Foreground="#4b4b4b" FontWeight="light" FontFamily="calibri" FontSize="12" Name="mail" Grid.Row="0"  HorizontalAlignment="Left">Email : isabelCavali@gmail.com</TextBlock>
-                            <TextBlock Foreground="#4b4b4b" FontWeight="light" FontFamily="calibri" FontSize="12" Name="phone" Grid.Row="1"  HorizontalAlignment="Left">Phone : 0645789845</TextBlock>
-                            <TextBlock Foreground="#4b4b4b" FontWeight="light" FontFamily="calibri" FontSize="12" Name="adresse" Grid.Row="2"  HorizontalAlignment="Left">adresse : 2 rue du pere brottier</TextBlock>
-                            <TextBlock Foreground="#4b4b4b" FontWeight="light" FontFamily="calibri" FontSize="12" Name="city" Grid.Row="3"  HorizontalAlignment="Left">Paris</TextBlock>
-                            <TextBlock Foreground="#4b4b4b" FontWeight="light" FontFamily="calibri" FontSize="12" Name="zip_code" Grid.Row="4"  HorizontalAlignment="Left">75016</TextBlock>
-                        </Grid>
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Foreground="#4b4b4b" FontWeight="light" FontFamily="calibri" FontSize="12" Name="mail" Grid.Row="0"  HorizontalAlignment="Left"></TextBlock>
+                                <TextBlock Foreground="#4b4b4b" FontWeight="light" FontFamily="calibri" FontSize="12" Name="phone" Grid.Row="1"  HorizontalAlignment="Left"></TextBlock>
+                                <TextBlock Foreground="#4b4b4b" FontWeight="light" FontFamily="calibri" FontSize="12" Name="adresse" Grid.Row="2"  HorizontalAlignment="Left"></TextBlock>
+                                <TextBlock Foreground="#4b4b4b" FontWeight="light" FontFamily="calibri" FontSize="12" Name="city" Grid.Row="3"  HorizontalAlignment="Left"></TextBlock>
+                                <TextBlock Foreground="#4b4b4b" FontWeight="light" FontFamily="calibri" FontSize="12" Name="zip_code" Grid.Row="4"  HorizontalAlignment="Left"></TextBlock>
+                            </Grid>
                         </Border>
 
 
@@ -131,18 +131,10 @@
                                             <StackPanel VerticalAlignment="Center" Grid.Column="2">
                                                 <TextBlock Text="{Binding AppointmentHour}" Name="Heure"/>
                                             </StackPanel>
-                                            <StackPanel VerticalAlignment="Center" Grid.Column="3">
-                                                <TextBlock Text="TypeRdv"/>
-                                            </StackPanel>
-
-
-
-
-
-
-
-
-                                        </Grid>
+                                                <StackPanel VerticalAlignment="Center" Grid.Column="3">
+                                                    <TextBlock Text="TypeRdv"/>
+                                                </StackPanel>
+                                            </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
 
@@ -180,18 +172,20 @@
                                         <StackPanel Margin="0 0 10 0" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="0">
                                             <TextBlock Name="Reference"  Text="{Binding Reference}"/>
                                         </StackPanel>
-                                        <StackPanel Margin="10 0 10 0" HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Column="1">
-                                            <TextBlock Name="Type" Text="{Binding}"/>
-                                        </StackPanel>
                                         <StackPanel Margin="10 0 10 0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2">
-                                            <TextBlock Name="PropertyType" Text="Property type"/>
+                                            <TextBlock Name="PropertyType" Text="{Binding TypeProject.Name}" />
                                         </StackPanel>
-                                        <StackPanel Margin="10 0 10 0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="3">
-                                            <TextBlock Name="Area" Text="{Binding Area}"/>
+                                        <StackPanel Margin="10 0 10 0" HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Column="1">
+                                            <TextBlock Name="Type" Text="{Binding StatusProject.Name}"/>
                                         </StackPanel>
-                                        <StackPanel Margin="10 0 10 0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="4">
+                                        <WrapPanel Margin="10 0 10 0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="3">
+                                            <TextBlock Name="Area" Text="{Binding Area}"/> 
+                                            <TextBlock Text="m2" />
+                                        </WrapPanel>
+                                        <WrapPanel Margin="10 0 10 0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="4">
                                             <TextBlock Name="Price" Text="{Binding Price}"/>
-                                        </StackPanel>
+                                            <TextBlock Text="€" />
+                                        </WrapPanel>
                                         <StackPanel Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="5">
                                             <TextBlock Name="Ville" Text="{Binding Address.City.Name}"/>
                                         </StackPanel>

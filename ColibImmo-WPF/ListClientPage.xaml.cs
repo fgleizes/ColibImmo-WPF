@@ -81,23 +81,22 @@ namespace ColibImmo_WPF
             Client api = new Client();
             Stream? streamAPI = await api.CreateCallAsync(p,"person", true, null);
             this.NavigationService.Navigate(new Uri("ListClientPage.xaml", UriKind.Relative));
-
-
         }
 
 
         private async void BtnDeleteClients(object sender, RoutedEventArgs e)
         {
-            Client api = new Client();
-            Button idButton = (Button)sender;
-            idClient.id = idButton.Tag.ToString();
-            Stream? streamAPI = await api.DeleteCallAsync("person/"+idClient.id, null, true);
-            InitializeComponent();
-            GetClients();
+            if (MessageBox.Show("Confirmez-vous vouloir supprimer ce client ?", "Supprimer client", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                Client api = new Client();
+                Button idButton = (Button)sender;
+                idClient.id = idButton.Tag.ToString();
+                Stream? streamAPI = await api.DeleteCallAsync("person/"+idClient.id, null, true);
+                InitializeComponent();
+                GetClients();
+            }
         }
-       
-
-
+    
         private void BtnDetailsClientPage(object sender, RoutedEventArgs e)
         {
             Button idButton = (Button)sender;

@@ -33,10 +33,10 @@ namespace ColibImmo_WPF.API.JSON
         [JsonPropertyName("staircase")]
         public string? Staircase { get; set; }
 
-        [JsonPropertyName("City")]
-        public City? City { get; set; }
+        //[JsonPropertyName("City")]
+        //public City? City { get; set; }
 
-
-
+        [JsonPropertyName("id_City")]
+        public int? IdCity { get; set; }
     }
 }

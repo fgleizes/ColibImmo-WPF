@@ -34,14 +34,13 @@ namespace ColibImmo_WPF
         private async void GetProjectsListByClient()
         {
             Client api = new Client();
-            api.Token = Application.Current.Properties["apiToken"].ToString();
+            //api.Token = Application.Current.Properties["apiToken"].ToString();
             Stream? streamAPI = await api.GetCallAsync("project/person/"+idClient.id, null, true);
             
             if (streamAPI != null)
             {
                 ProjectClient[]? projects = JsonSerializer.DeserializeAsync<ProjectClient[]>(streamAPI).Result;
-                ListProjectByClientContainer.ItemsSource = (System.Collections.IEnumerable?)projects;
-                
+                ListProjectByClientContainer.ItemsSource = projects;
             }
             else
             {
@@ -52,7 +51,7 @@ namespace ColibImmo_WPF
         private async void GetAppointmentsListByClient()
         {
             Client api = new Client();
-            api.Token = Application.Current.Properties["apiToken"].ToString();
+            //api.Token = Application.Current.Properties["apiToken"].ToString();
             Stream? streamAPI = await api.GetCallAsync("appointment/customerAppointments/" + idClient.id, null, true);
 
             if (streamAPI != null)
@@ -77,33 +76,29 @@ namespace ColibImmo_WPF
         private async void GetDetailsClient()
         {
             Client api = new Client();
-            api.Token = Application.Current.Properties["apiToken"].ToString();
+            //api.Token = Application.Current.Properties["apiToken"].ToString();
             Stream? streamAPI = await api.GetCallAsync("person/"+idClient.id,null, true);
             
             if (streamAPI != null)
             {
-
                 DataClient? clients = JsonSerializer.DeserializeAsync<DataClient>(streamAPI).Result;
-                
 
-                this.lastname.Text =clients.Lastname+" "+clients.Firstname;
-                this.created_at.Text ="Date inscription : "+clients.Created_at;
-                this.mail.Text ="Mail : "+clients.Mail;
-                this.phone.Text = "Phone : " + clients.Phone;
+                lastname.Text =clients?.Lastname+" "+clients?.Firstname;
+                created_at.Text ="Date inscription : "+clients?.Created_at;
+                mail.Text ="Mail : "+clients?.Mail;
+                phone.Text = "Phone : " + clients?.Phone;
 
-                if (clients.AddressClient == null)
+                if (clients?.AddressClient == null)
                 {
-                    this.adresse.Text = "pas d'adresse renseigné";
-                    this.city.Text = "pas de ville renseigné";
-                    this.zip_code.Text = "pas de département renseigné";
+                    adresse.Text = "pas d'adresse renseigné";
+                    city.Text = "pas de ville renseigné";
+                    zip_code.Text = "pas de département renseigné";
                 }
-
                 else
                 {
-
-                this.adresse.Text = "Adresse : "+clients.AddressClient.Number.ToString()+" " +clients.AddressClient.Street;
-                this.city.Text = "Ville : " + clients.AddressClient.City;
-                this.zip_code.Text = "Code département : " + clients.AddressClient.ZipCode;
+                    adresse.Text = "Adresse : "+clients.AddressClient.Number.ToString()+" " +clients.AddressClient.Street;
+                    city.Text = "Ville : " + clients.AddressClient.City;
+                    zip_code.Text = "Code département : " + clients.AddressClient.ZipCode;
                 }
 
             }

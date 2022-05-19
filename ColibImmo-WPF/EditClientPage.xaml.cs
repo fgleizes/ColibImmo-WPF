@@ -31,7 +31,6 @@ namespace ColibImmo_WPF
 
         private async void BtnEditClient(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("hum1");
             string? firstnameText = firstname.Text;
             string? lastnameText = lastname.Text;
             string? mailText = mail.Text;
@@ -40,50 +39,39 @@ namespace ColibImmo_WPF
             Client api = new Client();
             Stream? streamAPI = await api.EditCallAsync(p, "person/" + idClient.id, true, null);
             this.NavigationService.Navigate(new Uri("ListClientPage.xaml", UriKind.Relative));
-
-
         }
 
         private async void GetDetailsClient()
         {
             Client api = new Client();
-            api.Token = Application.Current.Properties["apiToken"].ToString();
             Stream? streamAPI = await api.GetCallAsync("person/" + idClient.id, null, true);
 
             if (streamAPI != null)
             {
-
                 DataClient? clients = JsonSerializer.DeserializeAsync<DataClient>(streamAPI).Result;
 
-
-                this.enTête.Text ="Modification "+ clients.Lastname + " " + clients.Firstname;
-                this.lastname.Text = clients.Lastname;
-                this.firstname.Text = clients.Firstname;
-                this.mail.Text = clients.Mail;
-                this.phone.Text = clients.Phone;
+                enTête.Text ="Modification "+ clients?.Lastname + " " + clients?.Firstname;
+                lastname.Text = clients?.Lastname;
+                firstname.Text = clients?.Firstname;
+                mail.Text = clients?.Mail;
+                phone.Text = clients?.Phone;
                 
-
-                
-
-                if (clients.AddressClient == null)
+                if (clients?.AddressClient == null)
                 {
-                    this.number.Text = "pas d'adresse renseigné";
-                    this.city.Text = "pas de ville renseigné";
-                    this.zip_code.Text = "pas de département renseigné";
+                    number.Text = "pas d'adresse renseigné";
+                    city.Text = "pas de ville renseigné";
+                    zip_code.Text = "pas de département renseigné";
                 }
-
                 else
                 {
-
-                    this.number.Text = clients.AddressClient.Number.ToString();
-                    this.city.Text = "Ville : " + clients.AddressClient.City;
-                    this.zip_code.Text = "Code département : " + clients.AddressClient.ZipCode;
+                    number.Text = clients.AddressClient.Number.ToString();
+                    city.Text = "Ville : " + clients.AddressClient.City;
+                    zip_code.Text = "Code département : " + clients.AddressClient.ZipCode;
                 }
-
             }
             else
             {
-                MessageBox.Show("Erreur");
+                MessageBox.Show("Erreur de connexion");
             }
         }
     }

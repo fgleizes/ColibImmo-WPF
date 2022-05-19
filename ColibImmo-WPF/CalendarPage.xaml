@@ -28,7 +28,7 @@
 
                     </StackPanel>
                 </Border>
-                <ListView Name="ListAppointmentContainer" Grid.Row="1" Grid.Column="0" BorderThickness="0" Margin="-2,0,0,0">
+                <ListView Name="ListAppointmentContainer" Grid.Row="1" Grid.Column="0" BorderThickness="0" Margin="-2,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="BorderBrush" Value="#FFDADADA" />

@@ -77,15 +77,15 @@
         <ComboBox Grid.Column="2" Grid.Row="5" Name="ComboAddress" SelectedValue="{Binding Id}" Height="28" Width="160">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
+                    <WrapPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding Number}" Margin="0,0,5,0" />
-                        <TextBlock Text="{Binding Street}"/>
-                        <TextBlock Text="{Binding AdditionalAddress}"/>
-                        <TextBlock Text="{Binding Building}"/>
+                        <TextBlock Text="{Binding Street}" Margin="0,0,5,0" />
+                        <TextBlock Text="{Binding AdditionalAddress}" Margin="0,0,5,0" />
+                        <!--<TextBlock Text="{Binding Building}"/>
                         <TextBlock Text="{Binding Floor}"/>
-                        <TextBlock Text="{Binding Staircase}"/>
+                        <TextBlock Text="{Binding Staircase}"/>-->
                         <TextBlock Text="{Binding Id}" Foreground="{x:Null}"/>
-                    </StackPanel>
+                    </WrapPanel>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>

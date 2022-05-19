@@ -102,7 +102,8 @@ namespace ColibImmo_WPF
             Client api = new Client();
             api.Disconnect("user/logout");
             Application.Current.Properties.Remove("apiToken");
-            MessageBoxResult result = MessageBox.Show(Application.Current.Properties["apiToken"] as string);
+            Application.Current.Properties.Remove("lastname");
+            Application.Current.Properties.Remove("firstname");
             Hide();
 
             var window = new LoginWindow();

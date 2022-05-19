@@ -55,7 +55,6 @@ namespace ColibImmo_WPF.API
         {
             Connect(isSecure);
 
-
             string getData = "";
             if (formDatas != null)
             {
@@ -72,26 +71,20 @@ namespace ColibImmo_WPF.API
                     isFirst = false;
                 }
             }
-            MessageBox.Show(idClient.id);
 
 
             var response = (await clientApi.PutAsJsonAsync(URI + getData, p));
             if (response.IsSuccessStatusCode)
             {
-                
                 Stream stream = await response.Content.ReadAsStreamAsync();
                 Console.Write("Success");
                 return stream;
-                
-
-
             }
             else
-                Console.Write("Error");
+            {
                 MessageBox.Show(response.ToString());
                 return null;
-           
-
+            }
         }
 
 
@@ -117,12 +110,16 @@ namespace ColibImmo_WPF.API
             }
 
             HttpResponseMessage response = await clientApi.GetAsync(URI + getData);
-            if (!response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
+                Stream stream = await response.Content.ReadAsStreamAsync();
+                return stream;
+            }
+            else
+            {
+                MessageBox.Show(response.ToString());
                 return null;
             }
-            Stream stream = await response.Content.ReadAsStreamAsync();
-            return stream;
         }
 
 
@@ -154,16 +151,14 @@ namespace ColibImmo_WPF.API
             var response = (await clientApi.PostAsJsonAsync(URI + getData, p));
             if (response.IsSuccessStatusCode)
             {
-                Console.Write("Success");
-
-
+                Stream stream = await response.Content.ReadAsStreamAsync();
+                return stream;
             }
             else
-                Console.Write("Error");
-            MessageBox.Show(response.ToString());
-            Stream stream = await response.Content.ReadAsStreamAsync();
-            return stream;
-
+            {
+                MessageBox.Show(response.ToString());
+                return null;
+            }
         }
 
         public async Task<Stream?> DeleteCallAsync(string URI, FormData[]? formDatas = null, bool isSecure = false)
@@ -187,25 +182,17 @@ namespace ColibImmo_WPF.API
             }
 
             HttpResponseMessage response = await clientApi.DeleteAsync(URI + getData);
-            if (!response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
-                return null;
-
+                Stream stream = await response.Content.ReadAsStreamAsync();
+                return stream;
             }
-            Stream stream = await response.Content.ReadAsStreamAsync();
-            MessageBox.Show("client supprimé");
-
-            return stream;
-
-
-
+            else
+            {
+                MessageBox.Show(response.ToString());
+                return null;
+            }
         }
-
-
-
-
-
-
 
         public void Disconnect(string URI)
         {

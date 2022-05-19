@@ -35,7 +35,7 @@ namespace ColibImmo_WPF.API.JSON
         public double? GpsLng { get; set; }
 
         [JsonPropertyName("department_code")]
-        public double? DepartmentCode { get; set; }
+        public string? DepartmentCode { get; set; }
 
 
         [JsonPropertyName("Departement")]

@@ -58,6 +58,7 @@ namespace ColibImmo_WPF
         {
             bool emailBoxError;
             bool passwordBoxError;
+            errormessage3.Text = "";
 
             if (emailBox.Text.Length == 0)
             {
@@ -118,24 +119,45 @@ namespace ColibImmo_WPF
             Client api = new Client();
             Stream? streamAPI = await api.GetCallAsync("user/login", formDataArray);
 
-
-            if(streamAPI != null)
+            if (streamAPI != null)
             {
                 Auth? auth = JsonSerializer.DeserializeAsync<Auth>(streamAPI).Result;
-                api.Token = auth?.Token;
-                Application.Current.Properties.Add("apiToken", auth?.Token);
-                errormessage3.Text = "";
-                Hide();
-                var window = new MainWindow();
-                window.Owner = this;
-                window.Show();
-                //MessageBoxResult result = MessageBox.Show(Application.Current.Properties["apiToken"] as string);
-                MessageBoxResult result = MessageBox.Show(api.Token);
+                if(auth?.Token != null)
+                {
+                    Application.Current.Properties.Add("apiToken", auth?.Token);
+
+                    Client apiUser = new Client();
+                    Stream? streamUserMe = await apiUser.GetCallAsync("user/me", null, true);
+
+                    if (streamUserMe != null)
+                    {
+                        Person? person = JsonSerializer.DeserializeAsync<Person>(streamUserMe).Result;
+                        if (person != null && person.idRole <= 4)
+                        {
+                            Application.Current.Properties.Add("lastname", person.Lastname);
+                            Application.Current.Properties.Add("firstname", person.Firstname);
+                            errormessage3.Text = "";
+                            Hide();
+                            var window = new MainWindow();
+                            window.Owner = this;
+                            window.Show();
+                        }
+                        else
+                        {
+                            errormessage3.Text = "Ce profil ne permet pas d'accéder à l'application.";
+                            Application.Current.Properties.Remove("apiToken");
+                        }
+                    }
+                    else
+                    {
+                        errormessage3.Text = "Problème lors de l'identification. Veuillez contacter votre administrateur.";
+                        Application.Current.Properties.Remove("apiToken");
+                    }
+                }
             }
             else
             {
                 errormessage3.Text = "Votre identifiant ou votre mot de passe est erroné.";
-                MessageBox.Show("Erreur de connexion.");
             }
         }
     }
