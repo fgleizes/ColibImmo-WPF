@@ -54,7 +54,7 @@ namespace ColibImmo_WPF
         private async void GetPerson()
         {
             Client api = new Client();
-            Stream? streamAPI = await api.GetCallAsync("person", null, true);
+            Stream? streamAPI = await api.GetCallAsync("person/role/5", null, true); // Récupérer les clients
             if (streamAPI != null)
             {
                 Person[]? person = JsonSerializer.DeserializeAsync<Person[]>(streamAPI).Result;
