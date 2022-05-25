@@ -54,7 +54,6 @@ namespace ColibImmo_WPF
             var senderText = sender as TextBlock;
             var senderBtn = sender as Button;
 
-
             Client api = new Client();
             Stream? streamAPI = await api.GetCallAsync("project/typeProject/");
             if (streamAPI != null)

@@ -36,7 +36,5 @@ namespace ColibImmo_WPF.API.JSON
         [JsonPropertyName("City")]
         public City? City { get; set; }
 
-
-
     }
 }

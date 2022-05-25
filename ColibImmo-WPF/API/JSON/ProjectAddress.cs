@@ -40,7 +40,7 @@ namespace ColibImmo_WPF.API.JSON
         public Object? Department { get; set; }
 
         [JsonPropertyName("region")]
-        public Object? Degion { get; set; }
+        public Object? Region { get; set; }
 
 
 
