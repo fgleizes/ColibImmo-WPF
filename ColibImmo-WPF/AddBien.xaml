@@ -91,15 +91,15 @@
         </ComboBox>
         <Label Grid.Column="2" Grid.Row="6" Content="Type Propriété"  Width="120"/>
         <ComboBox Grid.Column="2" Grid.Row="7" Name="ComboTypeProperty" Height="28" Width="160" SelectedValue="{Binding Id}">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Name}" />
-                            <TextBlock Text="{Binding Id}" Foreground="{x:Null}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Text="{Binding Id}" Foreground="{x:Null}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <Label Grid.Column="1" Grid.Row="4" Content="index énergie pour le bien :" Width="160"/>
         <ComboBox Grid.Column="1" Grid.Row="5" Name="ComboEnergyIndex" SelectedValue="{Binding Id}" Height="28" Width="40">
             <ComboBox.ItemTemplate>

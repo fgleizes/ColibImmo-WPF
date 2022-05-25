@@ -48,7 +48,8 @@ namespace ColibImmo_WPF
                     DateTime myStartDate = DateTime.Parse(appointment.Start);
                     DateTime myEndDate = DateTime.Parse(appointment.End);
                     appointment.AppointmentHour = myStartDate.Hour.ToString() + ":" + myStartDate.Minute.ToString() + " — " + myEndDate.Hour.ToString() + ":" + myStartDate.Minute.ToString();
-                    appointment.AppointmentDate = myStartDate.Day + "/" + myStartDate.Month + "/" + myStartDate.Year;
+                    //appointment.AppointmentDate = myStartDate.Day + "/" + myStartDate.Month + "/" + myStartDate.Year;
+                    appointment.AppointmentDate = myStartDate.ToShortDateString();
                 }
                 ListAppointmentContainer.ItemsSource = appointments;
             }
