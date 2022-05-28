@@ -1,26 +1,10 @@
 ﻿using ColibImmo_WPF.API;
 using ColibImmo_WPF.API.JSON;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.IO;
-using System.Text.Json;
 
 namespace ColibImmo_WPF
 {
@@ -34,9 +18,7 @@ namespace ColibImmo_WPF
     {
         public static string? Content;
     }
-    /// <summary>
-    /// Logique d'interaction pour ListClientPage.xaml
-    /// </summary>
+
     public partial class ListClientPage : Page
     {
         public ListClientPage()
@@ -52,8 +34,7 @@ namespace ColibImmo_WPF
             if (streamAPI != null)
             {
                 DataClient[]? clients = JsonSerializer.DeserializeAsync<DataClient[]>(streamAPI).Result;
-                ListClientContainer.ItemsSource = (System.Collections.IEnumerable?)clients;
-                
+                ListClientContainer.ItemsSource = clients;
             }
             else
             {
@@ -61,17 +42,7 @@ namespace ColibImmo_WPF
             }
         }
 
-      
-
-
-
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-
-       private async void BtnCreateClient(object sender, RoutedEventArgs e)
+        private async void BtnCreateClient(object sender, RoutedEventArgs e)
         {
             string firstnameText = firstnameAddForm.Text;
             string lastnameText = lastnameAddForm.Text;
@@ -79,10 +50,9 @@ namespace ColibImmo_WPF
             string phoneText = phoneAddForm.Text;
             DataClient p = new DataClient { Firstname = firstnameText, Lastname = lastnameText, Mail = mailText, Phone = phoneText, Id_Role = 5 };
             Client api = new Client();
-            Stream? streamAPI = await api.CreateCallAsync(p,"person", true, null);
-            this.NavigationService.Navigate(new Uri("ListClientPage.xaml", UriKind.Relative));
+            await api.CreateCallAsync(p,"person", true, null);
+            NavigationService.Navigate(new Uri("ListClientPage.xaml", UriKind.Relative));
         }
-
 
         private async void BtnDeleteClients(object sender, RoutedEventArgs e)
         {
@@ -91,7 +61,7 @@ namespace ColibImmo_WPF
                 Client api = new Client();
                 Button idButton = (Button)sender;
                 idClient.id = idButton.Tag.ToString();
-                Stream? streamAPI = await api.DeleteCallAsync("person/"+idClient.id, null, true);
+                await api.DeleteCallAsync("person/"+idClient.id, null, true);
                 InitializeComponent();
                 GetClients();
             }
@@ -101,17 +71,19 @@ namespace ColibImmo_WPF
         {
             Button idButton = (Button)sender;
             idClient.id = idButton.Tag.ToString();
-            
-            this.NavigationService.Navigate(new Uri("DetailsClientPage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("DetailsClientPage.xaml", UriKind.Relative));
         }
 
         private void BtnEditClientPage(object sender, RoutedEventArgs e)
         {
             Button idButton = (Button)sender;
             idClient.id = idButton.Tag.ToString();
-
-            this.NavigationService.Navigate(new Uri("EditClientPage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("EditClientPage.xaml", UriKind.Relative));
         }
+        
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
+        }
     }
 }

@@ -8,13 +8,9 @@ using ColibImmo_WPF.API.JSON;
 using System.Windows.Input;
 using System.Windows.Controls;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace ColibImmo_WPF
 {
-    /// <summary>
-    /// Logique d'interaction pour LoginWindow.xaml
-    /// </summary>
     public partial class LoginWindow : Window
     {
         public LoginWindow()

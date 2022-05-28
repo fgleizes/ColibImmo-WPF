@@ -35,18 +35,18 @@
                             <Setter.Value>
                                 <ControlTemplate TargetType="TabItem">
                                     <Border
-                                    Name="Border"
-                                    BorderThickness="0"
-                                    BorderBrush="White"
-                                    Margin="0 0 0 -2"
-                                    CornerRadius="10,10,0,0">
-
+                                        Name="Border"
+                                        BorderThickness="0"
+                                        BorderBrush="White"
+                                        Margin="0 0 0 -2"
+                                        CornerRadius="10,10,0,0"
+                                    >
                                         <ContentPresenter
-                                        
-                                        x:Name="ContentSite"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        ContentSource="Header" />
+                                            x:Name="ContentSite"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            ContentSource="Header" 
+                                        />
                                     </Border>
 
                                     <ControlTemplate.Triggers>
@@ -58,12 +58,8 @@
                                         </Trigger>
                                         <Trigger Property="IsSelected" Value="False">
                                             <Setter TargetName="Border" Property="Background" Value="#efefef" />
-
                                             <Setter TargetName="Border" Property="BorderThickness" Value="1 1 1 0"/>
                                             <Setter TargetName="Border" Property="BorderBrush" Value="#c4c4c4"/>
-
-
-
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
@@ -73,13 +69,9 @@
                 </TabControl.Resources>
                 <TabItem Name="TabItem1"  Margin="0 0 0 0" Height="40" Width="200">
                     <TabItem.Header >
-
                         <StackPanel>
-                            <TextBlock Text="LISTE CLIENT" FontSize="24" FontFamily="century gothic" Foreground="#4b4b4b" FontWeight="Light">
-
-                            </TextBlock>
+                            <TextBlock Text="LISTE CLIENT" FontSize="24" FontFamily="century gothic" Foreground="#4b4b4b" FontWeight="Light"></TextBlock>
                         </StackPanel>
-
                     </TabItem.Header>
 
                     <Border CornerRadius="0 10 10 10" BorderThickness="1" Background="White" BorderBrush="#c4c4c4" Padding="0 10 0 0">
@@ -150,27 +142,21 @@
                                                 <StackPanel VerticalAlignment="Center" Grid.Column="4">
                                                     <TextBlock FontFamily="calibri" Text="{Binding Phone}"/>
                                                 </StackPanel>
-
                                                 <StackPanel HorizontalAlignment="Right" Grid.Column="5"  >
                                                     <Button Tag="{Binding Id}" Click="BtnEditClientPage" BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
                                                         <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_edit_48px.png"/>
                                                     </Button>
                                                 </StackPanel>
-                                                
-                                                <StackPanel HorizontalAlignment="Right" Grid.Column="6"  >
-
+                                                <StackPanel HorizontalAlignment="Right" Grid.Column="6">
                                                     <Button Click="BtnDeleteClients" Tag="{Binding Id}"  BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
-                                                        
                                                         <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_close_window_48px.png"/>
                                                     </Button>
                                                 </StackPanel>
                                                 <StackPanel HorizontalAlignment="Right" Grid.Column="7"  >
                                                     <TextBlock>
-                                                        
-                                                            <Button  Tag="{Binding Id}"  Click="BtnDetailsClientPage" BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
-                                                                <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_eye_30px_3.png"/>
-                                                            </Button>
-
+                                                        <Button  Tag="{Binding Id}"  Click="BtnDetailsClientPage" BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
+                                                            <Image VerticalAlignment="Center"  Height="30" Source="icons/icons8_eye_30px_3.png"/>
+                                                        </Button>
                                                     </TextBlock>
                                                 </StackPanel>
                                             </Grid>
@@ -183,13 +169,12 @@
                 </TabItem>
                 <TabItem Header="ADD" BorderBrush="white" BorderThickness="0" Background="#efefef" Height="30"  Width="60" Foreground="#4b4b4b" FontWeight="DemiBold" Margin="0 0 0 -10">
                     <Border 
-                    
-                    CornerRadius="0 10 10 10" 
-                    Name="BorderAdd" 
-                    Background="white" 
-                    BorderBrush="#c4c4c4" 
-                    BorderThickness="1">
-
+                        CornerRadius="0 10 10 10" 
+                        Name="BorderAdd" 
+                        Background="white" 
+                        BorderBrush="#c4c4c4" 
+                        BorderThickness="1"
+                    >
                         <Grid Margin="10 10 10 10"  HorizontalAlignment="Left">
                             <Grid Width="600">
                                 <Grid.ColumnDefinitions>
@@ -208,9 +193,7 @@
                                 </Grid.RowDefinitions>
 
                                 <StackPanel Grid.Row="0" VerticalAlignment="center">
-                                    <TextBlock>
-                                        INFO CLIENT
-                                    </TextBlock>
+                                    <TextBlock>INFO CLIENT</TextBlock>
                                 </StackPanel>
 
                                 <Border CornerRadius="5"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,10,10" >
@@ -245,21 +228,14 @@
                                 <Border CornerRadius="5"  BorderThickness="0.5" BorderBrush="#4b4b4b" Grid.Row="5" Grid.Column="3" Margin="0,0,10,10">
                                     <TextBox Margin="10,0,0,0" Foreground="#d4d4d4" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Text="Code departement" />
                                 </Border>
-
                             </Grid>
 
                             <Button  Click="BtnCreateClient" VerticalAlignment="bottom" HorizontalAlignment="Right" Height="40" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                                 <Image Source="icons/icons8_enter_key_30px.png"/>
                             </Button>
-                            
                         </Grid>
-
-
-
                     </Border>
                 </TabItem>
-
-
             </TabControl>
         </Grid>
         <Frame NavigationUIVisibility="Hidden" x:Name="frmContent"/>
