@@ -28,7 +28,7 @@ namespace ColibImmo_WPF
                 DataClient? clients = JsonSerializer.DeserializeAsync<DataClient>(streamAPI).Result;
 
                 lastname.Text = $"{clients?.Lastname} {clients?.Firstname}";
-                created_at.Text = $"Date inscription : {clients?.Created_at}";
+                created_at.Text = $"Date inscription : {DateTime.Parse(clients?.Created_at)}";
                 mail.Text = $"Mail : {clients?.Mail}";
                 phone.Text = $"Phone : {clients?.Phone}";
 

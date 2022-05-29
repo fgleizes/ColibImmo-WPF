@@ -8,7 +8,6 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ListeBien">
 
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -28,7 +27,6 @@
         <ListView Name="listProject"  VerticalAlignment="Stretch" Grid.Row="2">
             <ListView.View>
                 <GridView>
-
                     <GridViewColumn Header="Nom d'agent" Width="120" DisplayMemberBinding="{Binding IdPersonAgent.Lastname}"/>
                     <GridViewColumn Header="Prénom d'agent" Width="120" DisplayMemberBinding="{Binding IdPersonAgent.Firstname}"/>
                     <GridViewColumn Header="Nom client" Width="120" DisplayMemberBinding="{Binding Person.Lastname}"/>
