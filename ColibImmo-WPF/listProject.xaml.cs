@@ -119,7 +119,7 @@ namespace ColibImmo_WPF
 
         private async void deleteProject(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Confirmez-vous vouloir supprimer ce client ?", "Supprimer client", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Confirmez-vous vouloir supprimer ce projet ?", "Supprimer projet", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 Button button = (Button)sender;
                 StackPanel ModelStackpanel = new StackPanel();
